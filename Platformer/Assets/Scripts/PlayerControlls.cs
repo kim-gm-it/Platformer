@@ -4,8 +4,9 @@ using UnityEngine.InputSystem;
 
 public class PlayerControlls : MonoBehaviour
 {
+    private Rigidbody2D rb;
     [SerializeField] float moveSpeed = 5f;
-    [SerializeField] float jumpForse = 5f;
+    [SerializeField] float jumpForse = 45f;
     private Vector2 movementInput;
     [SerializeField] Boolean isGrounded;
 
@@ -14,7 +15,7 @@ public class PlayerControlls : MonoBehaviour
         Debug.Log("Jump Input: " + context.ReadValue<float>());
         if (context.performed && isGrounded)
         {
-            GetComponent<Rigidbody2D>().AddForce(Vector2.up*jumpForse , ForceMode2D.Impulse);
+            rb.AddForce(Vector2.up*jumpForse , ForceMode2D.Impulse);
             isGrounded = false;
         }
     }
@@ -26,7 +27,7 @@ public class PlayerControlls : MonoBehaviour
     }
     void Start()
     {
-        
+        rb = GetComponent<Rigidbody2D>();
     }
 
     void Update()
