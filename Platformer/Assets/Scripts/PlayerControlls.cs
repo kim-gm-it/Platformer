@@ -10,6 +10,7 @@ public class PlayerControlls : MonoBehaviour
     private Vector2 movementInput;
     [SerializeField] Boolean isGrounded;
     private float doubleJampPower=15f;
+    [SerializeField] private Animator animator;
 
     private bool canDoubleJump;
 
@@ -20,12 +21,14 @@ public class PlayerControlls : MonoBehaviour
             if (isGrounded)
             {
                 rb.AddForce(Vector2.up * jumpForse, ForceMode2D.Impulse);
+                animator.SetTrigger("Jump");
                 isGrounded = false;
                 canDoubleJump = true; 
             }
             else if (canDoubleJump)
             {
                 rb.AddForce(Vector2.up * doubleJampPower, ForceMode2D.Impulse);
+                animator.SetTrigger("Jump");
                 canDoubleJump = false; 
             }
         }
@@ -45,6 +48,12 @@ public class PlayerControlls : MonoBehaviour
     void Update()
     {
         Vector2 movement = new Vector2(movementInput.x , movementInput.y)*(moveSpeed * Time.deltaTime);
+        if (movement.magnitude > 0f){
+            animator.SetBool("Run",true);
+        }
+        else{
+            animator.SetBool("Run",false);
+        }
         transform.Translate(movement);
     }
 
