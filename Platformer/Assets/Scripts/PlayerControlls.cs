@@ -6,19 +6,31 @@ public class PlayerControlls : MonoBehaviour
 {
     private Rigidbody2D rb;
     [SerializeField] float moveSpeed = 5f;
-    [SerializeField] float jumpForse = 45f;
+    [SerializeField] float jumpForse = 20f;
     private Vector2 movementInput;
     [SerializeField] Boolean isGrounded;
+    private float doubleJampPower=15f;
+
+    private bool canDoubleJump;
 
     public void OnJump(InputAction.CallbackContext context)
     {
-        Debug.Log("Jump Input: " + context.ReadValue<float>());
-        if (context.performed && isGrounded)
+        if (context.performed)
         {
-            rb.AddForce(Vector2.up*jumpForse , ForceMode2D.Impulse);
-            isGrounded = false;
+            if (isGrounded)
+            {
+                rb.AddForce(Vector2.up * jumpForse, ForceMode2D.Impulse);
+                isGrounded = false;
+                canDoubleJump = true; 
+            }
+            else if (canDoubleJump)
+            {
+                rb.AddForce(Vector2.up * doubleJampPower, ForceMode2D.Impulse);
+                canDoubleJump = false; 
+            }
         }
     }
+
 
     public void OnMove(InputAction.CallbackContext context)
     {
