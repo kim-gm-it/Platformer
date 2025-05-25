@@ -46,9 +46,9 @@
                     "isPartOfComposite": false
                 },
                 {
-                    "name": "1D Axis",
+                    "name": "2D Vector",
                     "id": "c752b4cc-6f18-41b1-8daa-b8e586d7bed2",
-                    "path": "1DAxis",
+                    "path": "2DVector",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -57,7 +57,7 @@
                     "isPartOfComposite": false
                 },
                 {
-                    "name": "negative",
+                    "name": "Up",
                     "id": "795cfd3e-e026-43f7-9dea-9305f35eefff",
                     "path": "<Keyboard>/leftArrow",
                     "interactions": "",
@@ -68,9 +68,31 @@
                     "isPartOfComposite": true
                 },
                 {
-                    "name": "positive",
+                    "name": "Down",
                     "id": "01362044-56d1-4348-983e-d8bed3032d71",
                     "path": "<Keyboard>/rightArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "Left",
+                    "id": "8a9497fe-e136-4388-8e15-6e4a9e366991",
+                    "path": "",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "Right",
+                    "id": "7aec763d-b2ee-4f14-b194-8930bbe91282",
+                    "path": "",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
