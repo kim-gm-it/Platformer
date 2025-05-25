@@ -9,7 +9,7 @@ public class PlayerControlls : MonoBehaviour
     private Vector2 movementInput;
     [SerializeField] Boolean isGrounded;
 
-    public void onJump(InputAction.CallbackContext context)
+    public void OnJump(InputAction.CallbackContext context)
     {
         Debug.Log("Jump Input: " + context.ReadValue<Vector2>());
         if (context.performed && isGrounded)
@@ -19,7 +19,7 @@ public class PlayerControlls : MonoBehaviour
         }
     }
 
-    public void onMove(InputAction.CallbackContext context)
+    public void OnMove(InputAction.CallbackContext context)
     {
         Debug.Log("Move Input: " + context.ReadValue<Vector2>());
         movementInput = context.ReadValue <Vector2>();
