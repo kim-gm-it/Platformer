@@ -6,7 +6,7 @@ public class PlayerControlls : MonoBehaviour
 {
     private Rigidbody2D rb;
     [SerializeField] float moveSpeed = 5f;
-    [SerializeField] float jumpForse = 20f;
+    [SerializeField] float jumpForse = 40f;
     private Vector2 movementInput;
     [SerializeField] Boolean isGrounded;
     private float doubleJampPower=15f;
