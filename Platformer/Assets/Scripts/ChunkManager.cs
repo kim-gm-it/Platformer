@@ -9,10 +9,10 @@ public class ChunkManager : MonoBehaviour
     [SerializeField] static int numOfCreatedChunks = 0;
 
     [Header("Chunk settings")]
-    [SerializeField] private float generateAheadDistance = 22f;
-    [SerializeField] private int chunkWidth = 18;
-    [SerializeField] private int maxChunksVisible = 3;
-    [SerializeField] private int initialChunks = 2;
+    [SerializeField] private float generateAheadDistance = 30f;
+    [SerializeField] private int chunkWidth = 26;
+    [SerializeField] private int maxChunksVisible = 2;
+    [SerializeField] private int initialChunks = 1;
 
     [Header("Refrences")]
     [SerializeField] private Transform player;
