@@ -11,7 +11,7 @@ public class PlayerControlls : MonoBehaviour
 
     public void OnJump(InputAction.CallbackContext context)
     {
-        Debug.Log("Jump Input: " + context.ReadValue<Vector2>());
+        Debug.Log("Jump Input: " + context.ReadValue<float>());
         if (context.performed && isGrounded)
         {
             GetComponent<Rigidbody2D>().AddForce(Vector2.up*jumpForse , ForceMode2D.Impulse);
