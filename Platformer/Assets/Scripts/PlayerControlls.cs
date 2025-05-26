@@ -5,11 +5,11 @@ using UnityEngine.InputSystem;
 public class PlayerControlls : MonoBehaviour
 {
     private Rigidbody2D rb;
-    [SerializeField] float moveSpeed = 5f;
-    [SerializeField] float jumpForse = 40f;
+    [SerializeField] private float moveSpeed = 5f;
+    [SerializeField] private float jumpForce = 20f;
     private Vector2 movementInput;
-    [SerializeField] Boolean isGrounded;
-    private float doubleJampPower=15f;
+    public Boolean isGrounded;
+    [SerializeField]private float doubleJampPower=15f;
 
     private bool canDoubleJump;
 
@@ -19,13 +19,13 @@ public class PlayerControlls : MonoBehaviour
         {
             if (isGrounded)
             {
-                rb.AddForce(Vector2.up * jumpForse, ForceMode2D.Impulse);
+                rb.velocity = new Vector2(rb.velocity.x , jumpForce);
                 isGrounded = false;
                 canDoubleJump = true; 
             }
             else if (canDoubleJump)
             {
-                rb.AddForce(Vector2.up * doubleJampPower, ForceMode2D.Impulse);
+                rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * 0.5f); 
                 canDoubleJump = false; 
             }
         }
