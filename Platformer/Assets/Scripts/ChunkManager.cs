@@ -6,7 +6,7 @@ using System.Security.Principal;
 
 public class ChunkManager : MonoBehaviour
 {
-    [SerializeField] static int numOfCreatedChunks = 0;
+    [SerializeField] private static int numOfCreatedChunks = 0;
 
     [Header("Chunk settings")]
     [SerializeField] private float generateAheadDistance = 30f;
