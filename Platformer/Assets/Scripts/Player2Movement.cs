@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Rendering;
 
-public class PlayerControlls : MonoBehaviour
+public class Player2Movement : MonoBehaviour
 {
     private Rigidbody2D rb;
     [SerializeField] private float moveSpeed = 5f;
@@ -14,20 +14,9 @@ public class PlayerControlls : MonoBehaviour
 
     [SerializeField] private bool isGrounded;
 
-    [SerializeField]private float doubleJampPower=15f;
+    [SerializeField] private float dashingPower = 25f;
 
-    [SerializeField]private bool canDoubleJump;
-
-    [SerializeField] Boolean isGrounded;
-    private float doubleJampPower=15f;
-    [SerializeField] private Animator animator;
-
-    public Boolean isGrounded;
-    [SerializeField]private float doubleJampPower=15f;
-
-
-    private bool canDoubleJump;
-
+    [SerializeField] private bool canDash;
 
     public void OnJump(InputAction.CallbackContext context)
     {
@@ -35,30 +24,14 @@ public class PlayerControlls : MonoBehaviour
         {
             if (isGrounded)
             {
-
-                rb.AddForce(Vector2.up*jumpForce , ForceMode2D.Impulse);
-
-
-                rb.AddForce(Vector2.up * jumpForse, ForceMode2D.Impulse);
-                animator.SetTrigger("Jump");
-
-                rb.velocity = new Vector2(rb.velocity.x , jumpForce);
-
-
+                rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
                 isGrounded = false;
-                canDoubleJump = true; 
+                canDoubleJump = true;
             }
             else if (canDoubleJump)
             {
-
                 rb.AddForce(Vector2.up * doubleJampPower, ForceMode2D.Impulse);
-                rb.AddForce(Vector2.up * doubleJampPower, ForceMode2D.Impulse);
-                animator.SetTrigger("Jump");
-
-                rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * 0.5f); 
-
-
-                canDoubleJump = false; 
+                canDoubleJump = false;
             }
         }
     }
@@ -67,7 +40,7 @@ public class PlayerControlls : MonoBehaviour
     public void OnMove(InputAction.CallbackContext context)
     {
         Debug.Log("Move Input: " + context.ReadValue<Vector2>());
-        movementInput = context.ReadValue <Vector2>();
+        movementInput = context.ReadValue<Vector2>();
     }
     void Start()
     {
@@ -76,13 +49,7 @@ public class PlayerControlls : MonoBehaviour
 
     void Update()
     {
-        Vector2 movement = new Vector2(movementInput.x , movementInput.y)*(moveSpeed * Time.deltaTime);
-        if (movement.magnitude > 0f){
-            animator.SetBool("Run",true);
-        }
-        else{
-            animator.SetBool("Run",false);
-        }
+        Vector2 movement = new Vector2(movementInput.x, movementInput.y) * (moveSpeed * Time.deltaTime);
         transform.Translate(movement);
     }
 
