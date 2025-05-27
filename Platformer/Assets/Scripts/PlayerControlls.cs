@@ -1,22 +1,18 @@
 using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.Rendering;
 
 public class PlayerControlls : MonoBehaviour
 {
     private Rigidbody2D rb;
-    [SerializeField] private float moveSpeed = 5f;
-
-    [SerializeField] private float jumpForce = 20f;
-
+    [SerializeField] float moveSpeed = 5f;
+    [SerializeField] float jumpForse = 20f;
     private Vector2 movementInput;
-
     [SerializeField] private bool isGrounded;
+    private float doubleJampPower = 20f;
+    [SerializeField] private Animator animator;
 
-    [SerializeField]private float doubleJampPower=15f;
-
-    [SerializeField]private bool canDoubleJump;
+    private bool canDoubleJump;
 
     public void OnJump(InputAction.CallbackContext context)
     {
@@ -24,14 +20,16 @@ public class PlayerControlls : MonoBehaviour
         {
             if (isGrounded)
             {
-                rb.AddForce(Vector2.up*jumpForce , ForceMode2D.Impulse);
+                rb.AddForce(Vector2.up * jumpForse, ForceMode2D.Impulse);
+                animator.SetTrigger("Jump");
                 isGrounded = false;
-                canDoubleJump = true; 
+                canDoubleJump = true;
             }
             else if (canDoubleJump)
             {
                 rb.AddForce(Vector2.up * doubleJampPower, ForceMode2D.Impulse);
-                canDoubleJump = false; 
+                animator.SetTrigger("Jump");
+                canDoubleJump = false;
             }
         }
     }
@@ -40,7 +38,7 @@ public class PlayerControlls : MonoBehaviour
     public void OnMove(InputAction.CallbackContext context)
     {
         Debug.Log("Move Input: " + context.ReadValue<Vector2>());
-        movementInput = context.ReadValue <Vector2>();
+        movementInput = context.ReadValue<Vector2>();
     }
     void Start()
     {
@@ -49,7 +47,15 @@ public class PlayerControlls : MonoBehaviour
 
     void Update()
     {
-        Vector2 movement = new Vector2(movementInput.x , movementInput.y)*(moveSpeed * Time.deltaTime);
+        Vector2 movement = new Vector2(movementInput.x, movementInput.y) * (moveSpeed * Time.deltaTime);
+        if (movement.magnitude > 0f)
+        {
+            animator.SetBool("Run", true);
+        }
+        else
+        {
+            animator.SetBool("Run", false);
+        }
         transform.Translate(movement);
     }
 
