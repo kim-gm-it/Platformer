@@ -6,17 +6,22 @@ using UnityEngine.Rendering;
 public class Player2Movement : MonoBehaviour
 {
     private Rigidbody2D rb;
+
+    private Vector2 movementInput;
+
+    private TrailRenderer tr;
+
     [SerializeField] private float moveSpeed = 5f;
 
     [SerializeField] private float jumpForce = 20f;
-
-    private Vector2 movementInput;
 
     [SerializeField] private bool isGrounded;
 
     [SerializeField] private float dashingPower = 25f;
 
     [SerializeField] private bool canDash;
+
+    private float dashingCooldown = 1f;
 
     public void OnJump(InputAction.CallbackContext context)
     {
@@ -26,13 +31,9 @@ public class Player2Movement : MonoBehaviour
             {
                 rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
                 isGrounded = false;
-                canDoubleJump = true;
+                canDash = true;
             }
-            else if (canDoubleJump)
-            {
-                rb.AddForce(Vector2.up * doubleJampPower, ForceMode2D.Impulse);
-                canDoubleJump = false;
-            }
+           
         }
     }
 
@@ -45,6 +46,7 @@ public class Player2Movement : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        tr = GetComponent<TrailRenderer>();
     }
 
     void Update()

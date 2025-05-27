@@ -1,18 +1,16 @@
 using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.Rendering;
 
 public class PlayerControlls : MonoBehaviour
 {
     private Rigidbody2D rb;
-    [SerializeField] private float moveSpeed = 5f;
-
-    [SerializeField] private float jumpForce = 20f;
-
+    [SerializeField] float moveSpeed = 5f;
+    [SerializeField] float jumpForse = 20f;
     private Vector2 movementInput;
-
     [SerializeField] private bool isGrounded;
+    private float doubleJampPower = 20f;
+    [SerializeField] private Animator animator;
 
     [SerializeField]private float doubleJampPower=15f;
 
@@ -46,7 +44,7 @@ public class PlayerControlls : MonoBehaviour
 
 
                 isGrounded = false;
-                canDoubleJump = true; 
+                canDoubleJump = true;
             }
             else if (canDoubleJump)
             {
@@ -67,7 +65,7 @@ public class PlayerControlls : MonoBehaviour
     public void OnMove(InputAction.CallbackContext context)
     {
         Debug.Log("Move Input: " + context.ReadValue<Vector2>());
-        movementInput = context.ReadValue <Vector2>();
+        movementInput = context.ReadValue<Vector2>();
     }
     void Start()
     {
