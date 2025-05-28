@@ -18,12 +18,18 @@ public class Player2Controler : MonoBehaviour
     private float dashingPower = 24f;
     private float dashingTime = 0.2f;
     private float dashingCooldown = 1f;
+    public AudioClip jumpClip;
+    public AudioClip attackClip;
+    public AudioClip deathClip;
+    private AudioSource audioSource;
+    
     public void OnJump(InputAction.CallbackContext context)
     {
         if (context.performed && isGrounded)
         {
             rb.AddForce(Vector2.up * jumpForse, ForceMode2D.Impulse);
             animator.SetTrigger("Jump");
+            GetComponent<Player2Controler>().PlayJumpSound();
             isGrounded = false;
         }
     }
@@ -37,6 +43,7 @@ public class Player2Controler : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     void Update()
@@ -93,6 +100,7 @@ public class Player2Controler : MonoBehaviour
             if (lives <= 0)
             {
                 animator.SetTrigger("Death");
+                GetComponent<Player2Controler>().PlayDeathSound();
             }
         }
     }
@@ -101,6 +109,7 @@ public class Player2Controler : MonoBehaviour
         if (context.performed)
         {
             animator.SetTrigger("Attack");
+            GetComponent<Player2Controler>().PlayAttackSound();
         }
     }
     private IEnumerator Dash()
@@ -117,5 +126,17 @@ public class Player2Controler : MonoBehaviour
         isDashing = false;
         yield return new WaitForSeconds(dashingCooldown);
         canDash = true;
+    }
+    public void PlayJumpSound()
+    {
+        audioSource.PlayOneShot(jumpClip, 1.5f);
+    }
+    public void PlayAttackSound()
+    {
+        audioSource.PlayOneShot(attackClip);
+    }
+    public void PlayDeathSound()
+    {
+        audioSource.PlayOneShot(deathClip);
     }
 }
