@@ -8,10 +8,17 @@ public class Player1Controller : MonoBehaviour
     [SerializeField] float jumpForse = 40f;
     private Vector2 movementInput;
     [SerializeField] Boolean isGrounded;
+    [SerializeField] int lives = 5;
     private float doubleJampPower = 15f;
     private bool canDoubleJump;
     [SerializeField] private Animator animator;
     [SerializeField] private GameObject arrowPrefab;
+    public AudioClip jumpClip;
+    public AudioClip attackClip;
+    public AudioClip deathClip;
+
+    private AudioSource audioSource;
+
     // [SerializeField] private float arrowSpeed = 10f;
 
     public void OnJump(InputAction.CallbackContext context)
@@ -22,6 +29,7 @@ public class Player1Controller : MonoBehaviour
             {
                 rb.AddForce(Vector2.up * jumpForse, ForceMode2D.Impulse);
                 animator.SetTrigger("Jump");
+                GetComponent<Player1Controller>().PlayJumpSound();
                 isGrounded = false;
                 canDoubleJump = true;
             }
@@ -29,6 +37,7 @@ public class Player1Controller : MonoBehaviour
             {
                 rb.AddForce(Vector2.up * doubleJampPower, ForceMode2D.Impulse);
                 animator.SetTrigger("Jump");
+                GetComponent<Player1Controller>().PlayJumpSound();
                 canDoubleJump = false;
             }
         }
@@ -43,6 +52,7 @@ public class Player1Controller : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     void Update()
@@ -74,11 +84,26 @@ public class Player1Controller : MonoBehaviour
             isGrounded = false;
         }
     }
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+
+        if (collision.gameObject.tag == "EnemyProjectile")
+        {
+            animator.SetTrigger("GetHit");
+            lives -= 1;
+            if (lives <= 0)
+            {
+                animator.SetTrigger("Death");
+                GetComponent<Player2Controler>().PlayDeathSound();
+            }
+        }
+    }
     public void OnAttack(InputAction.CallbackContext context)
     {
         if (context.performed)
         {
             animator.SetTrigger("Attack");
+            GetComponent<Player1Controller>().PlayAttackSound();
             // ShootArrow();
         }
     }
@@ -90,4 +115,16 @@ public class Player1Controller : MonoBehaviour
     //     rb.AddForce(new Vector2(direction * arrowSpeed, 0f), ForceMode2D.Impulse);
 
     // }
+    public void PlayJumpSound()
+    {
+        audioSource.PlayOneShot(jumpClip);
+    }
+    public void PlayAttackSound()
+    {
+        audioSource.PlayOneShot(attackClip);
+    }
+    public void PlayDeathSound()
+    {
+        audioSource.PlayOneShot(deathClip);
+    }
 }
