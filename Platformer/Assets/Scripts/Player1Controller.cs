@@ -8,8 +8,9 @@ public class Player1Controller : MonoBehaviour
     [SerializeField] float jumpForse = 40f;
     private Vector2 movementInput;
     [SerializeField] Boolean isGrounded;
+    [SerializeField] Boolean player2;
     [SerializeField] int lives = 5;
-    private float doubleJampPower = 15f;
+    [SerializeField] float doubleJampPower = 25f;
     private bool canDoubleJump;
     [SerializeField] private Animator animator;
     [SerializeField] private GameObject arrowPrefab;
@@ -18,26 +19,29 @@ public class Player1Controller : MonoBehaviour
     public AudioClip deathClip;
 
     private AudioSource audioSource;
-
-    // [SerializeField] private float arrowSpeed = 10f;
+    [SerializeField] private Transform firePoint;
+    [SerializeField] private float arrowSpeed = 10f;
 
     public void OnJump(InputAction.CallbackContext context)
     {
         if (context.performed)
         {
-            if (isGrounded)
+            bool isOnPlatform = isGrounded || player2;
+
+            if (isOnPlatform)
             {
                 rb.AddForce(Vector2.up * jumpForse, ForceMode2D.Impulse);
                 animator.SetTrigger("Jump");
-                GetComponent<Player1Controller>().PlayJumpSound();
+                PlayJumpSound();
                 isGrounded = false;
+                player2 = false;
                 canDoubleJump = true;
             }
             else if (canDoubleJump)
             {
                 rb.AddForce(Vector2.up * doubleJampPower, ForceMode2D.Impulse);
                 animator.SetTrigger("Jump");
-                GetComponent<Player1Controller>().PlayJumpSound();
+                PlayJumpSound();
                 canDoubleJump = false;
             }
         }
@@ -75,6 +79,10 @@ public class Player1Controller : MonoBehaviour
         {
             isGrounded = true;
         }
+        if (collision.gameObject.CompareTag("Player2"))
+        {
+            player2 = true;
+        }
     }
 
     private void OnCollisionExit2D(Collision2D collision)
@@ -82,6 +90,10 @@ public class Player1Controller : MonoBehaviour
         if (collision.gameObject.CompareTag("Ground"))
         {
             isGrounded = false;
+        }
+        if (collision.gameObject.CompareTag("Player2"))
+        {
+            player2 = false;
         }
     }
     void OnTriggerEnter2D(Collider2D collision)
@@ -104,17 +116,22 @@ public class Player1Controller : MonoBehaviour
         {
             animator.SetTrigger("Attack");
             GetComponent<Player1Controller>().PlayAttackSound();
-            // ShootArrow();
         }
     }
-    // private void ShootArrow()
-    // {
-    //     GameObject arrow = Instantiate(arrowPrefab, transform.position, transform.rotation);
-    //     Rigidbody2D rb = arrow.GetComponent<Rigidbody2D>();
-    //     float direction = transform.localScale.x > 0 ? 1f : -1f;
-    //     rb.AddForce(new Vector2(direction * arrowSpeed, 0f), ForceMode2D.Impulse);
+    public void ShootArrow()
+    {
+        float direction = transform.localScale.x > 0 ? 1f : -1f;
 
-    // }
+        GameObject arrow = Instantiate(arrowPrefab, firePoint.position, Quaternion.identity);
+        Rigidbody2D rb = arrow.GetComponent<Rigidbody2D>();
+
+        rb.linearVelocity = new Vector2(direction * arrowSpeed, 0f);
+
+        if (direction < 0)
+        {
+            arrow.transform.localScale = new Vector3(-1, 1, 1);
+        }
+    }
     public void PlayJumpSound()
     {
         audioSource.PlayOneShot(jumpClip);

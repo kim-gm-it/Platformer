@@ -11,6 +11,7 @@ public class Player2Controler : MonoBehaviour
     [SerializeField] int lives = 5;
     private Vector2 movementInput;
     [SerializeField] Boolean isGrounded;
+    [SerializeField] Boolean player1;
     [SerializeField] private Animator animator;
     [SerializeField] private TrailRenderer tr;
     private bool canDash = true;
@@ -25,12 +26,20 @@ public class Player2Controler : MonoBehaviour
     
     public void OnJump(InputAction.CallbackContext context)
     {
-        if (context.performed && isGrounded)
+        if ((context.performed && isGrounded) || (context.performed && player1))
         {
             rb.AddForce(Vector2.up * jumpForse, ForceMode2D.Impulse);
             animator.SetTrigger("Jump");
             GetComponent<Player2Controler>().PlayJumpSound();
-            isGrounded = false;
+            if (isGrounded)
+            {
+                isGrounded = false;
+            }
+            if (player1)
+            {
+                player1 = false;
+            }
+            
         }
     }
 
@@ -81,6 +90,10 @@ public class Player2Controler : MonoBehaviour
         {
             isGrounded = true;
         }
+        if (collision.gameObject.CompareTag("Player1"))
+        {
+            player1 = true;
+        }
     }
 
     private void OnCollisionExit2D(Collision2D collision)
@@ -88,6 +101,10 @@ public class Player2Controler : MonoBehaviour
         if (collision.gameObject.CompareTag("Ground"))
         {
             isGrounded = false;
+        }
+        if (collision.gameObject.CompareTag("Player1"))
+        {
+            player1 = false;
         }
     }
     void OnTriggerEnter2D(Collider2D collision)
