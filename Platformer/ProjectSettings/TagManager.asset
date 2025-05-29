@@ -5,6 +5,11 @@ TagManager:
   serializedVersion: 3
   tags:
   - Ground
+  - Player2
+  - Player1
+  - Patrol Enemy
+  - Shooting Enemy
+  - Player Arrow
   layers:
   - Default
   - TransparentFX
