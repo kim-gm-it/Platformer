@@ -44,11 +44,24 @@ public class EnemyLogic : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
-        animator.SetTrigger("Is Taking Hit");
-        currentHealth -= damage;
-        if(currentHealth <= 0)
+        if (gameObject.tag == "Patrol Enemy") 
         {
-            Die();
+            animator.SetTrigger("Is Taking Hit");
+            currentHealth -= damage;
+            if (currentHealth <= 0)
+            {
+                Die();
+            }
+        }
+        ////check !!!!!!!
+        if (gameObject.tag == "Shooting Enemy")
+        {
+            animator.SetTrigger("Die");
+            currentHealth -= damage;
+            if (currentHealth <= 0)
+            {
+                Die();
+            }
         }
     }
 

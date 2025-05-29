@@ -10,14 +10,28 @@ public class PatrollingEnemy : MonoBehaviour
     private Rigidbody2D rb;
     private Transform currentPoint;
     public float speed = 3f;
+
+
+    [Header("Attack related variables")]
+    public float attackRange = 10f;
+    public float attackCooldown = 2f;
+    private float attackTimer = 0f;
+    private GameObject[] players;
+    private EnemyLogic enemyLogic;
+
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        enemyLogic = GetComponent<EnemyLogic>();
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         currentPoint = pointB.transform;
-        animator.SetBool("isRunning" , true);
+        animator.SetBool("is Running" , true);
+
+        players = new GameObject[2];
+        players[0] = GameObject.FindGameObjectWithTag("Player1");
+        players[1] = GameObject.FindGameObjectWithTag("Player2");
 
     }
 
@@ -45,6 +59,22 @@ public class PatrollingEnemy : MonoBehaviour
             flip();
             currentPoint = pointB.transform;
         }
+
+
+        attackTimer -= Time.deltaTime;
+
+        for(int i=0; i<players.Length; i++)
+        {
+            if (players[i] == null)
+                continue;
+            float distance = Mathf.Abs(transform.position.x - players[i].transform.position.x);
+            if (distance <= attackRange && attackTimer >= attackCooldown)
+            {
+                enemyLogic.OnAttack();
+                attackTimer = 0;
+            }
+        }
+
     }
 
     private void flip()

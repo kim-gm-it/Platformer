@@ -8,8 +8,10 @@ public class ShootingEnemy : MonoBehaviour
     public GameObject bulletPrefab;
     public float detectionRange = 10f;
     public float shootingInterval = 1.5f;
-    public float shootingSpeed  =7f;
+    public float shootingSpeed  =10f;
     public float shootingTimer;
+    public AudioClip shootingSound;
+    private AudioSource audioSource;
 
     private Transform targetPlayer;
     GameObject[] players;
@@ -18,6 +20,7 @@ public class ShootingEnemy : MonoBehaviour
     void Start()
     {
         players = new GameObject[2];
+        audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -29,12 +32,27 @@ public class ShootingEnemy : MonoBehaviour
             return;
         }
 
+       
         shootingTimer += Time.deltaTime;
 
         if(shootingTimer >= shootingInterval) //if enough time has passed shoot a bullet and reset timer
         {
             Shoot();
+            PlayShootingSound();
             shootingTimer = 0;  
+        }
+
+        if (targetPlayer != null)
+        {
+            Vector3 scale = transform.localScale;
+
+            if (targetPlayer.position.x > transform.position.x)
+            {
+                scale.x = Mathf.Abs(scale.x);
+            }
+            else
+                scale.x = -Mathf.Abs(scale.x);
+            transform.localScale = scale;
         }
     }
 
@@ -56,7 +74,14 @@ public class ShootingEnemy : MonoBehaviour
     {
         if(bulletPrefab != null && targetPlayer != null)
         {
-
+            Vector2 direction = (targetPlayer.position - transform.position).normalized;//to keep the direction only , and not the elength
+            GameObject bullet = Instantiate(bulletPrefab , transform.position , Quaternion.identity);
+            bullet.GetComponent<Rigidbody2D>().velocity = direction * shootingSpeed;
         }
+    }
+
+    public void PlayShootingSound()
+    {
+        audioSource.PlayOneShot(shootingSound);
     }
 }
