@@ -38,6 +38,7 @@ public class ChunkManager : MonoBehaviour
             activeChunks.Add(newChunk);
         }
         numOfCreatedChunks += activeChunks.Count;
+        currentChunkIndex = initialChunks;
     }
 
     void Update()
@@ -55,7 +56,7 @@ public class ChunkManager : MonoBehaviour
             //Remove chunks that are far behind
             if (activeChunks.Count > maxChunksVisible)
             {
-                GameObject oldestChunk = chunkPrefabs[0];
+                GameObject oldestChunk = activeChunks[0];
                 activeChunks.RemoveAt(0);
                 Destroy(oldestChunk);
                 currentChunkIndex++;
@@ -87,6 +88,6 @@ public class ChunkManager : MonoBehaviour
         float xPos = index * chunkWorldWidth;
         newChunk.transform.position = new Vector3(xPos, 0, 0);
         return newChunk;
-        
+
     }
 }
