@@ -110,7 +110,7 @@ public class PatrollingEnemy : MonoBehaviour
             return;
         }
 
-        rb.velocity = new Vector2(direction * speed , rb.velocity.y);
+        rb.linearVelocity = new Vector2(direction * speed , rb.linearVelocity.y);
 
         if((direction > 0  && transform.localScale.x < 0) || (direction < 0 && transform.localScale.x > 0))
         {
