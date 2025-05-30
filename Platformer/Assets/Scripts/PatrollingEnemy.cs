@@ -100,6 +100,7 @@ public class PatrollingEnemy : MonoBehaviour
     public void chasePlayer()
     {
         float direction = Mathf.Sign(targetPlayer.position.x - transform.position.x);
+
         float targetx = transform.position.x + direction * speed * Time.deltaTime;
 
         //movement limited to patrol boundaries
@@ -110,6 +111,7 @@ public class PatrollingEnemy : MonoBehaviour
         }
 
         rb.velocity = new Vector2(direction * speed , rb.velocity.y);
+
         if((direction > 0  && transform.localScale.x < 0) || (direction < 0 && transform.localScale.x > 0))
         {
             flip();
