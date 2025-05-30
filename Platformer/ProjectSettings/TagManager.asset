@@ -11,6 +11,7 @@ TagManager:
   - Shooting Enemy
   - Player Arrow
   - Enemy Arrow
+  - Enemy Health Bar
   layers:
   - Default
   - TransparentFX
