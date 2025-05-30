@@ -46,10 +46,9 @@ public class PausePanel : MonoBehaviour
     }
     // Restarts the current scene
     public void RestartGame(){
-        // Ensure time is running again before restarting
-        Time.timeScale = 1; 
-        // Reload the current scene
+        Time.timeScale = 1;
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+
     }
     public void MainMenu()
     {

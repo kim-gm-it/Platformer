@@ -20,6 +20,7 @@ public class Player1Controller : MonoBehaviour
     [SerializeField] private GameObject arrowPrefab;
     public AudioClip jumpClip;
     public AudioClip attackClip;
+    public AudioClip hitClip;
     public AudioClip deathClip;
     private AudioSource audioSource;
     [SerializeField] private Transform firePoint;
@@ -34,6 +35,7 @@ public class Player1Controller : MonoBehaviour
     public Sprite Bar1;
     public Sprite Bar0;
     public GameObject losePanel;
+    private bool isDead = false;
 
     public void OnJump(InputAction.CallbackContext context)
     {
@@ -84,6 +86,14 @@ public class Player1Controller : MonoBehaviour
             animator.SetBool("Run", false);
         }
         transform.Translate(movement);
+        if (movementInput.x > 0.01f)
+        {
+            transform.localScale = new Vector3(1, 1, 1);
+        }
+        else if (movementInput.x < -0.01f)
+        {
+            transform.localScale = new Vector3(-1, 1, 1);
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -110,38 +120,39 @@ public class Player1Controller : MonoBehaviour
         }
     }
     void OnTriggerEnter2D(Collider2D collision)
+{
+    if (isDead) return;
+
+    if ((collision.gameObject.tag == "Patrol Enemy") || (collision.gameObject.tag == "Enemy Arrow"))
     {
+        animator.SetTrigger("GetHit");
+        PlayHitSound();
 
-        if ((collision.gameObject.tag == "Patrol Enemy") || (collision.gameObject.tag == "Patrol Enemy"))
+        livesBar--;
+
+        if (livesBar <= 0)
         {
-            if ((collision.gameObject.tag == "Patrol Enemy") || (collision.gameObject.tag == "Patrol Enemy"))
+            livesPoint--;
+            if (livesPoint > 0)
             {
-                animator.SetTrigger("GetHit");
-                livesBar--;
-
-                UpdateHealthBarUI();
-
-                if (livesBar <= 0)
-                {
-                    livesPoint--;
-                    livesBar = 3;
-                    UpdateHealthPointUI();
-                    UpdateHealthBarUI();
-                }
-
-                if (livesPoint <= 0)
-                {
-                    animator.SetTrigger("Death");
-                    PlayDeathSound();
-                    losePanel.SetActive(true);
-                }
-
-                Destroy(collision.gameObject);
+                livesBar = 4;
             }
+            UpdateHealthPointUI();
         }
 
+        UpdateHealthBarUI();
 
+        if (livesPoint <= 0)
+        {
+            isDead = true; 
+            animator.SetTrigger("Death");
+            PlayDeathSound();
+            StartCoroutine(ShowLosePanelAfterDelay(2f));
+        }
+
+        Destroy(collision.gameObject);
     }
+}
     public void OnAttack(InputAction.CallbackContext context)
     {
         if (context.performed)
@@ -175,6 +186,10 @@ public class Player1Controller : MonoBehaviour
     public void PlayDeathSound()
     {
         audioSource.PlayOneShot(deathClip);
+    }
+    public void PlayHitSound()
+    {
+        audioSource.PlayOneShot(hitClip);
     }
     void UpdateHealthPointUI()
     {
@@ -218,7 +233,7 @@ public class Player1Controller : MonoBehaviour
     {
         livesBar += amount;
 
-        if (livesBar > 4) 
+        if (livesBar > 4)
         {
             livesBar = 4;
         }
@@ -233,10 +248,15 @@ public class Player1Controller : MonoBehaviour
 
     private IEnumerator DamageBoostCoroutine(float multiplier, float duration)
     {
-        moveSpeed *= multiplier; 
+        moveSpeed *= multiplier;
 
         yield return new WaitForSeconds(duration);
 
-        moveSpeed /= multiplier; 
+        moveSpeed /= multiplier;
+    }
+    private IEnumerator ShowLosePanelAfterDelay(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        FindFirstObjectByType<GameStateManager>().ShowGameOver();
     }
 }

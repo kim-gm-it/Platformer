@@ -2,13 +2,14 @@ using UnityEngine;
 using System;
 using UnityEngine.InputSystem;
 using System.Collections;
-
+using UnityEngine.UI;
 public class Player2Controler : MonoBehaviour
 {
     private Rigidbody2D rb;
     [SerializeField] float moveSpeed = 5f;
     [SerializeField] float jumpForse = 40f;
-    [SerializeField] int lives = 5;
+    [SerializeField] int livesPoint = 3;
+    [SerializeField] int livesBar = 4;
     private Vector2 movementInput;
     [SerializeField] Boolean isGrounded;
     [SerializeField] Boolean player1;
@@ -22,8 +23,20 @@ public class Player2Controler : MonoBehaviour
     public AudioClip jumpClip;
     public AudioClip attackClip;
     public AudioClip deathClip;
+    public AudioClip hitClip;
     private AudioSource audioSource;
-    
+    public Image[] HealthPoint;
+    public Image[] HealthBar;
+    public Sprite fullHeart;
+    public Sprite emptyHeart;
+    public Sprite Bar4;
+    public Sprite Bar3;
+    public Sprite Bar2;
+    public Sprite Bar1;
+    public Sprite Bar0;
+    public GameObject losePanel;
+    private bool isDead = false;
+
     public void OnJump(InputAction.CallbackContext context)
     {
         if ((context.performed && isGrounded) || (context.performed && player1))
@@ -39,10 +52,9 @@ public class Player2Controler : MonoBehaviour
             {
                 player1 = false;
             }
-            
+
         }
     }
-
 
     public void OnMove(InputAction.CallbackContext context)
     {
@@ -74,6 +86,14 @@ public class Player2Controler : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.LeftShift) && canDash)
         {
             StartCoroutine(Dash());
+        }
+        if (movementInput.x > 0.01f)
+        {
+            transform.localScale = new Vector3(1, 1, 1);
+        }
+        else if (movementInput.x < -0.01f)
+        {
+            transform.localScale = new Vector3(-1, 1, 1);
         }
     }
     private void FixedUpdate()
@@ -108,19 +128,40 @@ public class Player2Controler : MonoBehaviour
         }
     }
     void OnTriggerEnter2D(Collider2D collision)
-    {
+{
+    if (isDead) return;
 
-        if ((collision.gameObject.tag == "Patrol Enemy")||(collision.gameObject.tag == "Patrol Enemy"))
+    if ((collision.gameObject.tag == "Patrol Enemy") || (collision.gameObject.tag == "Enemy Arrow"))
+    {
+        animator.SetTrigger("GetHit");
+        PlayHitSound();
+
+        livesBar--;
+
+        if (livesBar <= 0)
         {
-            animator.SetTrigger("GetHit");
-            lives -= 1;
-            if (lives <= 0)
+            livesPoint--;
+            if (livesPoint > 0)
             {
-                animator.SetTrigger("Death");
-                GetComponent<Player2Controler>().PlayDeathSound();
+                livesBar = 4;
             }
+            UpdateHealthPointUI();
         }
+
+        UpdateHealthBarUI();
+
+        if (livesPoint <= 0)
+        {
+            isDead = true; 
+            animator.SetTrigger("Death");
+            PlayDeathSound();
+            StartCoroutine(ShowLosePanelAfterDelay(1.9f));
+        }
+
+        Destroy(collision.gameObject);
     }
+}
+
     public void OnAttack(InputAction.CallbackContext context)
     {
         if (context.performed)
@@ -155,5 +196,77 @@ public class Player2Controler : MonoBehaviour
     public void PlayDeathSound()
     {
         audioSource.PlayOneShot(deathClip);
+    }
+    public void PlayHitSound()
+    {
+        audioSource.PlayOneShot(hitClip);
+    }
+    void UpdateHealthPointUI()
+    {
+        for (int i = 0; i < HealthPoint.Length; i++)
+        {
+            if (i < livesPoint)
+            {
+                HealthPoint[i].sprite = fullHeart;
+            }
+            else
+            {
+                HealthPoint[i].sprite = emptyHeart;
+            }
+        }
+    }
+    void UpdateHealthBarUI()
+    {
+        for (int i = 0; i < HealthBar.Length; i++)
+        {
+            switch (livesBar)
+            {
+                case 4:
+                    HealthBar[i].sprite = Bar4;
+                    break;
+                case 3:
+                    HealthBar[i].sprite = Bar3;
+                    break;
+                case 2:
+                    HealthBar[i].sprite = Bar2;
+                    break;
+                case 1:
+                    HealthBar[i].sprite = Bar1;
+                    break;
+                case 0:
+                    HealthBar[i].sprite = Bar0;
+                    break;
+            }
+        }
+    }
+    public void IncreaseHealth(int amount)
+    {
+        livesBar += amount;
+
+        if (livesBar > 4)
+        {
+            livesBar = 4;
+        }
+
+        UpdateHealthBarUI();
+    }
+
+    public void StartDamageBoost(float multiplier, float duration)
+    {
+        StartCoroutine(DamageBoostCoroutine(multiplier, duration));
+    }
+
+    private IEnumerator DamageBoostCoroutine(float multiplier, float duration)
+    {
+        moveSpeed *= multiplier;
+
+        yield return new WaitForSeconds(duration);
+
+        moveSpeed /= multiplier;
+    }
+    private IEnumerator ShowLosePanelAfterDelay(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        FindFirstObjectByType<GameStateManager>().ShowGameOver();
     }
 }
