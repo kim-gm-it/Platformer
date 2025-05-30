@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 2514541860308533925}
   - component: {fileID: 8695191710697755245}
   - component: {fileID: -2771024809906719267}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Enemy3(shooter)
   m_TagString: Shooting Enemy
   m_Icon: {fileID: 0}
@@ -81,7 +81,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 10
   m_Sprite: {fileID: 2094173765588758402, guid: 7b82190f5a68f14409d76afe1ee87647, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -141,7 +141,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 1
-  m_Constraints: 4
+  m_Constraints: 7
 --- !u!60 &5468064103248105544
 PolygonCollider2D:
   m_ObjectHideFlags: 0

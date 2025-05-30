@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3202813914735902089}
   - component: {fileID: 5360267629396817712}
   - component: {fileID: 8503104475735379332}
+  - component: {fileID: 5113679928700895478}
   m_Layer: 0
   m_Name: Enemy Arrow
   m_TagString: Enemy Arrow
@@ -97,14 +98,14 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4017242516819662609}
-  m_BodyType: 2
+  m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDamping: 0
   m_AngularDamping: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -132,7 +133,7 @@ PolygonCollider2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 8
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
@@ -172,3 +173,16 @@ PolygonCollider2D:
       - {x: 0.89228463, y: -0.04041004}
       - {x: 0.8125, y: 0.11397171}
   m_UseDelaunayMesh: 0
+--- !u!114 &5113679928700895478
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4017242516819662609}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e7b7a0cec85a9cf44af310386b9392b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hitSound: {fileID: 8300000, guid: f05658a8d19b7f14d875c29510f41250, type: 3}
