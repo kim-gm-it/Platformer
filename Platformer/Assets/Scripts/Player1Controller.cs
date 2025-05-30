@@ -1,6 +1,7 @@
 using UnityEngine;
 using System;
 using UnityEngine.InputSystem;
+using System.Collections;
 using UnityEngine.UI;
 
 public class Player1Controller : MonoBehaviour
@@ -111,9 +112,9 @@ public class Player1Controller : MonoBehaviour
     void OnTriggerEnter2D(Collider2D collision)
     {
 
-        if (collision.gameObject.tag == "EnemyProjectile")
+        if ((collision.gameObject.tag == "Patrol Enemy") || (collision.gameObject.tag == "Patrol Enemy"))
         {
-            if (collision.gameObject.tag == "EnemyProjectile")
+            if ((collision.gameObject.tag == "Patrol Enemy") || (collision.gameObject.tag == "Patrol Enemy"))
             {
                 animator.SetTrigger("GetHit");
                 livesBar--;
@@ -212,5 +213,30 @@ public class Player1Controller : MonoBehaviour
                     break;
             }
         }
+    }
+    public void IncreaseHealth(int amount)
+    {
+        livesBar += amount;
+
+        if (livesBar > 4) 
+        {
+            livesBar = 4;
+        }
+
+        UpdateHealthBarUI();
+    }
+
+    public void StartDamageBoost(float multiplier, float duration)
+    {
+        StartCoroutine(DamageBoostCoroutine(multiplier, duration));
+    }
+
+    private IEnumerator DamageBoostCoroutine(float multiplier, float duration)
+    {
+        moveSpeed *= multiplier; 
+
+        yield return new WaitForSeconds(duration);
+
+        moveSpeed /= multiplier; 
     }
 }
