@@ -97,15 +97,7 @@ public class EnemyLogic : MonoBehaviour
     {
         Debug.Log("Collided with: " + collision.gameObject.name);
 
-        //if (collision.gameObject.CompareTag("Player2"))
-        //{
-        //    TakeDamage(meleeDamage);
-        //}
-        //else if (collision.gameObject.CompareTag("Player1"))
-        //{
-        //    TakeDamage(meleeDamage);
-        //}
-        //else if (collision.gameObject.CompareTag("Player Arrow"))
+        if (collision.gameObject.CompareTag("Player Arrow"))
         {
             TakeDamage(arrowDamage);
         }
@@ -120,11 +112,8 @@ public class EnemyLogic : MonoBehaviour
 
             TakeDamage(meleeDamage);
         }
-        else if (collision.gameObject.CompareTag("Player1"))
-        {
-            TakeDamage(meleeDamage);
-        }
         
+
     }
 
     // Update is called once per frame
