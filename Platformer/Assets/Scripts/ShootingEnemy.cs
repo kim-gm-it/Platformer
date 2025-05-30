@@ -79,7 +79,7 @@ public class ShootingEnemy : MonoBehaviour
         {
             Vector2 direction = (targetPlayer.position - transform.position).normalized;//to keep the direction only , and not the elength
             GameObject bullet = Instantiate(bulletPrefab , transform.position , Quaternion.identity);
-            bullet.GetComponent<Rigidbody2D>().velocity = direction * shootingSpeed;
+            bullet.GetComponent<Rigidbody2D>().linearVelocity = direction * shootingSpeed;
         }
     }
 

@@ -28,7 +28,7 @@ public class EnemyChase : MonoBehaviour
         
         distance = Mathf.Abs(transform.position.x - targetPlayer.transform.position.x);
         Vector2 direction = (targetPlayer.position - transform.position).normalized;
-        GetComponent<Rigidbody2D>().velocity = direction * speed;
+        GetComponent<Rigidbody2D>().linearVelocity = direction * speed;
 
 
     }

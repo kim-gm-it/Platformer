@@ -1,6 +1,9 @@
 using UnityEngine;
 using System;
 using UnityEngine.InputSystem;
+using System.Collections;
+using UnityEngine.UI;
+
 public class Player1Controller : MonoBehaviour
 {
     private Rigidbody2D rb;
@@ -9,7 +12,8 @@ public class Player1Controller : MonoBehaviour
     private Vector2 movementInput;
     [SerializeField] Boolean isGrounded;
     [SerializeField] Boolean player2;
-    [SerializeField] int lives = 5;
+    [SerializeField] int livesPoint = 3;
+    [SerializeField] int livesBar = 4;
     [SerializeField] float doubleJampPower = 25f;
     private bool canDoubleJump;
     [SerializeField] private Animator animator;
@@ -17,10 +21,19 @@ public class Player1Controller : MonoBehaviour
     public AudioClip jumpClip;
     public AudioClip attackClip;
     public AudioClip deathClip;
-
     private AudioSource audioSource;
     [SerializeField] private Transform firePoint;
     [SerializeField] private float arrowSpeed = 10f;
+    public Image[] HealthPoint;
+    public Image[] HealthBar;
+    public Sprite fullHeart;
+    public Sprite emptyHeart;
+    public Sprite Bar4;
+    public Sprite Bar3;
+    public Sprite Bar2;
+    public Sprite Bar1;
+    public Sprite Bar0;
+    public GameObject losePanel;
 
     public void OnJump(InputAction.CallbackContext context)
     {
@@ -99,16 +112,35 @@ public class Player1Controller : MonoBehaviour
     void OnTriggerEnter2D(Collider2D collision)
     {
 
-        if (collision.gameObject.tag == "EnemyProjectile")
+        if ((collision.gameObject.tag == "Patrol Enemy") || (collision.gameObject.tag == "Patrol Enemy"))
         {
-            animator.SetTrigger("GetHit");
-            lives -= 1;
-            if (lives <= 0)
+            if ((collision.gameObject.tag == "Patrol Enemy") || (collision.gameObject.tag == "Patrol Enemy"))
             {
-                animator.SetTrigger("Death");
-                GetComponent<Player2Controler>().PlayDeathSound();
+                animator.SetTrigger("GetHit");
+                livesBar--;
+
+                UpdateHealthBarUI();
+
+                if (livesBar <= 0)
+                {
+                    livesPoint--;
+                    livesBar = 3;
+                    UpdateHealthPointUI();
+                    UpdateHealthBarUI();
+                }
+
+                if (livesPoint <= 0)
+                {
+                    animator.SetTrigger("Death");
+                    PlayDeathSound();
+                    losePanel.SetActive(true);
+                }
+
+                Destroy(collision.gameObject);
             }
         }
+
+
     }
     public void OnAttack(InputAction.CallbackContext context)
     {
@@ -143,5 +175,68 @@ public class Player1Controller : MonoBehaviour
     public void PlayDeathSound()
     {
         audioSource.PlayOneShot(deathClip);
+    }
+    void UpdateHealthPointUI()
+    {
+        for (int i = 0; i < HealthPoint.Length; i++)
+        {
+            if (i < livesPoint)
+            {
+                HealthPoint[i].sprite = fullHeart;
+            }
+            else
+            {
+                HealthPoint[i].sprite = emptyHeart;
+            }
+        }
+    }
+    void UpdateHealthBarUI()
+    {
+        for (int i = 0; i < HealthBar.Length; i++)
+        {
+            switch (livesBar)
+            {
+                case 4:
+                    HealthBar[i].sprite = Bar4;
+                    break;
+                case 3:
+                    HealthBar[i].sprite = Bar3;
+                    break;
+                case 2:
+                    HealthBar[i].sprite = Bar2;
+                    break;
+                case 1:
+                    HealthBar[i].sprite = Bar1;
+                    break;
+                case 0:
+                    HealthBar[i].sprite = Bar0;
+                    break;
+            }
+        }
+    }
+    public void IncreaseHealth(int amount)
+    {
+        livesBar += amount;
+
+        if (livesBar > 4) 
+        {
+            livesBar = 4;
+        }
+
+        UpdateHealthBarUI();
+    }
+
+    public void StartDamageBoost(float multiplier, float duration)
+    {
+        StartCoroutine(DamageBoostCoroutine(multiplier, duration));
+    }
+
+    private IEnumerator DamageBoostCoroutine(float multiplier, float duration)
+    {
+        moveSpeed *= multiplier; 
+
+        yield return new WaitForSeconds(duration);
+
+        moveSpeed /= multiplier; 
     }
 }
