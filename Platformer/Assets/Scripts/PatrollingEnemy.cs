@@ -9,15 +9,18 @@ public class PatrollingEnemy : MonoBehaviour
     private Animator animator;
     private Rigidbody2D rb;
     private Transform currentPoint;
-    public float speed = 3f;
-
-
+    
     [Header("Attack related variables")]
+    public float speed = 3f;
     public float attackRange = 10f;
     public float attackCooldown = 2f;
+    public float detectionRange = 10f;
+
     private float attackTimer = 0f;
     private GameObject[] players;
     private EnemyLogic enemyLogic;
+    private Transform targetPlayer;
+    private bool isChasing = false;
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -26,6 +29,7 @@ public class PatrollingEnemy : MonoBehaviour
         enemyLogic = GetComponent<EnemyLogic>();
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+
         currentPoint = pointB.transform;
         animator.SetBool("is Running" , true);
 
@@ -38,18 +42,48 @@ public class PatrollingEnemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        attackTimer -= Time.deltaTime;
+        float closestDistance = Mathf.Infinity;
 
+        for(int i=0; i<players.Length; i++)
+        {
+            if (players[i] == null)
+                continue;
+            float distance = Mathf.Abs(transform.position.x - players[i].transform.position.x);
+            if(distance <= detectionRange && distance < closestDistance)
+            {
+                closestDistance = distance;
+                targetPlayer = players[i].transform;
 
+            }
+
+            isChasing = targetPlayer != null;
+
+            if(isChasing)
+            {
+                chasePlayer();
+            }
+            else
+            {
+                patrol();
+            }
+
+        }
+
+    }
+
+    public void patrol()
+    {
         if (currentPoint == pointB.transform)
         {
-            rb.linearVelocity = new Vector2(speed , 0f);
+            rb.linearVelocity = new Vector2(speed, 0f);
         }
         else
         {
-            rb.linearVelocity = new Vector2(-speed , 0f);
+            rb.linearVelocity = new Vector2(-speed, 0f);
         }
 
-        if( Mathf.Abs(transform.position.x - currentPoint.position.x)  <= 0.5f && currentPoint == pointB.transform)
+        if (Mathf.Abs(transform.position.x - currentPoint.position.x) <= 0.5f && currentPoint == pointB.transform)
         {
             flip();
             currentPoint = pointA.transform;
@@ -59,22 +93,28 @@ public class PatrollingEnemy : MonoBehaviour
             flip();
             currentPoint = pointB.transform;
         }
+        animator.SetBool("is Running" , true);  
+    }
 
-
-        attackTimer -= Time.deltaTime;
-
-        for(int i=0; i<players.Length; i++)
+    public void chasePlayer()
+    {
+        float direction = Mathf.Sign(targetPlayer.position.x - transform.position.x);
+        rb.velocity = new Vector2(direction * speed , rb.velocity.y);
+        if((direction > 0  && transform.localScale.x < 0) || (direction < 0 && transform.localScale.x > 0))
         {
-            if (players[i] == null)
-                continue;
-            float distance = Mathf.Abs(transform.position.x - players[i].transform.position.x);
-            if (distance <= attackRange && attackTimer >= attackCooldown)
-            {
-                enemyLogic.OnAttack();
-                attackTimer = 0;
-            }
+            flip();
         }
 
+        animator.SetBool("is Running", true);
+
+        //Attack if in range
+
+        float distance = Mathf.Abs(transform.position.x - targetPlayer.transform.position.x);
+        if(distance <= attackRange && attackTimer <= 0f)
+        {
+            enemyLogic.OnAttack();
+            attackTimer = attackCooldown;
+        }
     }
 
     private void flip()

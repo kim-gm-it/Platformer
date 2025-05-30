@@ -12,6 +12,7 @@ public class ShootingEnemy : MonoBehaviour
     public float shootingTimer;
     public AudioClip shootingSound;
     private AudioSource audioSource;
+    private Animator animator;
 
     private Transform targetPlayer;
     GameObject[] players;
@@ -21,6 +22,7 @@ public class ShootingEnemy : MonoBehaviour
     {
         players = new GameObject[2];
         audioSource = GetComponent<AudioSource>();
+        animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -38,6 +40,7 @@ public class ShootingEnemy : MonoBehaviour
         if(shootingTimer >= shootingInterval) //if enough time has passed shoot a bullet and reset timer
         {
             Shoot();
+            animator.SetTrigger("Is Attacking");
             PlayShootingSound();
             shootingTimer = 0;  
         }
