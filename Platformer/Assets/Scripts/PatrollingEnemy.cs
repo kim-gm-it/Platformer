@@ -44,7 +44,8 @@ public class PatrollingEnemy : MonoBehaviour
     {
         attackTimer -= Time.deltaTime;
         float closestDistance = Mathf.Infinity;
-
+        targetPlayer = null; 
+        //find closest player in detection range
         for(int i=0; i<players.Length; i++)
         {
             if (players[i] == null)
@@ -57,17 +58,17 @@ public class PatrollingEnemy : MonoBehaviour
 
             }
 
-            isChasing = targetPlayer != null;
+        }
 
-            if(isChasing)
-            {
-                chasePlayer();
-            }
-            else
-            {
-                patrol();
-            }
+        isChasing = targetPlayer != null;
 
+        if (isChasing)
+        {
+            chasePlayer();
+        }
+        else
+        {
+            patrol();
         }
 
     }
@@ -99,6 +100,15 @@ public class PatrollingEnemy : MonoBehaviour
     public void chasePlayer()
     {
         float direction = Mathf.Sign(targetPlayer.position.x - transform.position.x);
+        float targetx = transform.position.x + direction * speed * Time.deltaTime;
+
+        //movement limited to patrol boundaries
+        if((direction<0 && targetx < pointA.transform.position.x ) || (direction > 0 && targetx > pointB.transform.position.x))
+        {
+            patrol();
+            return;
+        }
+
         rb.velocity = new Vector2(direction * speed , rb.velocity.y);
         if((direction > 0  && transform.localScale.x < 0) || (direction < 0 && transform.localScale.x > 0))
         {

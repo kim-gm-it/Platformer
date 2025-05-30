@@ -16,14 +16,12 @@ public class EnemyLogic : MonoBehaviour
 
     [Header("Health Setting")]
     public int maxHealth = 4;
-    public int maxLives = 3;
     public int currentHealth;
-    public int currentLives;
-
+    EnemyHealthBar healthBar;
+    
     [Header("Death Effects")]
     public AudioClip deathClip;
-    public float spawnTime = 1.5f;
-    public float spawnTimer = 0;
+
 
     [Header("Attack Effects")]
     public AudioClip attackClip;
@@ -33,20 +31,17 @@ public class EnemyLogic : MonoBehaviour
     public int arrowDamage = 2;
 
 
-    [Header("UI Refs")]
-    public Image[] lives;
-    public Image[] healthBar;
-   
-
-
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        spawnTimer = spawnTime;
-
         currentHealth = maxHealth;
-        currentLives = maxLives;
+        healthBar = GameObject.FindGameObjectWithTag("Enemy Health Bar").GetComponent<EnemyHealthBar>();
+        if (healthBar != null)
+        {
+            healthBar.UpdateHealthBar(currentHealth, maxHealth);
+        }
+        
         renderer = GetComponent<Renderer>();
         animator = GetComponent<Animator>();
         collider = GetComponent<Collider2D>();
@@ -62,28 +57,12 @@ public class EnemyLogic : MonoBehaviour
     
         animator.SetTrigger("Is Taking Hit");
         currentHealth -= damage;
-        updateHealthBar();
-       
+        healthBar.UpdateHealthBar(currentHealth, maxHealth);
         if (currentHealth <= 0)
         {
-            for(int i=0; i < lives.Length ; i++)
-            {
-                if(i < currentLives)
-                {
-                    lives[i].enabled = true ;
-                }
-                else
-                {
-                    lives[i].enabled=false ;
-                }
-            }
-
+            
             Die();
-            currentLives--;
-            if(currentLives <= 0)
-            {
-                Destroy(gameObject);
-            }
+            Destroy(gameObject);
         }
          
     }
@@ -132,24 +111,7 @@ public class EnemyLogic : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        spawnTimer -= Time.deltaTime;
-        if(spawnTimer <= 0 && currentLives > 0 && !renderer.enabled)
-        {
-            currentHealth = maxHealth;
-            updateHealthBar();
-            collider.enabled = true;
-            renderer.enabled = true;
-            spawnTimer = spawnTime;
-            
-        }
-
+       
     }
 
-    public void updateHealthBar()
-    {
-        for(int i = 0; i < healthBar.Length; i++)
-        {
-            healthBar[i].enabled = i < currentHealth;
-        }
-    }
 }

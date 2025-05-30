@@ -8,7 +8,7 @@ public class ShootingEnemy : MonoBehaviour
     public GameObject bulletPrefab;
     public float detectionRange = 10f;
     public float shootingInterval = 1.5f;
-    public float shootingSpeed  =10f;
+    public float shootingSpeed  =15f;
     public float shootingTimer;
     public AudioClip shootingSound;
     private AudioSource audioSource;
@@ -79,7 +79,7 @@ public class ShootingEnemy : MonoBehaviour
         {
             Vector2 direction = (targetPlayer.position - transform.position).normalized;//to keep the direction only , and not the elength
             GameObject bullet = Instantiate(bulletPrefab , transform.position , Quaternion.identity);
-            bullet.GetComponent<Rigidbody2D>().linearVelocity = direction * shootingSpeed;
+            bullet.GetComponent<Rigidbody2D>().velocity = direction * shootingSpeed;
         }
     }
 
