@@ -110,7 +110,7 @@ public class Player2Controler : MonoBehaviour
     void OnTriggerEnter2D(Collider2D collision)
     {
 
-        if (collision.gameObject.tag == "EnemyProjectile")
+        if ((collision.gameObject.tag == "Patrol Enemy")||(collision.gameObject.tag == "Patrol Enemy"))
         {
             animator.SetTrigger("GetHit");
             lives -= 1;
