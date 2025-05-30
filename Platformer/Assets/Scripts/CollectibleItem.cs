@@ -11,6 +11,7 @@ public class CollectibleItem : MonoBehaviour
 
     private AudioSource audioSource;
     private bool collected = false;
+    [SerializeField] int damageCapacity = 1;
 
     private void Start()
     {
@@ -33,12 +34,13 @@ public class CollectibleItem : MonoBehaviour
                 if (itemType == CollectibleType.Health)
                 {
                     if (player1 != null) player1.IncreaseHealth(healthAmount);
-                    // if (player2 != null) player2.IncreaseHealth(healthAmount);
+                    if (player2 != null) player2.IncreaseHealth(healthAmount);
                 }
                 else if (itemType == CollectibleType.Damage)
                 {
-                    if (player1 != null) player1.StartDamageBoost(damageMultiplier, damageDuration);
+                    // if (player1 != null) player1.StartDamageBoost(damageMultiplier, damageDuration);
                     // if (player2 != null) player2.StartDamageBoost(damageMultiplier, damageDuration);
+                    damageCapacity = 3;
                 }
 
                 if (audioSource != null && audioSource.clip != null)
