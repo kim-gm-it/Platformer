@@ -125,7 +125,6 @@ public class Player1Controller : MonoBehaviour
 
     if ((collision.gameObject.tag == "Patrol Enemy") || (collision.gameObject.tag == "Enemy Arrow"))
     {
-        animator.SetTrigger("GetHit");
         PlayHitSound();
 
         livesBar--;
@@ -133,11 +132,19 @@ public class Player1Controller : MonoBehaviour
         if (livesBar <= 0)
         {
             livesPoint--;
+
+            animator.SetTrigger("Death"); 
+
             if (livesPoint > 0)
             {
                 livesBar = 4;
             }
+
             UpdateHealthPointUI();
+        }
+        else
+        {
+            animator.SetTrigger("GetHit"); 
         }
 
         UpdateHealthBarUI();
@@ -145,9 +152,8 @@ public class Player1Controller : MonoBehaviour
         if (livesPoint <= 0)
         {
             isDead = true; 
-            animator.SetTrigger("Death");
             PlayDeathSound();
-            StartCoroutine(ShowLosePanelAfterDelay(2f));
+            StartCoroutine(ShowLosePanelAfterDelay(1.9f));
         }
 
         Destroy(collision.gameObject);

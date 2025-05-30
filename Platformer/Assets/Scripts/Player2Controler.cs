@@ -36,6 +36,7 @@ public class Player2Controler : MonoBehaviour
     public Sprite Bar0;
     public GameObject losePanel;
     private bool isDead = false;
+    private int hitCount = 0;
 
     public void OnJump(InputAction.CallbackContext context)
     {
@@ -133,34 +134,50 @@ public class Player2Controler : MonoBehaviour
 
     if ((collision.gameObject.tag == "Patrol Enemy") || (collision.gameObject.tag == "Enemy Arrow"))
     {
-        animator.SetTrigger("GetHit");
         PlayHitSound();
 
-        livesBar--;
+        hitCount++;
 
-        if (livesBar <= 0)
+        if (hitCount >= 2)  
         {
-            livesPoint--;
-            if (livesPoint > 0)
+            hitCount = 0; 
+            livesBar--;
+
+            if (livesBar <= 0)
             {
-                livesBar = 4;
+                livesPoint--;
+                animator.SetTrigger("Death");
+
+                if (livesPoint > 0)
+                {
+                    livesBar = 4;
+                }
+
+                UpdateHealthPointUI();
             }
-            UpdateHealthPointUI();
+            else
+            {
+                animator.SetTrigger("GetHit");
+            }
+
+            UpdateHealthBarUI();
+
+            if (livesPoint <= 0)
+            {
+                isDead = true;
+                PlayDeathSound();
+                StartCoroutine(ShowLosePanelAfterDelay(1.9f));
+            }
         }
-
-        UpdateHealthBarUI();
-
-        if (livesPoint <= 0)
+        else
         {
-            isDead = true; 
-            animator.SetTrigger("Death");
-            PlayDeathSound();
-            StartCoroutine(ShowLosePanelAfterDelay(1.9f));
+            animator.SetTrigger("GetHit"); 
         }
 
         Destroy(collision.gameObject);
     }
 }
+
 
     public void OnAttack(InputAction.CallbackContext context)
     {
