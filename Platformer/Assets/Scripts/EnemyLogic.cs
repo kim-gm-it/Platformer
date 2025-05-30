@@ -35,8 +35,9 @@ public class EnemyLogic : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        
+        healthBar = GetComponentInChildren<EnemyHealthBar>();
         currentHealth = maxHealth;
-        healthBar = GameObject.FindGameObjectWithTag("Enemy Health Bar").GetComponent<EnemyHealthBar>();
         if (healthBar != null)
         {
             healthBar.UpdateHealthBar(currentHealth, maxHealth);
@@ -94,18 +95,25 @@ public class EnemyLogic : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Player2"))
-        {
-            TakeDamage(meleeDamage);
-        }
-        else if (collision.gameObject.CompareTag("Player1"))
-        {
-            TakeDamage(meleeDamage);
-        }
-        else if(collision.gameObject.CompareTag("Player Arrow"))
+        Debug.Log("Collided with: " + collision.gameObject.name);
+
+        if (collision.gameObject.CompareTag("Player Arrow"))
         {
             TakeDamage(arrowDamage);
         }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        Debug.Log("Collided with: " + collision.gameObject.name);
+
+        if (collision.gameObject.CompareTag("Player2"))
+        {
+
+            TakeDamage(meleeDamage);
+        }
+        
+
     }
 
     // Update is called once per frame
