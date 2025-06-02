@@ -38,8 +38,7 @@ public class CollectibleItem : MonoBehaviour
                 }
                 else if (itemType == CollectibleType.Damage)
                 {
-                    // if (player1 != null) player1.StartDamageBoost(damageMultiplier, damageDuration);
-                    // if (player2 != null) player2.StartDamageBoost(damageMultiplier, damageDuration);
+                    DamageBoostUIManager.instance.StartBoostTimer(damageDuration);
                     damageCapacity = 3;
                 }
 

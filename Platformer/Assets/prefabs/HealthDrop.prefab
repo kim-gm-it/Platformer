@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 4725567160144964730}
   - component: {fileID: -1418803122807453828}
   - component: {fileID: 8214666879115179865}
+  - component: {fileID: -1310279191414943277}
   m_Layer: 0
   m_Name: HealthDrop
   m_TagString: Untagged
@@ -210,6 +211,7 @@ MonoBehaviour:
   healthAmount: 1
   damageMultiplier: 2
   damageDuration: 5
+  damageCapacity: 1
 --- !u!82 &8214666879115179865
 AudioSource:
   m_ObjectHideFlags: 0
@@ -307,3 +309,16 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &-1310279191414943277
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7057985071294027104}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b29bd930ab80374881222894852412f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  destroyDistance: 20
