@@ -174,7 +174,9 @@ public class Player2Controler : MonoBehaviour
             animator.SetTrigger("GetHit"); 
         }
 
-        Destroy(collision.gameObject);
+        if(collision.gameObject.tag == "Enemy Arrow"){
+            Destroy(collision.gameObject);
+        }
     }
 }
 
