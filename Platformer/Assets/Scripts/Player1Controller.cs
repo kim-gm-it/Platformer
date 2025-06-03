@@ -155,8 +155,9 @@ public class Player1Controller : MonoBehaviour
             PlayDeathSound();
             StartCoroutine(ShowLosePanelAfterDelay(1.9f));
         }
-
-        Destroy(collision.gameObject);
+        if(collision.gameObject.tag == "Enemy Arrow"){
+            Destroy(collision.gameObject);
+        }
     }
 }
     public void OnAttack(InputAction.CallbackContext context)
