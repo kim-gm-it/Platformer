@@ -3,8 +3,11 @@ using System;
 using UnityEngine.InputSystem;
 using System.Collections;
 using UnityEngine.UI;
+
+
 public class Player2Controler : MonoBehaviour
 {
+    private Vector3 initialScale;
     private Rigidbody2D rb;
     [SerializeField] float moveSpeed = 5f;
     [SerializeField] float jumpForse = 40f;
@@ -66,6 +69,7 @@ public class Player2Controler : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         audioSource = GetComponent<AudioSource>();
+        initialScale = transform.localScale;
     }
 
     void Update()
@@ -90,11 +94,11 @@ public class Player2Controler : MonoBehaviour
         }
         if (movementInput.x > 0.01f)
         {
-            transform.localScale = new Vector3(1, 1, 1);
+            transform.localScale = new Vector3(Mathf.Abs(initialScale.x), initialScale.y, initialScale.z);
         }
         else if (movementInput.x < -0.01f)
         {
-            transform.localScale = new Vector3(-1, 1, 1);
+            transform.localScale = new Vector3(-Mathf.Abs(initialScale.x), initialScale.y, initialScale.z);
         }
     }
     private void FixedUpdate()
