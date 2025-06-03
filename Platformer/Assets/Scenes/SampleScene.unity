@@ -413,7 +413,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 87734314}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 72ece51f2901e7445ab60da3685d6b5f, type: 3}
   m_Name: 
@@ -1606,8 +1606,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: '""'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: dc36b3fdc14f47ebb36fd484a67e268a, type: 2}
+  m_sharedMaterial: {fileID: 2140032, guid: dc36b3fdc14f47ebb36fd484a67e268a, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1631,8 +1631,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 20
+  m_fontSizeBase: 20
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -2940,13 +2940,9 @@ MonoBehaviour:
   collectibles:
   - {fileID: 7057985071294027104, guid: bcefcd41c225b094a842eddba8932721, type: 3}
   - {fileID: 2738063130446858241, guid: 240c1ea98834bc64ab17472538b474d7, type: 3}
-  tilemaps:
-  - {fileID: 7640881256973947761, guid: a72c017eb8494764a8dc556dab95a1de, type: 3}
-  - {fileID: 0}
-  - {fileID: 0}
   spawnInterval: 5
-  spawnAreaMin: {x: 0, y: 0}
-  spawnAreaMax: {x: 0, y: 0}
+  spawnAreaMin: {x: -10, y: 0}
+  spawnAreaMax: {x: 500, y: 5}
 --- !u!4 &1093740218
 Transform:
   m_ObjectHideFlags: 0
