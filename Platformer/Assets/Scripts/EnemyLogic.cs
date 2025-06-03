@@ -1,3 +1,4 @@
+using System.Collections;
 using JetBrains.Annotations;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -61,9 +62,7 @@ public class EnemyLogic : MonoBehaviour
         healthBar.UpdateHealthBar(currentHealth, maxHealth);
         if (currentHealth <= 0)
         {
-            
-            Die();
-            Destroy(gameObject);
+            StartCoroutine(DeathSequence());
         }
          
     }
@@ -74,9 +73,15 @@ public class EnemyLogic : MonoBehaviour
         PlayAttackSound();
     }
 
-
+    private IEnumerator DeathSequence()
+    {
+        Die();
+        yield return new WaitForSeconds(1.5f);
+        Destroy(gameObject);
+    }
     public void Die()
     {
+        animator.SetBool("IsRunning", false);
         animator.SetTrigger("Die");
         PlayDeathSound();
         renderer.enabled = false;
