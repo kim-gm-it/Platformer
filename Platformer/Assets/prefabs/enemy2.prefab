@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 7004046585750896668}
   - component: {fileID: 8941754263361983801}
   - component: {fileID: -6839797224309102732}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: enemy2
   m_TagString: Patrol Enemy
   m_Icon: {fileID: 0}
@@ -33,10 +33,11 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 17.66, y: 9.87, z: 0}
-  m_LocalScale: {x: 0.7, y: 0.7, z: 0.7}
+  m_LocalScale: {x: 0.9, y: 0.9, z: 0.9}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 1120149662486283596}
+  - {fileID: 8465377880138762600}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &7205887746563231889
@@ -219,10 +220,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pointA: {fileID: 0}
   pointB: {fileID: 0}
-  speed: 2
-  attackRange: 5
-  attackCooldown: 2
-  detectionRange: 5
+  speed: 3
+  attackRange: 10
+  attackCooldown: 3
+  detectionRange: 10
+  radius: 0.5
+  playerLayer:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!82 &8941754263361983801
 AudioSource:
   m_ObjectHideFlags: 0
@@ -338,6 +343,37 @@ MonoBehaviour:
   attackClip: {fileID: 8300000, guid: 60fa5ad38939ef84c80d7e28a267160d, type: 3}
   meleeDamage: 1
   arrowDamage: 2
+--- !u!1 &7530516216075965054
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8465377880138762600}
+  m_Layer: 3
+  m_Name: AttackPoint
+  m_TagString: AttackPoint
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8465377880138762600
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7530516216075965054}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.98, y: -0.29, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1142479582016726602}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &7370971429176878427
 PrefabInstance:
   m_ObjectHideFlags: 0

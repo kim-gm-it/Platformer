@@ -707,6 +707,37 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 210104747}
   m_CullTransparentMesh: 1
+--- !u!1 &256954610
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 256954611}
+  m_Layer: 0
+  m_Name: AttackPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &256954611
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 256954610}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.89, y: -0.83, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1383761112}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &333040965
 GameObject:
   m_ObjectHideFlags: 0
@@ -1718,7 +1749,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &619394801
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2924,7 +2955,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1093740217
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3108,13 +3139,13 @@ GameObject:
   - component: {fileID: 1383761114}
   - component: {fileID: 1383761115}
   - component: {fileID: 1383761116}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Player2
   m_TagString: Player2
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!95 &1383761108
 Animator:
   serializedVersion: 7
@@ -3296,11 +3327,12 @@ Transform:
   m_GameObject: {fileID: 1383761107}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -7.01, y: 11.5, z: -10}
+  m_LocalPosition: {x: -6.91, y: 11.56, z: -10}
   m_LocalScale: {x: 0.75, y: 0.75, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 87734315}
+  - {fileID: 256954611}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1383761113
@@ -3434,6 +3466,11 @@ MonoBehaviour:
   Bar1: {fileID: 2045994070260232039, guid: 5385282744f02cc4c8fefa09b4e73999, type: 3}
   Bar0: {fileID: -765187810910609461, guid: 0b5b7f2ce4e149841883b55f2db602f1, type: 3}
   losePanel: {fileID: 958892711}
+  attackPoint: {fileID: 256954610}
+  radius: 0.94
+  enemyLayer:
+    serializedVersion: 2
+    m_Bits: 8
 --- !u!96 &1383761115
 TrailRenderer:
   serializedVersion: 3
@@ -3664,7 +3701,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1402708507
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3736,7 +3773,7 @@ Transform:
   m_GameObject: {fileID: 1402708506}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -7.01, y: 11.5, z: -20}
+  m_LocalPosition: {x: -6.91, y: 11.56, z: -20}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3973,7 +4010,7 @@ Transform:
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -10.526316}
+  m_LocalPosition: {x: -2.5866668, y: 0.16000113, z: 0.69157857}
   m_LocalScale: {x: 1.25, y: 1.25, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4101,7 +4138,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1596806257
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5418,7 +5455,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1898642765
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5503,7 +5540,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1904268722
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5697,7 +5734,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!82 &1968470988
 AudioSource:
   m_ObjectHideFlags: 0
@@ -5959,13 +5996,13 @@ GameObject:
   - component: {fileID: 2000379824}
   - component: {fileID: 2000379823}
   - component: {fileID: 2000379825}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Player1
   m_TagString: Player1
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &2000379817
 Transform:
   m_ObjectHideFlags: 0
@@ -6909,7 +6946,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &2141671755
 MonoBehaviour:
   m_ObjectHideFlags: 0
