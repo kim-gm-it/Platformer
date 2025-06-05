@@ -33,7 +33,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 18.37, y: -1.41, z: 10}
-  m_LocalScale: {x: 0.6, y: 0.6, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5708460743247509525}
@@ -105,7 +105,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 10
   m_Sprite: {fileID: 3908245539121852773, guid: e947849746a50c544a20de094a2e502a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -327,8 +327,8 @@ MonoBehaviour:
   radius: 0.5
   playerLayer:
     serializedVersion: 2
-    m_Bits: 0
-  attackPoint: {fileID: 0}
+    m_Bits: 64
+  attackPoint: {fileID: 1260892337332066547}
 --- !u!114 &-4479391023114362433
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -343,8 +343,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 4
   currentHealth: 0
-  deathClip: {fileID: 0}
-  attackClip: {fileID: 0}
+  deathClip: {fileID: 8300000, guid: d852c5dd919ddac458c233b8947db17b, type: 3}
+  attackClip: {fileID: 8300000, guid: 1af02041838ebc9429c039ea2a4c9bf7, type: 3}
   meleeDamage: 1
   arrowDamage: 2
 --- !u!1 &1260892337332066547
@@ -372,7 +372,7 @@ Transform:
   m_GameObject: {fileID: 1260892337332066547}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 1.04, y: 0.44, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -460,11 +460,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7620479078602170391, guid: e381f4b41434eb44bb6a08970ba66ffa, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: -0.48
       objectReference: {fileID: 0}
     - target: {fileID: 7620479078602170391, guid: e381f4b41434eb44bb6a08970ba66ffa, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: 0.36
       objectReference: {fileID: 0}
     - target: {fileID: 7620479078602170391, guid: e381f4b41434eb44bb6a08970ba66ffa, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x

@@ -270,7 +270,7 @@ PolygonCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
@@ -311,6 +311,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spikes: {fileID: 4190484859781650244, guid: e6259a9333476c94cac9540c23b8fdcc, type: 3}
+  timer: 0
+  time: 3
 --- !u!198 &9153216175624430157
 ParticleSystem:
   m_ObjectHideFlags: 0

@@ -83,7 +83,7 @@ public class EnemyLogic : MonoBehaviour
     {
         Die();
         healthBar.OnDestroy();
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(3f);
         Destroy(gameObject);
     }
     public void Die()
