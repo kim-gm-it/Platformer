@@ -139001,11 +139001,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6930122694965717509, guid: 2b38e49cf741e374ebb12f665b71d18b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 41.561096
+      value: 41.55
       objectReference: {fileID: 0}
     - target: {fileID: 6930122694965717509, guid: 2b38e49cf741e374ebb12f665b71d18b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -42.734364
+      value: -42.09
       objectReference: {fileID: 0}
     - target: {fileID: 6930122694965717509, guid: 2b38e49cf741e374ebb12f665b71d18b, type: 3}
       propertyPath: m_LocalPosition.z
@@ -146377,6 +146377,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8930051543745126958, guid: 1b8ac58098173034d9b23d9d1d077d3d, type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -146847,11 +146851,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9072807208709021889, guid: be6ea28e4855d4f469f642bd96f54da3, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 10.582162
+      value: 10.45
       objectReference: {fileID: 0}
     - target: {fileID: 9072807208709021889, guid: be6ea28e4855d4f469f642bd96f54da3, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -28.019613
+      value: -28.04
       objectReference: {fileID: 0}
     - target: {fileID: 9072807208709021889, guid: be6ea28e4855d4f469f642bd96f54da3, type: 3}
       propertyPath: m_LocalPosition.z
@@ -211405,6 +211409,10 @@ PrefabInstance:
     - target: {fileID: 6265670936862214329, guid: 1df495940352cbb42a15891fc7e5e2d6, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8930051543745126958, guid: 1df495940352cbb42a15891fc7e5e2d6, type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
