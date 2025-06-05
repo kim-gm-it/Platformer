@@ -1,3 +1,4 @@
+using System.Collections;
 using JetBrains.Annotations;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -11,6 +12,7 @@ public class EnemyLogic : MonoBehaviour
     private Animator animator;
     private AudioSource audioSource;
     private Rigidbody2D rb;
+    private bool isDead = false;
     Player2Controler player2;
     Player1Controller player1;
 
@@ -55,32 +57,41 @@ public class EnemyLogic : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
-    
-        animator.SetTrigger("Is Taking Hit");
+        if(isDead) return;
+        Debug.Log("Enemy is taking damage");
+        animator.SetBool("IsRunning", false);
+        animator.SetTrigger("IsTakingHit");
         currentHealth -= damage;
         healthBar.UpdateHealthBar(currentHealth, maxHealth);
         if (currentHealth <= 0)
         {
-            
-            Die();
-            Destroy(gameObject);
+            StartCoroutine(DeathSequence());
         }
          
     }
 
     public void OnAttack()
     {
-        animator.SetTrigger("Is Attacking");
+        if(isDead) return;
+        Debug.Log("Enemy is attacking");
+        animator.SetBool("IsRunning", false);
+        animator.SetTrigger("IsAttacking");
         PlayAttackSound();
     }
 
-
+    private IEnumerator DeathSequence()
+    {
+        Die();
+        healthBar.OnDestroy();
+        yield return new WaitForSeconds(2f);
+        Destroy(gameObject);
+    }
     public void Die()
     {
+        isDead = true;
+        animator.SetBool("IsRunning", false);
         animator.SetTrigger("Die");
         PlayDeathSound();
-        renderer.enabled = false;
-        collider.enabled = false;
     }
 
     public void PlayDeathSound()
@@ -103,23 +114,19 @@ public class EnemyLogic : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        Debug.Log("Collided with: " + collision.gameObject.name);
 
-        if (collision.gameObject.CompareTag("Player2"))
-        {
+    //CALLING TAKE DAMAGE METHOD HERE !!!!
 
-            TakeDamage(meleeDamage);
-        }
-        
 
-    }
+    //private void OnCollisionEnter2D(Collision2D collision)
+    //{
+    //    Debug.Log("Collided with: " + collision.gameObject.name);
 
-    // Update is called once per frame
-    void Update()
-    {
-       
-    }
+    //    if (collision.gameObject.CompareTag("Player2"))
+    //    {
 
+    //        TakeDamage(meleeDamage);
+    //    }
+    //}
+    
 }

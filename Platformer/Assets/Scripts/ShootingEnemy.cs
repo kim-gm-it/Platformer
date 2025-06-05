@@ -40,7 +40,7 @@ public class ShootingEnemy : MonoBehaviour
         if(shootingTimer >= shootingInterval) //if enough time has passed shoot a bullet and reset timer
         {
             Shoot();
-            animator.SetTrigger("Is Attacking");
+            animator.SetTrigger("IsAttacking");
             PlayShootingSound();
             shootingTimer = 0;  
         }
