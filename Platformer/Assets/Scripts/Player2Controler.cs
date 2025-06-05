@@ -229,7 +229,9 @@ public class Player2Controler : MonoBehaviour
         
             if (livesPoint <= 0)
             {
-                Destroy(collision.gameObject);
+                isDead = true;
+                PlayDeathSound();
+                StartCoroutine(ShowLosePanelAfterDelay(1.9f));
             }
         }
         else
