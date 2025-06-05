@@ -17,6 +17,7 @@ public class Player1Controller : MonoBehaviour
     [SerializeField] int livesBar = 4;
     [SerializeField] float doubleJampPower = 25f;
     private bool canDoubleJump;
+    public bool hasKey = false;
     [SerializeField] private Animator animator;
     [SerializeField] private GameObject arrowPrefab;
     public AudioClip jumpClip;

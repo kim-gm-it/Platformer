@@ -38,8 +38,14 @@ namespace Cainos.PixelArtPlatformer_Dungeon
                 #if UNITY_EDITOR
                 if (Application.isPlaying == false)
                 {
-                    EditorUtility.SetDirty(this);
-                    EditorSceneManager.MarkSceneDirty(gameObject.scene);
+                    if (Animator.runtimeAnimatorController != null)
+                    {
+                        Animator.SetBool("IsOpened", isOpened);
+                    }
+                    else
+                    {
+                        Debug.LogWarning("Animator controller not assigned on Door!");
+                    }
                 }
                 #endif
 

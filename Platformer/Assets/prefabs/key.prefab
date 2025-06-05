@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 4876205389063433346}
   - component: {fileID: 4288214192101846442}
   - component: {fileID: 3916107054958466906}
+  - component: {fileID: -3492213209617502780}
   m_Layer: 0
   m_Name: key
   m_TagString: Untagged
@@ -290,3 +291,20 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &-3492213209617502780
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8526360634980444974}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9fc037660d3fedd4eba8906c0d89e09d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemType: 2
+  healthAmount: 1
+  damageMultiplier: 2
+  damageDuration: 5
+  damageCapacity: 1
