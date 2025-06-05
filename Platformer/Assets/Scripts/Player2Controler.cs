@@ -3,12 +3,13 @@ using System;
 using UnityEngine.InputSystem;
 using System.Collections;
 using UnityEngine.UI;
-
+using Cainos.PixelArtPlatformer_Dungeon;
 
 public class Player2Controler : MonoBehaviour
 {
     private Vector3 initialScale;
     private Rigidbody2D rb;
+    public Door door;   
     [SerializeField] float moveSpeed = 5f;
     [SerializeField] float jumpForse = 40f;
     [SerializeField] int livesPoint = 3;
@@ -19,6 +20,7 @@ public class Player2Controler : MonoBehaviour
     [SerializeField] private Animator animator;
     [SerializeField] private TrailRenderer tr;
     private bool canDash = true;
+    public bool hasKey = false;
     private bool isDashing;
     private float dashingPower = 24f;
     private float dashingTime = 0.2f;
@@ -135,53 +137,62 @@ public class Player2Controler : MonoBehaviour
     void OnTriggerEnter2D(Collider2D collision)
 {
     if (isDead) return;
+    if ( collision.gameObject.CompareTag("Door") && door != null && isDashing )
+    {
+        Debug.Log("Animator is: " + door.GetComponent<Animator>());
+        Debug.Log("Animator controller is: " + door.GetComponent<Animator>().runtimeAnimatorController);
+
+        door.Open();
+        return;
+    }
 
     if ((collision.gameObject.tag == "Patrol Enemy") || (collision.gameObject.tag == "Enemy Arrow"))
-    {
-        PlayHitSound();
-
-        hitCount++;
-
-        if (hitCount >= 2)  
         {
-            hitCount = 0; 
-            livesBar--;
+            PlayHitSound();
 
-            if (livesBar <= 0)
+            hitCount++;
+
+            if (hitCount >= 2)
             {
-                livesPoint--;
-                animator.SetTrigger("Death");
+                hitCount = 0;
+                livesBar--;
 
-                if (livesPoint > 0)
+                if (livesBar <= 0)
                 {
-                    livesBar = 4;
+                    livesPoint--;
+                    animator.SetTrigger("Death");
+
+                    if (livesPoint > 0)
+                    {
+                        livesBar = 4;
+                    }
+
+                    UpdateHealthPointUI();
+                }
+                else
+                {
+                    animator.SetTrigger("GetHit");
                 }
 
-                UpdateHealthPointUI();
+                UpdateHealthBarUI();
+
+                if (livesPoint <= 0)
+                {
+                    isDead = true;
+                    PlayDeathSound();
+                    StartCoroutine(ShowLosePanelAfterDelay(1.9f));
+                }
             }
             else
             {
                 animator.SetTrigger("GetHit");
             }
 
-            UpdateHealthBarUI();
-
-            if (livesPoint <= 0)
+            if (collision.gameObject.tag == "Enemy Arrow")
             {
-                isDead = true;
-                PlayDeathSound();
-                StartCoroutine(ShowLosePanelAfterDelay(1.9f));
+                Destroy(collision.gameObject);
             }
         }
-        else
-        {
-            animator.SetTrigger("GetHit"); 
-        }
-
-        if(collision.gameObject.tag == "Enemy Arrow"){
-            Destroy(collision.gameObject);
-        }
-    }
 }
 
 
