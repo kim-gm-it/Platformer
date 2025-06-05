@@ -37,6 +37,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5708460743247509525}
+  - {fileID: 5631815023999264260}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &8466968995159098857
@@ -323,6 +324,11 @@ MonoBehaviour:
   attackRange: 10
   attackCooldown: 2
   detectionRange: 10
+  radius: 0.5
+  playerLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  attackPoint: {fileID: 0}
 --- !u!114 &-4479391023114362433
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -341,6 +347,37 @@ MonoBehaviour:
   attackClip: {fileID: 0}
   meleeDamage: 1
   arrowDamage: 2
+--- !u!1 &1260892337332066547
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5631815023999264260}
+  m_Layer: 0
+  m_Name: AttackPoint
+  m_TagString: AttackPoint
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5631815023999264260
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1260892337332066547}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8747064753813719187}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &2808530473232848898
 PrefabInstance:
   m_ObjectHideFlags: 0
