@@ -12,14 +12,15 @@ TagManager:
   - Player Arrow
   - Enemy Arrow
   - Enemy Health Bar
+  - AttackPoint
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - Enemy3
+  - Enemy
   - Water
   - UI
-  - 
+  - Player
   - 
   - 
   - 
