@@ -40,6 +40,12 @@ public class Player2Controler : MonoBehaviour
     public Sprite Bar1;
     public Sprite Bar0;
     public GameObject losePanel;
+
+    [Header("Attack Settings and Refs")]
+    public GameObject attackPoint;
+    public float radius = 0.9f;
+    public LayerMask enemyLayer;
+
     private bool isDead = false;
     private int hitCount = 0;
 
@@ -135,18 +141,10 @@ public class Player2Controler : MonoBehaviour
         }
     }
     void OnTriggerEnter2D(Collider2D collision)
-{
-    if (isDead) return;
-    if ( collision.gameObject.CompareTag("Door") && door != null && isDashing )
     {
-        Debug.Log("Animator is: " + door.GetComponent<Animator>());
-        Debug.Log("Animator controller is: " + door.GetComponent<Animator>().runtimeAnimatorController);
+        if (isDead) return;
 
-        door.Open();
-        return;
-    }
-
-    if ((collision.gameObject.tag == "Patrol Enemy") || (collision.gameObject.tag == "Enemy Arrow"))
+        if (collision.gameObject.tag == "Enemy Arrow")
         {
             PlayHitSound();
 
@@ -193,9 +191,67 @@ public class Player2Controler : MonoBehaviour
                 Destroy(collision.gameObject);
             }
         }
-}
+    }
 
+    public void TakeDamage()
+    {
+        if (isDead) return;
 
+        Debug.Log("Player2 took damage");
+
+        PlayHitSound();
+        
+        hitCount++;
+        
+        if (hitCount >= 2)
+        {
+            hitCount = 0;
+            livesBar--;
+        
+            if (livesBar <= 0)
+            {
+                livesPoint--;
+                animator.SetTrigger("Death");
+        
+                if (livesPoint > 0)
+                {
+                    livesBar = 4;
+                }
+        
+                UpdateHealthPointUI();
+            }
+            else
+            {
+                animator.SetTrigger("GetHit");
+            }
+        
+            UpdateHealthBarUI();
+        
+            if (livesPoint <= 0)
+            {
+                isDead = true;
+                PlayDeathSound();
+                StartCoroutine(ShowLosePanelAfterDelay(1.9f));
+            }
+        }
+        else
+        {
+            animator.SetTrigger("GetHit");
+        }
+
+    }
+
+    public void Attack()
+    {
+        Collider2D[] enemies = Physics2D.OverlapCircleAll(attackPoint.transform.position, radius, enemyLayer);
+
+        foreach(Collider2D enemy in enemies)
+        {
+            Debug.Log("Hit Enemy");
+            enemy.GetComponent<EnemyLogic>().TakeDamage(enemy.GetComponent<EnemyLogic>().meleeDamage);
+        }
+
+    }
     public void OnAttack(InputAction.CallbackContext context)
     {
         if (context.performed)
@@ -203,6 +259,11 @@ public class Player2Controler : MonoBehaviour
             animator.SetTrigger("Attack");
             GetComponent<Player2Controler>().PlayAttackSound();
         }
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.DrawWireSphere(attackPoint.transform.position, radius);
     }
     private IEnumerator Dash()
     {

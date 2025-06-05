@@ -13,8 +13,11 @@ public class PatrollingEnemy : MonoBehaviour
     [Header("Attack related variables")]
     public float speed = 3f;
     public float attackRange = 10f;
-    public float attackCooldown = 2f;
+    public float attackCooldown = 3f;
     public float detectionRange = 10f;
+    public float radius = 0.5f;
+    public LayerMask playerLayer;
+    public GameObject attackPoint;
 
     private float attackTimer = 0f;
     private GameObject[] players;
@@ -26,6 +29,11 @@ public class PatrollingEnemy : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        //attackPoint = GameObject.FindGameObjectWithTag("AttackPoint");
+        if (attackPoint == null)
+        {
+            Debug.Log("Attack point not assigned yet");
+        }
         enemyLogic = GetComponent<EnemyLogic>();
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
@@ -77,11 +85,11 @@ public class PatrollingEnemy : MonoBehaviour
     {
         if (currentPoint == pointB.transform)
         {
-            rb.linearVelocity = new Vector2(speed, 0f);
+            rb.velocity = new Vector2(speed, 0f);
         }
         else
         {
-            rb.linearVelocity = new Vector2(-speed, 0f);
+            rb.velocity = new Vector2(-speed, 0f);
         }
 
         if (Mathf.Abs(transform.position.x - currentPoint.position.x) <= 0.5f && currentPoint == pointB.transform)
@@ -94,7 +102,7 @@ public class PatrollingEnemy : MonoBehaviour
             flip();
             currentPoint = pointB.transform;
         }
-        animator.SetBool("is Running" , true);  
+        animator.SetBool("IsRunning" , true);  
     }
 
     public void chasePlayer()
@@ -110,14 +118,14 @@ public class PatrollingEnemy : MonoBehaviour
             return;
         }
 
-        rb.linearVelocity = new Vector2(direction * speed , rb.linearVelocity.y);
+        rb.velocity = new Vector2(direction * speed , rb.linearVelocity.y);
 
         if((direction > 0  && transform.localScale.x < 0) || (direction < 0 && transform.localScale.x > 0))
         {
             flip();
         }
 
-        animator.SetBool("is Running", true);
+        animator.SetBool("IsRunning", true);
 
         //Attack if in range
 
@@ -126,6 +134,33 @@ public class PatrollingEnemy : MonoBehaviour
         {
             enemyLogic.OnAttack();
             attackTimer = attackCooldown;
+        }
+    }
+
+    public void Attack()
+    {
+        Collider2D[] players = Physics2D.OverlapCircleAll(attackPoint.transform.position, radius, playerLayer);
+        foreach(Collider2D player in players)
+        {
+            Debug.Log("Hit player\n");
+            if(player.tag == "Player2")
+            {
+                player.GetComponent<Player2Controler>().TakeDamage();
+            }
+            else if (player.tag == "Player1")
+            {
+                player.GetComponent<Player1Controller>().TakeDamage();
+            }
+        }
+
+    }
+
+    private void OnDrawGizmos()
+    {
+        if (attackPoint != null)
+        {
+            Gizmos.color = Color.red;
+            Gizmos.DrawWireSphere(attackPoint.transform.position, radius);
         }
     }
 

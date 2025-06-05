@@ -12,15 +12,17 @@ TagManager:
   - Player Arrow
   - Enemy Arrow
   - Enemy Health Bar
+  - AttackPoint
+  - Spike
   - Door
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - Enemy3
+  - Enemy
   - Water
   - UI
-  - 
+  - Player
   - 
   - 
   - 

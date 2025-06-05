@@ -126,7 +126,7 @@ public class Player1Controller : MonoBehaviour
 {
     if (isDead) return;
 
-    if ((collision.gameObject.tag == "Patrol Enemy") || (collision.gameObject.tag == "Enemy Arrow"))
+    if (collision.gameObject.tag == "Enemy Arrow")
     {
         PlayHitSound();
 
@@ -162,7 +162,46 @@ public class Player1Controller : MonoBehaviour
             Destroy(collision.gameObject);
         }
     }
-}
+}   
+
+    public void TakeDamage()
+    {
+        if (isDead) return;
+
+        Debug.Log("Plalyer1 is taking damage");
+        PlayHitSound();
+
+        livesBar--;
+
+        if (livesBar <= 0)
+        {
+            livesPoint--;
+
+            animator.SetTrigger("Death");
+
+            if (livesPoint > 0)
+            {
+                livesBar = 4;
+            }
+
+            UpdateHealthPointUI();
+        }
+        else
+        {
+            animator.SetTrigger("GetHit");
+        }
+
+        UpdateHealthBarUI();
+
+        if (livesPoint <= 0)
+        {
+            isDead = true;
+            PlayDeathSound();
+            StartCoroutine(ShowLosePanelAfterDelay(1.9f));
+        }
+       
+    }
+
     public void OnAttack(InputAction.CallbackContext context)
     {
         if (context.performed)

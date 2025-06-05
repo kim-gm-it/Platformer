@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 5596083932877228675}
   - component: {fileID: -243986013003221225}
   - component: {fileID: -4479391023114362433}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: SkeletonEnemy
   m_TagString: Patrol Enemy
   m_Icon: {fileID: 0}
