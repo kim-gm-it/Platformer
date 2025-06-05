@@ -12,6 +12,7 @@ TagManager:
   - Player Arrow
   - Enemy Arrow
   - Enemy Health Bar
+  - Door
   layers:
   - Default
   - TransparentFX
