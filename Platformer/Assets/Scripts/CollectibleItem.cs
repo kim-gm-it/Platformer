@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class CollectibleItem : MonoBehaviour
 {
-    public enum CollectibleType { Health, Damage }
+    public enum CollectibleType { Health, Damage, Key }
     public CollectibleType itemType;
 
     public int healthAmount = 1;
@@ -41,17 +41,22 @@ public class CollectibleItem : MonoBehaviour
                     DamageBoostUIManager.instance.StartBoostTimer(damageDuration);
                     damageCapacity = 3;
                 }
+                else if (itemType == CollectibleType.Key)
+                {
+                    if (player1 != null) player1.hasKey = true;
+                    if (player2 != null) player2.hasKey = true;
+                }
 
                 if (audioSource != null && audioSource.clip != null)
                 {
                     audioSource.Play();
-                    GetComponent<SpriteRenderer>().enabled = false; 
-                    GetComponent<Collider2D>().enabled = false;     
-                    Destroy(gameObject, audioSource.clip.length);  
+                    GetComponent<SpriteRenderer>().enabled = false;
+                    GetComponent<Collider2D>().enabled = false;
+                    Destroy(gameObject, audioSource.clip.length);
                 }
                 else
                 {
-                    Destroy(gameObject); 
+                    Destroy(gameObject);
                 }
             }
         }

@@ -19,6 +19,7 @@ public class Player2Controler : MonoBehaviour
     [SerializeField] private Animator animator;
     [SerializeField] private TrailRenderer tr;
     private bool canDash = true;
+    public bool hasKey = false;
     private bool isDashing;
     private float dashingPower = 24f;
     private float dashingTime = 0.2f;
