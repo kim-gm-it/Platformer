@@ -85,11 +85,11 @@ public class PatrollingEnemy : MonoBehaviour
     {
         if (currentPoint == pointB.transform)
         {
-            rb.velocity = new Vector2(speed, 0f);
+            rb.linearVelocity = new Vector2(speed, 0f);
         }
         else
         {
-            rb.velocity = new Vector2(-speed, 0f);
+            rb.linearVelocity = new Vector2(-speed, 0f);
         }
 
         if (Mathf.Abs(transform.position.x - currentPoint.position.x) <= 0.5f && currentPoint == pointB.transform)
@@ -118,7 +118,7 @@ public class PatrollingEnemy : MonoBehaviour
             return;
         }
 
-        rb.velocity = new Vector2(direction * speed , rb.linearVelocity.y);
+        rb.linearVelocity = new Vector2(direction * speed , rb.linearVelocity.y);
 
         if((direction > 0  && transform.localScale.x < 0) || (direction < 0 && transform.localScale.x > 0))
         {
