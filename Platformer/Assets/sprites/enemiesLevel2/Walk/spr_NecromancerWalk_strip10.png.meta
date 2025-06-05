@@ -1,37 +1,37 @@
 fileFormatVersion: 2
-guid: 2a408882797c90140ba3d8b6851c52f7
+guid: 7553a1befe0a5f24396ce2144fadb4d1
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 5818877937026341535
-    second: Skeleton_01_White_Walk_0
+      213: -2938945536230279035
+    second: spr_NecromancerWalk_strip10_0
   - first:
-      213: 5246328315798846087
-    second: Skeleton_01_White_Walk_1
+      213: -863673190048772123
+    second: spr_NecromancerWalk_strip10_1
   - first:
-      213: 3875490925452937984
-    second: Skeleton_01_White_Walk_2
+      213: 5092055082311784232
+    second: spr_NecromancerWalk_strip10_2
   - first:
-      213: -1103901654903995279
-    second: Skeleton_01_White_Walk_3
+      213: 5143412480196203744
+    second: spr_NecromancerWalk_strip10_3
   - first:
-      213: 7424066568700807735
-    second: Skeleton_01_White_Walk_4
+      213: -8654410189734529549
+    second: spr_NecromancerWalk_strip10_4
   - first:
-      213: 1407746815664634722
-    second: Skeleton_01_White_Walk_5
+      213: 4254840075753415809
+    second: spr_NecromancerWalk_strip10_5
   - first:
-      213: 5212607766992624853
-    second: Skeleton_01_White_Walk_6
+      213: 3921548956546487213
+    second: spr_NecromancerWalk_strip10_6
   - first:
-      213: 7226261870076406324
-    second: Skeleton_01_White_Walk_7
+      213: -5184005032274001908
+    second: spr_NecromancerWalk_strip10_7
   - first:
-      213: 5214368573968254232
-    second: Skeleton_01_White_Walk_8
+      213: -216489218795519014
+    second: spr_NecromancerWalk_strip10_8
   - first:
-      213: 937194198150492436
-    second: Skeleton_01_White_Walk_9
+      213: 8927493871987038283
+    second: spr_NecromancerWalk_strip10_9
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -64,7 +64,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 0
+    filterMode: 1
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -78,7 +78,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 16
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -99,10 +99,10 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 4
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 8192
+    maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -127,13 +127,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Skeleton_01_White_Walk_0
+      name: spr_NecromancerWalk_strip10_0
       rect:
         serializedVersion: 2
-        x: 36
-        y: 0
-        width: 31
-        height: 45
+        x: 34
+        y: 31
+        width: 34
+        height: 51
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -142,20 +142,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: f9a10db67aec0c050800000000000000
-      internalID: 5818877937026341535
+      spriteID: 58836c22b94c637d0800000000000000
+      internalID: -2938945536230279035
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Skeleton_01_White_Walk_1
+      name: spr_NecromancerWalk_strip10_1
       rect:
         serializedVersion: 2
-        x: 131
-        y: 0
-        width: 32
-        height: 46
+        x: 130
+        y: 31
+        width: 33
+        height: 51
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -164,20 +164,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 78a73469ec3bec840800000000000000
-      internalID: 5246328315798846087
+      spriteID: 5ef4d114fcd9304f0800000000000000
+      internalID: -863673190048772123
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Skeleton_01_White_Walk_2
+      name: spr_NecromancerWalk_strip10_2
       rect:
         serializedVersion: 2
         x: 227
-        y: 0
-        width: 33
-        height: 47
+        y: 31
+        width: 30
+        height: 51
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -186,20 +186,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 00b4fd5a67288c530800000000000000
-      internalID: 3875490925452937984
+      spriteID: 8279ae55e1d9aa640800000000000000
+      internalID: 5092055082311784232
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Skeleton_01_White_Walk_3
+      name: spr_NecromancerWalk_strip10_3
       rect:
         serializedVersion: 2
-        x: 322
-        y: 0
-        width: 35
-        height: 48
+        x: 324
+        y: 31
+        width: 24
+        height: 51
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -208,20 +208,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 1744b782b472ea0f0800000000000000
-      internalID: -1103901654903995279
+      spriteID: 0e4d7675662116740800000000000000
+      internalID: 5143412480196203744
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Skeleton_01_White_Walk_4
+      name: spr_NecromancerWalk_strip10_4
       rect:
         serializedVersion: 2
-        x: 417
-        y: 0
-        width: 36
-        height: 46
+        x: 422
+        y: 31
+        width: 20
+        height: 51
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -230,20 +230,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 73ac348b535970760800000000000000
-      internalID: 7424066568700807735
+      spriteID: 3f53a5419cb55e780800000000000000
+      internalID: -8654410189734529549
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Skeleton_01_White_Walk_5
+      name: spr_NecromancerWalk_strip10_5
       rect:
         serializedVersion: 2
-        x: 511
-        y: 0
-        width: 39
-        height: 45
+        x: 518
+        y: 31
+        width: 20
+        height: 51
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -252,20 +252,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 26bb0613542598310800000000000000
-      internalID: 1407746815664634722
+      spriteID: 184e06b718a3c0b30800000000000000
+      internalID: 4254840075753415809
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Skeleton_01_White_Walk_6
+      name: spr_NecromancerWalk_strip10_6
       rect:
         serializedVersion: 2
-        x: 609
-        y: 0
-        width: 36
-        height: 46
+        x: 615
+        y: 31
+        width: 19
+        height: 52
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -274,20 +274,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 5dc99018527e65840800000000000000
-      internalID: 5212607766992624853
+      spriteID: da3d14caff32c6630800000000000000
+      internalID: 3921548956546487213
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Skeleton_01_White_Walk_7
+      name: spr_NecromancerWalk_strip10_7
       rect:
         serializedVersion: 2
-        x: 706
-        y: 0
-        width: 35
-        height: 47
+        x: 710
+        y: 31
+        width: 22
+        height: 53
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -296,20 +296,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 43aaadb62e6d84460800000000000000
-      internalID: 7226261870076406324
+      spriteID: c008871a3e6be08b0800000000000000
+      internalID: -5184005032274001908
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Skeleton_01_White_Walk_8
+      name: spr_NecromancerWalk_strip10_8
       rect:
         serializedVersion: 2
-        x: 803
-        y: 0
-        width: 33
-        height: 48
+        x: 805
+        y: 31
+        width: 28
+        height: 53
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -318,20 +318,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 815865357982d5840800000000000000
-      internalID: 5214368573968254232
+      spriteID: ad3cdf7d330eefcf0800000000000000
+      internalID: -216489218795519014
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Skeleton_01_White_Walk_9
+      name: spr_NecromancerWalk_strip10_9
       rect:
         serializedVersion: 2
         x: 899
-        y: 0
+        y: 31
         width: 32
-        height: 46
+        height: 52
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -340,8 +340,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 41131526825910d00800000000000000
-      internalID: 937194198150492436
+      spriteID: b48934e6064d4eb70800000000000000
+      internalID: 8927493871987038283
       vertices: []
       indices: 
       edges: []
@@ -350,7 +350,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: b9d1477a504ff814b9f27a9213ea46c8
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -359,17 +359,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      Skeleton_01_White_Walk_0: 5818877937026341535
-      Skeleton_01_White_Walk_1: 5246328315798846087
-      Skeleton_01_White_Walk_2: 3875490925452937984
-      Skeleton_01_White_Walk_3: -1103901654903995279
-      Skeleton_01_White_Walk_4: 7424066568700807735
-      Skeleton_01_White_Walk_5: 1407746815664634722
-      Skeleton_01_White_Walk_6: 5212607766992624853
-      Skeleton_01_White_Walk_7: 7226261870076406324
-      Skeleton_01_White_Walk_8: 5214368573968254232
-      Skeleton_01_White_Walk_9: 937194198150492436
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
