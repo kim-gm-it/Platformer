@@ -9,7 +9,6 @@ public class Player2Controler : MonoBehaviour
 {
     private Vector3 initialScale;
     private Rigidbody2D rb;
-    public Door door;   
     [SerializeField] float moveSpeed = 5f;
     [SerializeField] float jumpForse = 40f;
     [SerializeField] int livesPoint = 3;
@@ -200,33 +199,33 @@ public class Player2Controler : MonoBehaviour
         Debug.Log("Player2 took damage");
 
         PlayHitSound();
-        
+
         hitCount++;
-        
+
         if (hitCount >= 2)
         {
             hitCount = 0;
             livesBar--;
-        
+
             if (livesBar <= 0)
             {
                 livesPoint--;
                 animator.SetTrigger("Death");
-        
+
                 if (livesPoint > 0)
                 {
                     livesBar = 4;
                 }
-        
+
                 UpdateHealthPointUI();
             }
             else
             {
                 animator.SetTrigger("GetHit");
             }
-        
+
             UpdateHealthBarUI();
-        
+
             if (livesPoint <= 0)
             {
                 isDead = true;
@@ -245,7 +244,7 @@ public class Player2Controler : MonoBehaviour
     {
         Collider2D[] enemies = Physics2D.OverlapCircleAll(attackPoint.transform.position, radius, enemyLayer);
 
-        foreach(Collider2D enemy in enemies)
+        foreach (Collider2D enemy in enemies)
         {
             Debug.Log("Hit Enemy");
             enemy.GetComponent<EnemyLogic>().TakeDamage(enemy.GetComponent<EnemyLogic>().meleeDamage);
@@ -364,4 +363,9 @@ public class Player2Controler : MonoBehaviour
         yield return new WaitForSeconds(delay);
         FindFirstObjectByType<GameStateManager>().ShowGameOver();
     }
+    public bool IsDashing()
+    {
+        return isDashing;
+    }
+
 }
