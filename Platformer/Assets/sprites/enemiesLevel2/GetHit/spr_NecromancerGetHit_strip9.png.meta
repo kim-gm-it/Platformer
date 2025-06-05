@@ -1,22 +1,34 @@
 fileFormatVersion: 2
-guid: adf8fb6757b9194419f97f6f7f3d48c1
+guid: ce74bb56ff1641446a50817e7bf9cb8e
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 418060582191273543
-    second: Skeleton_01_White_Hurt_0
+      213: -1630864493972753570
+    second: spr_NecromancerGetHit_strip9_0
   - first:
-      213: 165141955181463246
-    second: Skeleton_01_White_Hurt_1
+      213: -5867652406836381032
+    second: spr_NecromancerGetHit_strip9_1
   - first:
-      213: 6421821576006471594
-    second: Skeleton_01_White_Hurt_2
+      213: -3439270187445399680
+    second: spr_NecromancerGetHit_strip9_2
   - first:
-      213: 2454245034970752087
-    second: Skeleton_01_White_Hurt_3
+      213: -4419315937671319318
+    second: spr_NecromancerGetHit_strip9_3
   - first:
-      213: 8356227401173498364
-    second: Skeleton_01_White_Hurt_4
+      213: 5074589771737246803
+    second: spr_NecromancerGetHit_strip9_4
+  - first:
+      213: 5294903283597860646
+    second: spr_NecromancerGetHit_strip9_5
+  - first:
+      213: -4013607445788800056
+    second: spr_NecromancerGetHit_strip9_6
+  - first:
+      213: -1004807860662605918
+    second: spr_NecromancerGetHit_strip9_7
+  - first:
+      213: 3135852221386551856
+    second: spr_NecromancerGetHit_strip9_8
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -49,7 +61,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 0
+    filterMode: 1
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -63,7 +75,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 16
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -84,10 +96,10 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 4
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 8192
+    maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -112,13 +124,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Skeleton_01_White_Hurt_0
+      name: spr_NecromancerGetHit_strip9_0
       rect:
         serializedVersion: 2
-        x: 34
-        y: 0
-        width: 34
-        height: 46
+        x: 37
+        y: 31
+        width: 30
+        height: 51
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -127,20 +139,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 7469a1072ef3dc500800000000000000
-      internalID: 418060582191273543
+      spriteID: e53f4f722610e59e0800000000000000
+      internalID: -1630864493972753570
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Skeleton_01_White_Hurt_1
+      name: spr_NecromancerGetHit_strip9_1
       rect:
         serializedVersion: 2
-        x: 126
-        y: 0
-        width: 27
-        height: 42
+        x: 110
+        y: 31
+        width: 51
+        height: 35
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -149,20 +161,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: ec6ca18bbb3ba4200800000000000000
-      internalID: 165141955181463246
+      spriteID: 89a3d016939e19ea0800000000000000
+      internalID: -5867652406836381032
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Skeleton_01_White_Hurt_2
+      name: spr_NecromancerGetHit_strip9_2
       rect:
         serializedVersion: 2
-        x: 224
-        y: 0
-        width: 26
-        height: 43
+        x: 208
+        y: 31
+        width: 51
+        height: 39
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -171,20 +183,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: aaf0ec8f2b4ee1950800000000000000
-      internalID: 6421821576006471594
+      spriteID: 08fc9be8cf14540d0800000000000000
+      internalID: -3439270187445399680
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Skeleton_01_White_Hurt_3
+      name: spr_NecromancerGetHit_strip9_3
       rect:
         serializedVersion: 2
-        x: 322
-        y: 0
-        width: 32
-        height: 45
+        x: 307
+        y: 31
+        width: 50
+        height: 44
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -193,20 +205,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 754a23d2bda3f0220800000000000000
-      internalID: 2454245034970752087
+      spriteID: ae0f0e8b19f6ba2c0800000000000000
+      internalID: -4419315937671319318
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Skeleton_01_White_Hurt_4
+      name: spr_NecromancerGetHit_strip9_4
       rect:
         serializedVersion: 2
-        x: 418
-        y: 0
-        width: 34
-        height: 46
+        x: 411
+        y: 31
+        width: 39
+        height: 54
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -215,8 +227,96 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: cf9f4555c8847f370800000000000000
-      internalID: 8356227401173498364
+      spriteID: 35caa35d2809c6640800000000000000
+      internalID: 5074589771737246803
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_NecromancerGetHit_strip9_5
+      rect:
+        serializedVersion: 2
+        x: 517
+        y: 31
+        width: 30
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 62f56ea9b764b7940800000000000000
+      internalID: 5294903283597860646
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_NecromancerGetHit_strip9_6
+      rect:
+        serializedVersion: 2
+        x: 613
+        y: 31
+        width: 30
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8cb45e50b4dcc48c0800000000000000
+      internalID: -4013607445788800056
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_NecromancerGetHit_strip9_7
+      rect:
+        serializedVersion: 2
+        x: 709
+        y: 31
+        width: 30
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2a76fad03943e02f0800000000000000
+      internalID: -1004807860662605918
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_NecromancerGetHit_strip9_8
+      rect:
+        serializedVersion: 2
+        x: 805
+        y: 31
+        width: 30
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0327ddb1bf8c48b20800000000000000
+      internalID: 3135852221386551856
       vertices: []
       indices: 
       edges: []
@@ -225,7 +325,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: ac8522e8dc2bcba4885b20ff1eac3f64
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -234,12 +334,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      Skeleton_01_White_Hurt_0: 418060582191273543
-      Skeleton_01_White_Hurt_1: 165141955181463246
-      Skeleton_01_White_Hurt_2: 6421821576006471594
-      Skeleton_01_White_Hurt_3: 2454245034970752087
-      Skeleton_01_White_Hurt_4: 8356227401173498364
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
