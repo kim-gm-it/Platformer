@@ -8,7 +8,7 @@ public class CollectibleAutoDestroy : MonoBehaviour
 
     void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player").transform;
+        player = GameObject.FindGameObjectWithTag("Player1").transform;
     }
 
     void Update()

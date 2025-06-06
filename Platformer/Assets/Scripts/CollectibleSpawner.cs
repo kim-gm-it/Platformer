@@ -2,14 +2,21 @@ using UnityEngine;
 
 public class CollectibleSpawner : MonoBehaviour
 {
-    public GameObject[] collectibles;      
-    public float spawnInterval = 15f;      
+    public GameObject[] collectibles;             public float spawnInterval = 7f;          
 
-    public Vector2 spawnAreaMin;           
-    public Vector2 spawnAreaMax;           
-
+    private Vector2 spawnAreaMin;             
+    private Vector2 spawnAreaMax;             
+    public float groundY = -2.5f;             
+    public float margin = 0.5f;     
+    public Camera targetCamera;         
     void Start()
     {
+        float camHeight = targetCamera.orthographicSize;
+        float camWidth = camHeight * targetCamera.aspect;
+        
+        spawnAreaMin = new Vector2(-camWidth + margin, groundY + margin);
+        spawnAreaMax = new Vector2(camWidth - margin, camHeight - margin);
+
         InvokeRepeating("SpawnCollectible", 1f, spawnInterval);
     }
 
