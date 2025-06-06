@@ -321,9 +321,9 @@ MonoBehaviour:
   pointA: {fileID: 0}
   pointB: {fileID: 0}
   speed: 3
-  attackRange: 10
+  attackRange: 7
   attackCooldown: 2
-  detectionRange: 10
+  detectionRange: 7
   radius: 0.5
   playerLayer:
     serializedVersion: 2
@@ -397,6 +397,10 @@ PrefabInstance:
     - target: {fileID: 2807019550993991856, guid: e381f4b41434eb44bb6a08970ba66ffa, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4650733493788811364, guid: e381f4b41434eb44bb6a08970ba66ffa, type: 3}
+      propertyPath: m_PresetInfoIsWorld
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7620479078602170391, guid: e381f4b41434eb44bb6a08970ba66ffa, type: 3}
       propertyPath: m_Pivot.x
