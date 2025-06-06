@@ -1,11 +1,11 @@
 using UnityEngine;
 using Cainos.LucidEditor;
+using System.Collections;
 
 #if UNITY_EDITOR
 using UnityEditor;
 using UnityEditor.SceneManagement;
 #endif
-
 
 namespace Cainos.PixelArtPlatformer_Dungeon
 {
@@ -15,17 +15,15 @@ namespace Cainos.PixelArtPlatformer_Dungeon
         [FoldoutGroup("Reference")] public Sprite spriteOpened;
         [FoldoutGroup("Reference")] public Sprite spriteClosed;
 
-
         private Animator Animator
         {
             get
             {
-                if (animator == null ) animator = GetComponent<Animator>();
+                if (animator == null) animator = GetComponent<Animator>();
                 return animator;
             }
         }
         private Animator animator;
-
 
         [FoldoutGroup("Runtime"), ShowInInspector]
         public bool IsOpened
@@ -35,7 +33,7 @@ namespace Cainos.PixelArtPlatformer_Dungeon
             {
                 isOpened = value;
 
-                #if UNITY_EDITOR
+#if UNITY_EDITOR
                 if (Application.isPlaying == false)
                 {
                     if (Animator.runtimeAnimatorController != null)
@@ -47,8 +45,7 @@ namespace Cainos.PixelArtPlatformer_Dungeon
                         Debug.LogWarning("Animator controller not assigned on Door!");
                     }
                 }
-                #endif
-
+#endif
 
                 if (Application.isPlaying)
                 {
@@ -56,11 +53,17 @@ namespace Cainos.PixelArtPlatformer_Dungeon
                 }
                 else
                 {
-                    if(spriteRenderer) spriteRenderer.sprite = isOpened ? spriteOpened : spriteClosed;
+                    if (spriteRenderer) spriteRenderer.sprite = isOpened ? spriteOpened : spriteClosed;
+                }
+
+                Collider2D col = GetComponent<Collider2D>();
+                if (col != null)
+                {
+                    col.isTrigger = isOpened;
                 }
             }
         }
-        [SerializeField,HideInInspector]
+        [SerializeField, HideInInspector]
         private bool isOpened;
 
         private void Start()
@@ -69,6 +72,18 @@ namespace Cainos.PixelArtPlatformer_Dungeon
             IsOpened = isOpened;
         }
 
+        private void OnCollisionEnter2D(Collision2D collision)
+        {
+            if (collision.gameObject.CompareTag("Player2"))
+            {
+                Player2Controler player = collision.gameObject.GetComponent<Player2Controler>();
+
+                if (player != null && player.IsDashing())
+                {
+                    Door.OpenAllDoors();
+                }
+            }
+        }
 
         [FoldoutGroup("Runtime"), HorizontalGroup("Runtime/Button"), Button("Open")]
         public void Open()
@@ -80,6 +95,33 @@ namespace Cainos.PixelArtPlatformer_Dungeon
         public void Close()
         {
             IsOpened = false;
+        }
+
+        //private IEnumerator AutoClose()
+        //{
+        //    yield return new WaitForSeconds(5f);
+        //    Close();
+        //}
+
+        public static void OpenAllDoors()
+        {
+            Door[] allDoors =  Object.FindObjectsByType<Door>(FindObjectsSortMode.None);
+            foreach (var door in allDoors)
+            {
+                door.Open();
+            }
+
+            allDoors[0].StartCoroutine(CloseAllAfterDelay(allDoors, 5f));
+        }
+
+        private static IEnumerator CloseAllAfterDelay(Door[] doors, float delay)
+        {
+            yield return new WaitForSeconds(delay);
+
+            foreach (var door in doors)
+            {
+                door.Close();
+            }
         }
     }
 }

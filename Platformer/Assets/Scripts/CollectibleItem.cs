@@ -38,13 +38,26 @@ public class CollectibleItem : MonoBehaviour
                 }
                 else if (itemType == CollectibleType.Damage)
                 {
-                    DamageBoostUIManager.instance.StartBoostTimer(damageDuration);
+                    if (player1 != null)
+                    {
+                        player1.StartDamageBoost(damageMultiplier, damageDuration);
+                        DamageBoostUIManager.instance.StartBoostTimer(damageDuration, "Player1");
+                    }
+
+                    if (player2 != null)
+                    {
+                        player2.StartDamageBoost(damageMultiplier, damageDuration);
+                        DamageBoostUIManager.instance.StartBoostTimer(damageDuration, "Player2");
+                    }
+
                     damageCapacity = 3;
                 }
                 else if (itemType == CollectibleType.Key)
                 {
                     if (player1 != null) player1.hasKey = true;
                     if (player2 != null) player2.hasKey = true;
+                    KeyUIManager.instance.ShowKeyIcon();
+
                 }
 
                 if (audioSource != null && audioSource.clip != null)

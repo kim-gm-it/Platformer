@@ -12,7 +12,7 @@ public class PatrollingEnemy : MonoBehaviour
     
     [Header("Attack related variables")]
     public float speed = 3f;
-    public float attackRange = 7f;
+    public float attackRange = 10f;
     public float attackCooldown = 3f;
     public float detectionRange = 10f;
     public float radius = 0.5f;
@@ -39,7 +39,7 @@ public class PatrollingEnemy : MonoBehaviour
         animator = GetComponent<Animator>();
 
         currentPoint = pointB.transform;
-        animator.SetBool("IsRunning" , true);
+        animator.SetBool("is Running" , true);
 
         players = new GameObject[2];
         players[0] = GameObject.FindGameObjectWithTag("Player1");
@@ -72,12 +72,10 @@ public class PatrollingEnemy : MonoBehaviour
 
         if (isChasing)
         {
-            Debug.Log("chasing player: " + targetPlayer.name);
             chasePlayer();
         }
         else
         {
-            Debug.Log("patrolling");
             patrol();
         }
 
@@ -85,14 +83,13 @@ public class PatrollingEnemy : MonoBehaviour
 
     public void patrol()
     {
-        Debug.Log("Enemy is patrolling towards: " + currentPoint.name);
         if (currentPoint == pointB.transform)
         {
-            rb.velocity = new Vector2(speed, 0f);
+            rb.linearVelocity = new Vector2(speed, 0f);
         }
         else
         {
-            rb.velocity = new Vector2(-speed, 0f);
+            rb.linearVelocity = new Vector2(-speed, 0f);
         }
 
         if (Mathf.Abs(transform.position.x - currentPoint.position.x) <= 0.5f && currentPoint == pointB.transform)
@@ -117,12 +114,11 @@ public class PatrollingEnemy : MonoBehaviour
         //movement limited to patrol boundaries
         if((direction<0 && targetx < pointA.transform.position.x ) || (direction > 0 && targetx > pointB.transform.position.x))
         {
-            Debug.Log("chase blocked by patrol boundary. switch to patrolling .");
             patrol();
             return;
         }
 
-        rb.velocity = new Vector2(direction * speed , rb.velocity.y);
+        rb.linearVelocity = new Vector2(direction * speed , rb.linearVelocity.y);
 
         if((direction > 0  && transform.localScale.x < 0) || (direction < 0 && transform.localScale.x > 0))
         {
@@ -136,7 +132,6 @@ public class PatrollingEnemy : MonoBehaviour
         float distance = Mathf.Abs(transform.position.x - targetPlayer.transform.position.x);
         if(distance <= attackRange && attackTimer <= 0f)
         {
-            Debug.Log("Enemy attacking");
             enemyLogic.OnAttack();
             attackTimer = attackCooldown;
         }
