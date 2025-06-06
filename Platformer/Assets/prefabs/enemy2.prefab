@@ -227,7 +227,8 @@ MonoBehaviour:
   radius: 0.5
   playerLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 64
+  attackPoint: {fileID: 7530516216075965054}
 --- !u!82 &8941754263361983801
 AudioSource:
   m_ObjectHideFlags: 0

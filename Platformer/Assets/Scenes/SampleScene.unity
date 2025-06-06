@@ -4146,11 +4146,6 @@ MonoBehaviour:
   Bar1: {fileID: 2045994070260232039, guid: 5385282744f02cc4c8fefa09b4e73999, type: 3}
   Bar0: {fileID: -765187810910609461, guid: 0b5b7f2ce4e149841883b55f2db602f1, type: 3}
   losePanel: {fileID: 958892711}
-  attackPoint: {fileID: 1383761107}
-  radius: 0.9
-  enemyLayer:
-    serializedVersion: 2
-    m_Bits: 8
 --- !u!96 &1383761115
 TrailRenderer:
   serializedVersion: 3
