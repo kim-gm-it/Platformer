@@ -3959,7 +3959,7 @@ PolygonCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 153496124}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Density: 1
   m_Material: {fileID: 0}
@@ -8665,8 +8665,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1.5625, y: 0.34375, z: 0.2}
-  m_Center: {x: -0.78125, y: 0.171875, z: 0}
+  m_Size: {x: 1.1511421, y: 0.34375, z: 0.2}
+  m_Center: {x: -0.57557106, y: 0.171875, z: 0}
 --- !u!1001 &331375160
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9207,6 +9207,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PF Dungeon Props - Chest 01
       objectReference: {fileID: 0}
+    - target: {fileID: 6930122694965717508, guid: dab57aa8274c8da4993ca59e655d081b, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
     - target: {fileID: 6930122694965717509, guid: dab57aa8274c8da4993ca59e655d081b, type: 3}
       propertyPath: m_LocalPosition.x
       value: 1.5730944
@@ -9598,7 +9602,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 650519742456631277, guid: ca30848860972b14b908ae7288d18de0, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.023410797
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 650519742456631277, guid: ca30848860972b14b908ae7288d18de0, type: 3}
       propertyPath: m_LocalRotation.w
@@ -9800,11 +9804,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4782114078537061500, guid: bcefcd41c225b094a842eddba8932721, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 61.97666
+      value: 61.95
       objectReference: {fileID: 0}
     - target: {fileID: 4782114078537061500, guid: bcefcd41c225b094a842eddba8932721, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -53.187767
+      value: -53.32
       objectReference: {fileID: 0}
     - target: {fileID: 4782114078537061500, guid: bcefcd41c225b094a842eddba8932721, type: 3}
       propertyPath: m_LocalPosition.z
@@ -14044,7 +14048,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 650519742456631277, guid: ca30848860972b14b908ae7288d18de0, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.023410797
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 650519742456631277, guid: ca30848860972b14b908ae7288d18de0, type: 3}
       propertyPath: m_LocalRotation.w
@@ -14197,9 +14201,33 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 100789076}
     m_Modifications:
+    - target: {fileID: 540140384166713752, guid: 2b38e49cf741e374ebb12f665b71d18b, type: 3}
+      propertyPath: m_Size.x
+      value: 1.0582459
+      objectReference: {fileID: 0}
+    - target: {fileID: 540140384166713752, guid: 2b38e49cf741e374ebb12f665b71d18b, type: 3}
+      propertyPath: m_Size.y
+      value: 2.0192947
+      objectReference: {fileID: 0}
+    - target: {fileID: 540140384166713752, guid: 2b38e49cf741e374ebb12f665b71d18b, type: 3}
+      propertyPath: m_Offset.x
+      value: -0.029122949
+      objectReference: {fileID: 0}
+    - target: {fileID: 540140384166713752, guid: 2b38e49cf741e374ebb12f665b71d18b, type: 3}
+      propertyPath: m_Offset.y
+      value: 1.0338554
+      objectReference: {fileID: 0}
+    - target: {fileID: 1671459498715919559, guid: 2b38e49cf741e374ebb12f665b71d18b, type: 3}
+      propertyPath: m_TagString
+      value: Teleporter
+      objectReference: {fileID: 0}
     - target: {fileID: 6930122694965717508, guid: 2b38e49cf741e374ebb12f665b71d18b, type: 3}
       propertyPath: m_Name
       value: PF Dungeon Props - Door Iron 01
+      objectReference: {fileID: 0}
+    - target: {fileID: 6930122694965717508, guid: 2b38e49cf741e374ebb12f665b71d18b, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 6930122694965717509, guid: 2b38e49cf741e374ebb12f665b71d18b, type: 3}
       propertyPath: m_LocalPosition.x
@@ -14241,16 +14269,38 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 540140384166713752, guid: 2b38e49cf741e374ebb12f665b71d18b, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5495599983566676280, guid: 2b38e49cf741e374ebb12f665b71d18b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 568253092}
   m_SourcePrefab: {fileID: 100100000, guid: 2b38e49cf741e374ebb12f665b71d18b, type: 3}
 --- !u!4 &568253090 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6930122694965717509, guid: 2b38e49cf741e374ebb12f665b71d18b, type: 3}
   m_PrefabInstance: {fileID: 568253089}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &568253091 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5495599983566676280, guid: 2b38e49cf741e374ebb12f665b71d18b, type: 3}
+  m_PrefabInstance: {fileID: 568253089}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &568253092
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 568253091}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 99329c4a7344b574bb7f4c2e96768645, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  destination: {fileID: 1414159346}
 --- !u!1001 &570921659
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -17953,6 +18003,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PF Dungeon Props - Bookshelf Side 01 B
       objectReference: {fileID: 0}
+    - target: {fileID: 390456860282783827, guid: 45d7c03cdf0f6dd48bf43b72ab72ad48, type: 3}
+      propertyPath: m_TagString
+      value: Ground
+      objectReference: {fileID: 0}
     - target: {fileID: 6265670936862214329, guid: 45d7c03cdf0f6dd48bf43b72ab72ad48, type: 3}
       propertyPath: m_LocalPosition.x
       value: -22.05643
@@ -18568,6 +18622,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PF Dungeon Props - Door Wood 01 (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 6930122694965717508, guid: 3332d33449639b44dbb1148ec417d162, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
     - target: {fileID: 6930122694965717509, guid: 3332d33449639b44dbb1148ec417d162, type: 3}
       propertyPath: m_LocalPosition.x
       value: 44.6458
@@ -18611,13 +18669,34 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2473002302301476797, guid: 3332d33449639b44dbb1148ec417d162, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 709231139}
   m_SourcePrefab: {fileID: 100100000, guid: 3332d33449639b44dbb1148ec417d162, type: 3}
 --- !u!4 &709231137 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6930122694965717509, guid: 3332d33449639b44dbb1148ec417d162, type: 3}
   m_PrefabInstance: {fileID: 709231136}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &709231138 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2473002302301476797, guid: 3332d33449639b44dbb1148ec417d162, type: 3}
+  m_PrefabInstance: {fileID: 709231136}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &709231139
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 709231138}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 99329c4a7344b574bb7f4c2e96768645, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  destination: {fileID: 1204840789}
 --- !u!1001 &710030189
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -19453,7 +19532,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6444903904357427540, guid: 032e92b96a56dc945b989fc2e82dc0b2, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.86
+      value: -3.23
       objectReference: {fileID: 0}
     - target: {fileID: 6444903904357427540, guid: 032e92b96a56dc945b989fc2e82dc0b2, type: 3}
       propertyPath: m_LocalPosition.z
@@ -19821,6 +19900,7 @@ GameObject:
   - component: {fileID: 756521644}
   - component: {fileID: 756521643}
   - component: {fileID: 756521642}
+  - component: {fileID: 756521650}
   m_Layer: 0
   m_Name: Player1
   m_TagString: Player1
@@ -20267,7 +20347,7 @@ Transform:
   m_GameObject: {fileID: 756521641}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 14.49, y: -1.31, z: -10}
+  m_LocalPosition: {x: 56.55, y: -49.79, z: -10}
   m_LocalScale: {x: 0.55, y: 0.55, z: 0.69666666}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -20275,6 +20355,18 @@ Transform:
   - {fileID: 1178548411}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &756521650
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 756521641}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 619a5ef4206beb34485b0e648720b45b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &757904685
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -131834,16 +131926,16 @@ PolygonCollider2D:
       - {x: 2.941411, y: -2.4465752}
       - {x: 2.7401762, y: -2.4360237}
       - {x: 2.521222, y: -2.424137}
-      - {x: 2.522481, y: -2.2368622}
-      - {x: 2.6054163, y: -2.2138748}
-      - {x: 2.5998297, y: -2.038517}
-      - {x: 2.0382385, y: -2.0293772}
-      - {x: 2.0423098, y: -2.1720657}
-      - {x: 2.1999445, y: -2.2062836}
-      - {x: 2.3214579, y: -2.2241669}
-      - {x: 2.3224516, y: -2.4211884}
-      - {x: 2.2441149, y: -2.4459038}
-      - {x: 2.243609, y: -2.6265945}
+      - {x: 2.7277384, y: -2.4388313}
+      - {x: 2.5940866, y: -2.451851}
+      - {x: 2.6564913, y: -2.4351425}
+      - {x: 2.8054008, y: -2.5286334}
+      - {x: 2.6654844, y: -2.4620438}
+      - {x: 2.719123, y: -2.4989128}
+      - {x: 2.9072523, y: -2.5447578}
+      - {x: 2.5823584, y: -2.535839}
+      - {x: 2.6439352, y: -2.58984}
+      - {x: 2.723393, y: -2.6505852}
       - {x: 2.6832418, y: -2.6280365}
       - {x: 2.6813402, y: -2.8446999}
       - {x: 2.740827, y: -2.9051473}
@@ -131906,10 +131998,10 @@ PolygonCollider2D:
       - {x: 0.8816171, y: -1.0238379}
       - {x: 1.19625, y: -1.0089226}
       - {x: 1.1154022, y: -1.3989754}
-      - {x: 1.5454531, y: -1.3975525}
-      - {x: 1.586751, y: -1.6691551}
-      - {x: 1.7770859, y: -1.6894071}
-      - {x: 1.840745, y: -1.2075615}
+      - {x: 1.1828203, y: -1.3295593}
+      - {x: 1.2581148, y: -1.340519}
+      - {x: 1.2784687, y: -1.3381078}
+      - {x: 1.4327841, y: -0.9695854}
       - {x: 1.3903131, y: -1.2174149}
       - {x: 1.4799967, y: -0.84022903}
       - {x: 0.9857626, y: -0.80119705}
@@ -133902,12 +133994,12 @@ PolygonCollider2D:
       - {x: 0.7765579, y: -1.0015345}
       - {x: 1.1822739, y: -1.00212}
       - {x: 1.1143913, y: -1.3845959}
-      - {x: 1.5524926, y: -1.4216098}
-      - {x: 1.5757065, y: -1.6461573}
-      - {x: 1.7493759, y: -1.6668184}
-      - {x: 1.7470016, y: -1.4076357}
-      - {x: 1.8587723, y: -1.4045038}
-      - {x: 1.8567648, y: -1.2359619}
+      - {x: 1.3717141, y: -1.3839482}
+      - {x: 1.462719, y: -1.3599234}
+      - {x: 1.1693741, y: -1.4031827}
+      - {x: 1.5059624, y: -1.3473759}
+      - {x: 1.474617, y: -1.3291798}
+      - {x: 1.4500113, y: -0.8668709}
   m_UseDelaunayMesh: 0
 --- !u!1 &941198334 stripped
 GameObject:
@@ -134129,7 +134221,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 650519742456631277, guid: ca30848860972b14b908ae7288d18de0, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.023410797
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 650519742456631277, guid: ca30848860972b14b908ae7288d18de0, type: 3}
       propertyPath: m_LocalRotation.w
@@ -137619,7 +137711,7 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 2.5840988, y: -2.0149841}
+    - - {x: 2.2760925, y: -2.0149841}
       - {x: 2.1459541, y: -2.0315742}
       - {x: 2.2138367, y: -1.6565971}
       - {x: 1.7549095, y: -1.6151199}
@@ -137645,13 +137737,13 @@ PolygonCollider2D:
       - {x: 1.4894791, y: -1.813755}
       - {x: 1.9078026, y: -1.8584709}
       - {x: 1.8491821, y: -2.2252388}
-      - {x: 2.3005638, y: -2.2485466}
-      - {x: 2.2773476, y: -2.6501083}
-      - {x: 2.6846924, y: -2.6607742}
-      - {x: 2.6768951, y: -2.8821487}
-      - {x: 2.8882804, y: -2.8629758}
-      - {x: 2.959015, y: -2.4366417}
-      - {x: 2.511466, y: -2.4120903}
+      - {x: 2.0193405, y: -2.1815872}
+      - {x: 1.8354263, y: -2.0876617}
+      - {x: 1.8811951, y: -2.245636}
+      - {x: 2.1144485, y: -2.1456146}
+      - {x: 2.218698, y: -1.938957}
+      - {x: 2.1153526, y: -2.1018562}
+      - {x: 1.9758062, y: -2.050518}
   m_UseDelaunayMesh: 0
 --- !u!1001 &1058897439
 PrefabInstance:
@@ -139490,6 +139582,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PF Dungeon Props - Door Wood 01 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 6930122694965717508, guid: 3332d33449639b44dbb1148ec417d162, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
     - target: {fileID: 6930122694965717509, guid: 3332d33449639b44dbb1148ec417d162, type: 3}
       propertyPath: m_LocalPosition.x
       value: 47.18247
@@ -139533,13 +139629,34 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2473002302301476797, guid: 3332d33449639b44dbb1148ec417d162, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1116247406}
   m_SourcePrefab: {fileID: 100100000, guid: 3332d33449639b44dbb1148ec417d162, type: 3}
 --- !u!4 &1116247404 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6930122694965717509, guid: 3332d33449639b44dbb1148ec417d162, type: 3}
   m_PrefabInstance: {fileID: 1116247403}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1116247405 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2473002302301476797, guid: 3332d33449639b44dbb1148ec417d162, type: 3}
+  m_PrefabInstance: {fileID: 1116247403}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1116247406
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1116247405}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 99329c4a7344b574bb7f4c2e96768645, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  destination: {fileID: 2042962625}
 --- !u!1 &1116388778 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 390456860282783827, guid: fdc930f4af2301440a8105849499fe85, type: 3}
@@ -142027,6 +142144,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PF Dungeon Props - Door Wood 01 (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 6930122694965717508, guid: 3332d33449639b44dbb1148ec417d162, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
     - target: {fileID: 6930122694965717509, guid: 3332d33449639b44dbb1148ec417d162, type: 3}
       propertyPath: m_LocalPosition.x
       value: 62.019207
@@ -142070,13 +142191,34 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2473002302301476797, guid: 3332d33449639b44dbb1148ec417d162, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1204840791}
   m_SourcePrefab: {fileID: 100100000, guid: 3332d33449639b44dbb1148ec417d162, type: 3}
 --- !u!4 &1204840789 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6930122694965717509, guid: 3332d33449639b44dbb1148ec417d162, type: 3}
   m_PrefabInstance: {fileID: 1204840788}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1204840790 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2473002302301476797, guid: 3332d33449639b44dbb1148ec417d162, type: 3}
+  m_PrefabInstance: {fileID: 1204840788}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1204840791
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1204840790}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 99329c4a7344b574bb7f4c2e96768645, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  destination: {fileID: 709231137}
 --- !u!1001 &1205843890
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -142871,12 +143013,14 @@ PolygonCollider2D:
       - {x: 0.7719526, y: -0.60687447}
       - {x: 0.7188883, y: -0.9942169}
       - {x: 1.1489763, y: -1.0284023}
+      - {x: 1.1241274, y: -1.1863194}
       - {x: 1.0917711, y: -1.391943}
-      - {x: 1.5524693, y: -1.413866}
-      - {x: 1.5427351, y: -1.6501522}
-      - {x: 1.750671, y: -1.6811845}
-      - {x: 1.8802719, y: -1.2008514}
-      - {x: 1.4021759, y: -1.2147655}
+      - {x: 1.1994429, y: -1.3986187}
+      - {x: 1.5117502, y: -1.4338837}
+      - {x: 1.4892607, y: -1.3934765}
+      - {x: 1.4720198, y: -1.4003541}
+      - {x: 1.4845648, y: -0.9334812}
+      - {x: 1.4877338, y: -1.4393578}
   m_UseDelaunayMesh: 0
 --- !u!1001 &1229227371
 PrefabInstance:
@@ -144402,8 +144546,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1.5625, y: 0.34375, z: 0.2}
-  m_Center: {x: -0.78125, y: 0.171875, z: 0}
+  m_Size: {x: 1.0865479, y: 0.34375, z: 0.2}
+  m_Center: {x: -0.5432739, y: 0.171875, z: 0}
 --- !u!1 &1275679084
 GameObject:
   m_ObjectHideFlags: 0
@@ -147407,9 +147551,29 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1931913677}
     m_Modifications:
+    - target: {fileID: 540140384166713752, guid: 2b38e49cf741e374ebb12f665b71d18b, type: 3}
+      propertyPath: m_Size.x
+      value: 1.2562752
+      objectReference: {fileID: 0}
+    - target: {fileID: 540140384166713752, guid: 2b38e49cf741e374ebb12f665b71d18b, type: 3}
+      propertyPath: m_Size.y
+      value: 2.041111
+      objectReference: {fileID: 0}
+    - target: {fileID: 540140384166713752, guid: 2b38e49cf741e374ebb12f665b71d18b, type: 3}
+      propertyPath: m_Offset.x
+      value: 0.008008957
+      objectReference: {fileID: 0}
+    - target: {fileID: 540140384166713752, guid: 2b38e49cf741e374ebb12f665b71d18b, type: 3}
+      propertyPath: m_Offset.y
+      value: 0.993063
+      objectReference: {fileID: 0}
     - target: {fileID: 6930122694965717508, guid: 2b38e49cf741e374ebb12f665b71d18b, type: 3}
       propertyPath: m_Name
       value: PF Dungeon Props - Door Iron 01
+      objectReference: {fileID: 0}
+    - target: {fileID: 6930122694965717508, guid: 2b38e49cf741e374ebb12f665b71d18b, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 6930122694965717509, guid: 2b38e49cf741e374ebb12f665b71d18b, type: 3}
       propertyPath: m_LocalPosition.x
@@ -147455,13 +147619,34 @@ PrefabInstance:
     m_RemovedGameObjects:
     - {fileID: 1992888373097202384, guid: 2b38e49cf741e374ebb12f665b71d18b, type: 3}
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5495599983566676280, guid: 2b38e49cf741e374ebb12f665b71d18b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1414159348}
   m_SourcePrefab: {fileID: 100100000, guid: 2b38e49cf741e374ebb12f665b71d18b, type: 3}
 --- !u!4 &1414159346 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6930122694965717509, guid: 2b38e49cf741e374ebb12f665b71d18b, type: 3}
   m_PrefabInstance: {fileID: 1414159345}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1414159347 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5495599983566676280, guid: 2b38e49cf741e374ebb12f665b71d18b, type: 3}
+  m_PrefabInstance: {fileID: 1414159345}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1414159348
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1414159347}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 99329c4a7344b574bb7f4c2e96768645, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  destination: {fileID: 568253090}
 --- !u!1001 &1422828432
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -149196,8 +149381,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1.21875, y: 0.375, z: 0.2}
-  m_Center: {x: 0.609375, y: 0.1875, z: 0}
+  m_Size: {x: 0.7418957, y: 0.375, z: 0.2}
+  m_Center: {x: 0.37094784, y: 0.1875, z: 0}
 --- !u!1001 &1463718931
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -149609,7 +149794,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 650519742456631277, guid: ca30848860972b14b908ae7288d18de0, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.023410797
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 650519742456631277, guid: ca30848860972b14b908ae7288d18de0, type: 3}
       propertyPath: m_LocalRotation.w
@@ -149784,7 +149969,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 650519742456631277, guid: ca30848860972b14b908ae7288d18de0, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.023410797
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 650519742456631277, guid: ca30848860972b14b908ae7288d18de0, type: 3}
       propertyPath: m_LocalRotation.w
@@ -150873,7 +151058,7 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 1.844459, y: -1.1966991}
+    - - {x: 1.4166675, y: -1.1860046}
       - {x: 1.3942761, y: -1.1887131}
       - {x: 1.4884505, y: -0.8974018}
       - {x: 1.3816819, y: -0.79255676}
@@ -150894,10 +151079,10 @@ PolygonCollider2D:
       - {x: 1.1628222, y: -1.0247211}
       - {x: 1.1166615, y: -1.2237892}
       - {x: 1.089705, y: -1.4081383}
-      - {x: 1.5165505, y: -1.4417973}
-      - {x: 1.5354362, y: -1.6719933}
-      - {x: 1.7306229, y: -1.6711595}
-      - {x: 1.8432713, y: -1.335062}
+      - {x: 1.2277913, y: -1.3990192}
+      - {x: 1.139729, y: -1.404623}
+      - {x: 1.2386624, y: -1.3930948}
+      - {x: 1.3620062, y: -1.356451}
   m_UseDelaunayMesh: 0
 --- !u!1001 &1542436245
 PrefabInstance:
@@ -151164,6 +151349,7 @@ GameObject:
   - component: {fileID: 1556500991}
   - component: {fileID: 1556500990}
   - component: {fileID: 1556500989}
+  - component: {fileID: 1556500998}
   m_Layer: 0
   m_Name: Player2
   m_TagString: Player2
@@ -151702,7 +151888,7 @@ Transform:
   m_GameObject: {fileID: 1556500988}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 9.53, y: -0.41, z: -1}
+  m_LocalPosition: {x: 60.4, y: -53.3, z: -1}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.33333334}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -151710,6 +151896,18 @@ Transform:
   - {fileID: 830123359}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1556500998
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1556500988}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 619a5ef4206beb34485b0e648720b45b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1557717882
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -152026,8 +152224,8 @@ PolygonCollider2D:
   m_Points:
     m_Paths:
     - - {x: 1.3693042, y: -1.2130966}
-      - {x: 1.5050492, y: -0.90911484}
-      - {x: 1.4271188, y: -0.79516983}
+      - {x: 1.3718123, y: -1.0756607}
+      - {x: 1.2772288, y: -0.79516983}
       - {x: 1.0113473, y: -0.81033707}
       - {x: 1.1332307, y: -0.5324707}
       - {x: 1.0155835, y: -0.37619781}
@@ -152043,11 +152241,12 @@ PolygonCollider2D:
       - {x: 0.74389124, y: -0.9810982}
       - {x: 1.1882186, y: -0.96200943}
       - {x: 1.0986791, y: -1.3797417}
-      - {x: 1.5460286, y: -1.4180449}
-      - {x: 1.5339761, y: -1.6356163}
-      - {x: 1.7199007, y: -1.6883733}
-      - {x: 1.8573747, y: -1.2878494}
-      - {x: 1.7439604, y: -1.1763153}
+      - {x: 1.3697324, y: -1.3928604}
+      - {x: 1.3445477, y: -1.3760718}
+      - {x: 1.2065692, y: -1.3669739}
+      - {x: 1.3673083, y: -1.3525693}
+      - {x: 1.3546891, y: -1.346138}
+      - {x: 1.3338232, y: -0.9996109}
   m_UseDelaunayMesh: 0
 --- !u!1001 &1567597662
 PrefabInstance:
@@ -152135,8 +152334,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.71875, y: 0.1875, z: 0.2}
-  m_Center: {x: 0.015625, y: 0, z: 0}
+  m_Size: {x: 0.34478664, y: 0.1875, z: 0.2}
+  m_Center: {x: -0.17135668, y: 0, z: 0}
 --- !u!1 &1577132363
 GameObject:
   m_ObjectHideFlags: 0
@@ -152198,12 +152397,12 @@ MonoBehaviour:
     LookAtTarget: {fileID: 0}
     CustomLookAtTarget: 0
   Lens:
-    FieldOfView: 60
+    FieldOfView: 75.3
     OrthographicSize: 8.5
     NearClipPlane: 0.3
     FarClipPlane: 1000
     Dutch: 0
-    ModeOverride: 0
+    ModeOverride: 2
     PhysicalProperties:
       GateFit: 2
       SensorSize: {x: 21.946, y: 16.002}
@@ -152226,7 +152425,7 @@ Transform:
   m_GameObject: {fileID: 1577132363}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 9.53, y: -0.41, z: -11}
+  m_LocalPosition: {x: 60.4, y: -53.3, z: -11}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -154155,7 +154354,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 650519742456631277, guid: ca30848860972b14b908ae7288d18de0, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.023410797
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 650519742456631277, guid: ca30848860972b14b908ae7288d18de0, type: 3}
       propertyPath: m_LocalRotation.w
@@ -157212,7 +157411,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6265670936862214329, guid: 5b3f7b15fc39714469245ec7804476e1, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 61.931625
+      value: 61.89
       objectReference: {fileID: 0}
     - target: {fileID: 6265670936862214329, guid: 5b3f7b15fc39714469245ec7804476e1, type: 3}
       propertyPath: m_LocalPosition.y
@@ -159234,7 +159433,7 @@ Transform:
   m_GameObject: {fileID: 1820143801}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 14.49, y: -1.31, z: -20}
+  m_LocalPosition: {x: 56.55, y: -49.79, z: -20}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -224133,11 +224332,11 @@ PolygonCollider2D:
       - {x: 2.3030982, y: -2.277522}
       - {x: 2.2451177, y: -2.6344004}
       - {x: 2.6673179, y: -2.6393366}
-      - {x: 2.651485, y: -2.894065}
-      - {x: 2.9166741, y: -2.8761015}
-      - {x: 2.9737077, y: -2.443073}
+      - {x: 2.4546762, y: -2.6410265}
+      - {x: 2.4949431, y: -2.5668325}
+      - {x: 2.5332341, y: -2.4337003}
       - {x: 2.5033193, y: -2.417472}
-      - {x: 2.6081777, y: -2.197873}
+      - {x: 2.5800633, y: -2.1885023}
       - {x: 2.5821338, y: -2.0209627}
       - {x: 2.0822358, y: -2.0466223}
       - {x: 2.2701716, y: -1.6939802}
@@ -227093,7 +227292,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 650519742456631277, guid: ca30848860972b14b908ae7288d18de0, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.023410797
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 650519742456631277, guid: ca30848860972b14b908ae7288d18de0, type: 3}
       propertyPath: m_LocalRotation.w
@@ -227461,8 +227660,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1.21875, y: 0.375, z: 0.2}
-  m_Center: {x: 0.609375, y: 0.1875, z: 0}
+  m_Size: {x: 0.7541294, y: 0.375, z: 0.2}
+  m_Center: {x: 0.3770647, y: 0.1875, z: 0}
 --- !u!1 &2018052709 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 390456860282783827, guid: 5825bee4ecf08ef49b0f0520665b81ff, type: 3}
@@ -227514,8 +227713,8 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 1.7706528, y: -1.6165657}
-      - {x: 1.8285389, y: -1.2123394}
+    - - {x: 1.666934, y: -1.2299786}
+      - {x: 1.6022434, y: -1.2123394}
       - {x: 1.3910923, y: -1.2329273}
       - {x: 1.4730053, y: -0.83816147}
       - {x: 1.0364065, y: -0.79810715}
@@ -227533,8 +227732,8 @@ PolygonCollider2D:
       - {x: 1.1235056, y: -1.3894596}
       - {x: 1.5816011, y: -1.4278622}
       - {x: 1.4422712, y: -1.7685204}
-      - {x: 2.101542, y: -1.9719026}
-      - {x: 2.2442665, y: -1.7561073}
+      - {x: 1.6100183, y: -1.7097566}
+      - {x: 1.6380539, y: -1.2318153}
   m_UseDelaunayMesh: 0
 --- !u!1001 &2018273760
 PrefabInstance:
@@ -227710,7 +227909,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 650519742456631277, guid: ca30848860972b14b908ae7288d18de0, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.023410797
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 650519742456631277, guid: ca30848860972b14b908ae7288d18de0, type: 3}
       propertyPath: m_LocalRotation.w
@@ -228247,6 +228446,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PF Dungeon Props - Door Wood 01
       objectReference: {fileID: 0}
+    - target: {fileID: 6930122694965717508, guid: 3332d33449639b44dbb1148ec417d162, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
     - target: {fileID: 6930122694965717509, guid: 3332d33449639b44dbb1148ec417d162, type: 3}
       propertyPath: m_LocalPosition.x
       value: 55.26992
@@ -228290,13 +228493,34 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2473002302301476797, guid: 3332d33449639b44dbb1148ec417d162, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2042962627}
   m_SourcePrefab: {fileID: 100100000, guid: 3332d33449639b44dbb1148ec417d162, type: 3}
 --- !u!4 &2042962625 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6930122694965717509, guid: 3332d33449639b44dbb1148ec417d162, type: 3}
   m_PrefabInstance: {fileID: 2042962624}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &2042962626 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2473002302301476797, guid: 3332d33449639b44dbb1148ec417d162, type: 3}
+  m_PrefabInstance: {fileID: 2042962624}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2042962627
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2042962626}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 99329c4a7344b574bb7f4c2e96768645, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  destination: {fileID: 1116247404}
 --- !u!1001 &2044891102
 PrefabInstance:
   m_ObjectHideFlags: 0

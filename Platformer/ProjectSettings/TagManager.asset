@@ -15,6 +15,7 @@ TagManager:
   - AttackPoint
   - Spike
   - Door
+  - Teleporter
   layers:
   - Default
   - TransparentFX
