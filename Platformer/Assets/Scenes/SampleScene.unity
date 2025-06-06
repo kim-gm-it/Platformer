@@ -3650,8 +3650,9 @@ MonoBehaviour:
   - {fileID: 7057985071294027104, guid: bcefcd41c225b094a842eddba8932721, type: 3}
   - {fileID: 2738063130446858241, guid: 240c1ea98834bc64ab17472538b474d7, type: 3}
   spawnInterval: 5
-  spawnAreaMin: {x: -10, y: 0}
-  spawnAreaMax: {x: 500, y: 5}
+  groundY: -2.5
+  margin: 0.5
+  targetCamera: {fileID: 1586896108}
 --- !u!4 &1093740218
 Transform:
   m_ObjectHideFlags: 0
