@@ -14,31 +14,29 @@ public class ChunkManager : MonoBehaviour
     [SerializeField] private GameObject[] chunkPrefabs;
     [SerializeField] private GameObject lastChunk;
 
-    private int currentChunkIndex = 0;
-    private int numOfCreatedChunks = 0;
     private List<GameObject> activeChunks = new List<GameObject>();
-    private float chunkWorldWidth;
+    private List<int> randomizedChunkOrder = new List<int>();
+
+    private int numOfCreatedChunks = 0;
+    private float lastChunkX = 0f;
     private bool isLastChunkSpawned = false;
 
     void Start()
     {
-        if (chunkPrefabs.Length == 0)
+        if (chunkPrefabs.Length < 5)
         {
-            Debug.LogError("No chunk prefabs assigned!");
+            Debug.LogError("You must assign exactly 5 chunk prefabs!");
             return;
         }
 
-        chunkWorldWidth = chunkWidth;
+        randomizedChunkOrder = GenerateShuffledIndexList(chunkPrefabs.Length);
 
-        // Generate initial chunks
         for (int i = 0; i < initialChunks; i++)
         {
-            GameObject newChunk = generateChunks(i);
+            GameObject newChunk = GenerateChunk();
             activeChunks.Add(newChunk);
             numOfCreatedChunks++;
         }
-
-        currentChunkIndex = initialChunks;
     }
 
     void Update()
@@ -46,11 +44,10 @@ public class ChunkManager : MonoBehaviour
         if (numOfCreatedChunks < 5)
         {
             float playerPosX = player.position.x;
-            float furthestChunkEndX = (currentChunkIndex - 1 + activeChunks.Count) * chunkWorldWidth;
 
-            if (playerPosX + generateAheadDistance > furthestChunkEndX)
+            if (playerPosX + generateAheadDistance > lastChunkX)
             {
-                GameObject newChunk = generateChunks(currentChunkIndex - 1 + activeChunks.Count);
+                GameObject newChunk = GenerateChunk();
                 activeChunks.Add(newChunk);
                 numOfCreatedChunks++;
             }
@@ -60,27 +57,49 @@ public class ChunkManager : MonoBehaviour
                 GameObject oldestChunk = activeChunks[0];
                 activeChunks.RemoveAt(0);
                 Destroy(oldestChunk);
-                currentChunkIndex++;
             }
         }
         else if (!isLastChunkSpawned)
         {
-            // Instantiate the last chunk
-            GameObject chunk = Instantiate(lastChunk, transform);
-            int chunkIndex = currentChunkIndex - 1 + activeChunks.Count;
-            float xPos = chunkIndex * chunkWorldWidth;
-            chunk.transform.position = new Vector3(xPos, 0, 0);
-            isLastChunkSpawned = true;
+            SpawnLastChunk();
         }
     }
 
-    GameObject generateChunks(int index)
+    GameObject GenerateChunk()
     {
-        int randomChunkIndex = Random.Range(0, chunkPrefabs.Length);
-        GameObject selectedChunk = chunkPrefabs[randomChunkIndex];
+        int chunkPrefabIndex = randomizedChunkOrder[numOfCreatedChunks];
+        GameObject selectedChunk = chunkPrefabs[chunkPrefabIndex];
         GameObject newChunk = Instantiate(selectedChunk, transform);
-        float xPos = index * chunkWorldWidth;
-        newChunk.transform.position = new Vector3(xPos, 0, 0);
+
+        newChunk.transform.position = new Vector3(lastChunkX, 0, 0);
+        lastChunkX += chunkWidth;
+
         return newChunk;
+    }
+
+    void SpawnLastChunk()
+    {
+        GameObject chunk = Instantiate(lastChunk, transform);
+        chunk.transform.position = new Vector3(lastChunkX, 0, 0);
+        isLastChunkSpawned = true;
+    }
+
+    List<int> GenerateShuffledIndexList(int count)
+    {
+        List<int> list = new List<int>();
+        for (int i = 0; i < count; i++)
+        {
+            list.Add(i);
+        }
+
+        for (int i = list.Count - 1; i > 0; i--)
+        {
+            int rand = Random.Range(0, i + 1);
+            int temp = list[i];
+            list[i] = list[rand];
+            list[rand] = temp;
+        }
+
+        return list;
     }
 }
