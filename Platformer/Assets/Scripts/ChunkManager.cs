@@ -47,8 +47,10 @@ public class ChunkManager : MonoBehaviour
             if (playerPosX + generateAheadDistance > lastChunkX)
             {
                 GameObject newChunk = GenerateChunk();
-                activeChunks.Add(newChunk);
-                numOfCreatedChunks++;
+                if(newChunk != null)
+                {
+                    activeChunks.Add(newChunk);
+                }
             }
 
             if (activeChunks.Count > maxChunksVisible)
@@ -66,6 +68,11 @@ public class ChunkManager : MonoBehaviour
 
     GameObject GenerateChunk()
     {
+        if(numOfCreatedChunks >= randomizedChunkOrder.Count)
+        {
+            Debug.Log("all randomized chunks have been used. no more chunks to be generated");
+            return null;
+        }
         int chunkPrefabIndex = randomizedChunkOrder[numOfCreatedChunks];
         GameObject selectedChunk = chunkPrefabs[chunkPrefabIndex];
         GameObject newChunk = Instantiate(selectedChunk, transform);
