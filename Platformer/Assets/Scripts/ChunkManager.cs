@@ -5,9 +5,9 @@ public class ChunkManager : MonoBehaviour
 {
     [Header("Chunk settings")]
     [SerializeField] private float generateAheadDistance = 30f;
-    [SerializeField] private int chunkWidth = 26;
     [SerializeField] private int maxChunksVisible = 2;
     [SerializeField] private int initialChunks = 1;
+    private float chunkWidth;
 
     [Header("References")]
     [SerializeField] private Transform player;
@@ -35,7 +35,6 @@ public class ChunkManager : MonoBehaviour
         {
             GameObject newChunk = GenerateChunk();
             activeChunks.Add(newChunk);
-            numOfCreatedChunks++;
         }
     }
 
@@ -48,8 +47,10 @@ public class ChunkManager : MonoBehaviour
             if (playerPosX + generateAheadDistance > lastChunkX)
             {
                 GameObject newChunk = GenerateChunk();
-                activeChunks.Add(newChunk);
-                numOfCreatedChunks++;
+                if(newChunk != null)
+                {
+                    activeChunks.Add(newChunk);
+                }
             }
 
             if (activeChunks.Count > maxChunksVisible)
@@ -67,13 +68,20 @@ public class ChunkManager : MonoBehaviour
 
     GameObject GenerateChunk()
     {
+        if(numOfCreatedChunks >= randomizedChunkOrder.Count)
+        {
+            Debug.Log("all randomized chunks have been used. no more chunks to be generated");
+            return null;
+        }
         int chunkPrefabIndex = randomizedChunkOrder[numOfCreatedChunks];
         GameObject selectedChunk = chunkPrefabs[chunkPrefabIndex];
         GameObject newChunk = Instantiate(selectedChunk, transform);
 
+        chunkWidth = newChunk.GetComponent<Renderer>().bounds.size.x;
         newChunk.transform.position = new Vector3(lastChunkX, 0, 0);
         lastChunkX += chunkWidth;
 
+        numOfCreatedChunks++;
         return newChunk;
     }
 
