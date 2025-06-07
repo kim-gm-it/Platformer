@@ -4,10 +4,16 @@ public class StartPanel : MonoBehaviour
 {
     public GameObject startPanel1;
     public GameObject settingPanel;
+    public GameObject guidePanel;
     public SettingsPanel settingsPanelScript;
+    public guidePanel guidePanelScript;
     public void OpenSettings()
     {
         settingsPanelScript.OpenSettings(startPanel1);
+    }
+    public void OpenGuide()
+    {
+        guidePanelScript.OpenGuide(startPanel1);
     }
 
     // Called when Start button is clicked
@@ -33,5 +39,11 @@ public class StartPanel : MonoBehaviour
         Time.timeScale = 0;
         startPanel1.SetActive(false);
         settingsPanelScript.OpenSettings(startPanel1);
+    }
+    public void Guide()
+    {
+        Time.timeScale = 0;
+        startPanel1.SetActive(false);
+        guidePanelScript.OpenGuide(startPanel1);
     }
 }

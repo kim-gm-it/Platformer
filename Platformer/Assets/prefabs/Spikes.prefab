@@ -160,6 +160,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player1: {fileID: 0}
   player2: {fileID: 0}
+  damageCooldown: 1
 --- !u!1 &574880022713907647
 GameObject:
   m_ObjectHideFlags: 0
@@ -320,6 +321,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player1: {fileID: 0}
   player2: {fileID: 0}
+  damageCooldown: 1
 --- !u!1 &624322892377061657
 GameObject:
   m_ObjectHideFlags: 0
@@ -480,6 +482,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player1: {fileID: 0}
   player2: {fileID: 0}
+  damageCooldown: 1
 --- !u!1 &700152281153517830
 GameObject:
   m_ObjectHideFlags: 0
@@ -640,6 +643,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player1: {fileID: 0}
   player2: {fileID: 0}
+  damageCooldown: 1
 --- !u!1 &779927282221811817
 GameObject:
   m_ObjectHideFlags: 0
@@ -800,6 +804,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player1: {fileID: 0}
   player2: {fileID: 0}
+  damageCooldown: 1
 --- !u!1 &861981196610233106
 GameObject:
   m_ObjectHideFlags: 0
@@ -960,6 +965,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player1: {fileID: 0}
   player2: {fileID: 0}
+  damageCooldown: 1
 --- !u!1 &958239894640940964
 GameObject:
   m_ObjectHideFlags: 0
@@ -1120,6 +1126,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player1: {fileID: 0}
   player2: {fileID: 0}
+  damageCooldown: 1
 --- !u!1 &1528081547111919954
 GameObject:
   m_ObjectHideFlags: 0
@@ -1280,6 +1287,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player1: {fileID: 0}
   player2: {fileID: 0}
+  damageCooldown: 1
 --- !u!1 &1560012615890588880
 GameObject:
   m_ObjectHideFlags: 0
@@ -1440,6 +1448,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player1: {fileID: 0}
   player2: {fileID: 0}
+  damageCooldown: 1
 --- !u!1 &1873079070606807624
 GameObject:
   m_ObjectHideFlags: 0
@@ -1600,6 +1609,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player1: {fileID: 0}
   player2: {fileID: 0}
+  damageCooldown: 1
 --- !u!1 &2001960359703379715
 GameObject:
   m_ObjectHideFlags: 0
@@ -1760,6 +1770,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player1: {fileID: 0}
   player2: {fileID: 0}
+  damageCooldown: 1
 --- !u!1 &2715858238566718480
 GameObject:
   m_ObjectHideFlags: 0
@@ -1920,6 +1931,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player1: {fileID: 0}
   player2: {fileID: 0}
+  damageCooldown: 1
 --- !u!1 &2820319076918582105
 GameObject:
   m_ObjectHideFlags: 0
@@ -2080,6 +2092,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player1: {fileID: 0}
   player2: {fileID: 0}
+  damageCooldown: 1
 --- !u!1 &3223009672528012129
 GameObject:
   m_ObjectHideFlags: 0
@@ -2240,6 +2253,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player1: {fileID: 0}
   player2: {fileID: 0}
+  damageCooldown: 1
 --- !u!1 &3811822218705419243
 GameObject:
   m_ObjectHideFlags: 0
@@ -2400,6 +2414,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player1: {fileID: 0}
   player2: {fileID: 0}
+  damageCooldown: 1
 --- !u!1 &3910507875114922941
 GameObject:
   m_ObjectHideFlags: 0
@@ -2560,6 +2575,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player1: {fileID: 0}
   player2: {fileID: 0}
+  damageCooldown: 1
 --- !u!1 &3941121400507116681
 GameObject:
   m_ObjectHideFlags: 0
@@ -2720,6 +2736,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player1: {fileID: 0}
   player2: {fileID: 0}
+  damageCooldown: 1
 --- !u!1 &4190484859781650244
 GameObject:
   m_ObjectHideFlags: 0
@@ -2790,7 +2807,7 @@ AudioSource:
   m_GameObject: {fileID: 4190484859781650244}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: -5736554200530938260, guid: 500678bd7ee55334eafc518165b06a7c, type: 2}
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
   m_PlayOnAwake: 1
@@ -2890,7 +2907,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9bc87f38342b6b4aa21e2967b770d03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spikeSound: {fileID: 5443156713240005487}
+  audioSource: {fileID: 0}
   spikeAudioClip: {fileID: 8300000, guid: 4cc228e2ef0021549b9f780bdc1c3e3d, type: 3}
 --- !u!1 &4846323998496443991
 GameObject:
@@ -3052,6 +3069,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player1: {fileID: 0}
   player2: {fileID: 0}
+  damageCooldown: 1
 --- !u!1 &4933385329053634756
 GameObject:
   m_ObjectHideFlags: 0
@@ -3212,6 +3230,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player1: {fileID: 0}
   player2: {fileID: 0}
+  damageCooldown: 1
 --- !u!1 &5414540257443986934
 GameObject:
   m_ObjectHideFlags: 0
@@ -3372,6 +3391,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player1: {fileID: 0}
   player2: {fileID: 0}
+  damageCooldown: 1
 --- !u!1 &5549424874005913686
 GameObject:
   m_ObjectHideFlags: 0
@@ -3532,6 +3552,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player1: {fileID: 0}
   player2: {fileID: 0}
+  damageCooldown: 1
 --- !u!1 &6508191905979120801
 GameObject:
   m_ObjectHideFlags: 0
@@ -3692,6 +3713,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player1: {fileID: 0}
   player2: {fileID: 0}
+  damageCooldown: 1
 --- !u!1 &6788246911121625929
 GameObject:
   m_ObjectHideFlags: 0
@@ -3852,6 +3874,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player1: {fileID: 0}
   player2: {fileID: 0}
+  damageCooldown: 1
 --- !u!1 &7498640204858238275
 GameObject:
   m_ObjectHideFlags: 0
@@ -4012,6 +4035,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player1: {fileID: 0}
   player2: {fileID: 0}
+  damageCooldown: 1
 --- !u!1 &7717608228390436016
 GameObject:
   m_ObjectHideFlags: 0
@@ -4172,6 +4196,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player1: {fileID: 0}
   player2: {fileID: 0}
+  damageCooldown: 1
 --- !u!1 &7979285505875677140
 GameObject:
   m_ObjectHideFlags: 0
@@ -4332,6 +4357,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player1: {fileID: 0}
   player2: {fileID: 0}
+  damageCooldown: 1
 --- !u!1 &8610832477343977890
 GameObject:
   m_ObjectHideFlags: 0
@@ -4492,6 +4518,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player1: {fileID: 0}
   player2: {fileID: 0}
+  damageCooldown: 1
 --- !u!1 &8889191775136181003
 GameObject:
   m_ObjectHideFlags: 0
@@ -4652,3 +4679,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player1: {fileID: 0}
   player2: {fileID: 0}
+  damageCooldown: 1
