@@ -8,7 +8,7 @@ public class BackgroundManager : MonoBehaviour
     public GameObject backgroundPrefab;
     public Transform player;
     public float spawnAheadDis = 30f;
-    public float offset = 20f;
+    public float offset = 15f;
 
     private List<GameObject> activeBGs = new List<GameObject>();
     private float nextBGPosX = 0f; //x position for hte next bg to be spawned

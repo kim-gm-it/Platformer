@@ -74,4 +74,9 @@ public class CollectibleItem : MonoBehaviour
             }
         }
     }
+
+    public int getDamageCapacity()
+    {
+        return damageCapacity;
+    }
 }
