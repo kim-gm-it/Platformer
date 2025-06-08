@@ -345,8 +345,7 @@ MonoBehaviour:
   currentHealth: 0
   deathClip: {fileID: 8300000, guid: d852c5dd919ddac458c233b8947db17b, type: 3}
   attackClip: {fileID: 8300000, guid: 1af02041838ebc9429c039ea2a4c9bf7, type: 3}
-  meleeDamage: 1
-  arrowDamage: 2
+  damageDrop: {fileID: 2738063130446858241, guid: 240c1ea98834bc64ab17472538b474d7, type: 3}
 --- !u!1 &1260892337332066547
 GameObject:
   m_ObjectHideFlags: 0

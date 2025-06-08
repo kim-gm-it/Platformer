@@ -31,7 +31,7 @@ public class EnemyLogic : MonoBehaviour
     [Header("Player's Hit damage")]
     //public int meleeDamage = 1;
     //public int arrowDamage = 2;
-    public CollectibleItem damageDrop;
+    public GameObject damageDrop;
 
 
 
@@ -112,7 +112,7 @@ public class EnemyLogic : MonoBehaviour
 
         if (collision.gameObject.CompareTag("Player Arrow"))
         {
-            int damage = damageDrop.getDamageCapacity();
+            int damage = damageDrop.GetComponent<CollectibleItem>().getDamageCapacity();
             TakeDamage(damage);
             Debug.Log("Hit Enemy with " + damage + " damage ");
         }
