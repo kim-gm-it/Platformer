@@ -16,6 +16,7 @@ TagManager:
   - Spike
   - Door
   - Teleporter
+  - CollectibleSpawn
   layers:
   - Default
   - TransparentFX

@@ -2,7 +2,8 @@ using UnityEngine;
 
 public class CollectibleSpawner : MonoBehaviour
 {
-    public GameObject[] collectibles;             public float spawnInterval = 7f;          
+    public GameObject[] collectibles;             
+    public float spawnInterval = 17f;          
 
     private Vector2 spawnAreaMin;             
     private Vector2 spawnAreaMax;             
