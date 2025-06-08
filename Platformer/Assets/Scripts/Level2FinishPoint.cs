@@ -10,16 +10,14 @@ public class Level2FinishPoint : MonoBehaviour
         {
             if (collision.gameObject.GetComponent<Player1Controller>().hasKey)
             {
-                goNextLevel = true;
-                SceneManagement.Instance.nextLevel();
+                SceneManagement.Instance.loadScene(levelName);
             }
 
         }else if (collision.gameObject.CompareTag("Player2"))
         {
             if (collision.gameObject.GetComponent<Player2Controler>().hasKey)
             {
-                goNextLevel = true;
-                SceneManagement.Instance.nextLevel();
+                SceneManagement.Instance.loadScene(levelName);
             }
         }
     }
