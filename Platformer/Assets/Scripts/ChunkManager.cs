@@ -6,7 +6,7 @@ public class ChunkManager : MonoBehaviour
 {
     [Header("Chunk settings")]
     [SerializeField] private float generateAheadDistance = 30f;
-    [SerializeField] private int maxChunksVisible = 2;
+    //[SerializeField] private int maxChunksVisible = 2;
     [SerializeField] private int initialChunks = 1;
     [SerializeField] private float yoffset = 0;
 
@@ -55,12 +55,12 @@ public class ChunkManager : MonoBehaviour
 
             }
 
-            if (activeChunks.Count > maxChunksVisible)
-            {
-                GameObject oldestChunk = activeChunks[0];
-                activeChunks.RemoveAt(0);
-                Destroy(oldestChunk);
-            }
+            //if (activeChunks.Count > maxChunksVisible)
+            //{
+            //    GameObject oldestChunk = activeChunks[0];
+            //    activeChunks.RemoveAt(0);
+            //    Destroy(oldestChunk);
+            //}
         }
         else if (!isLastChunkSpawned)
         {

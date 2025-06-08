@@ -1,3 +1,4 @@
+using System.Runtime.CompilerServices;
 using Unity.VisualScripting;
 using UnityEditorInternal;
 using UnityEngine;
@@ -25,10 +26,14 @@ public class PatrollingEnemy : MonoBehaviour
     private Transform targetPlayer;
     private bool isChasing = false;
 
+    private bool isAttacking = false;
+
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        Debug.Log("LayerMask value: " + playerLayer.value);
+
         //attackPoint = GameObject.FindGameObjectWithTag("AttackPoint");
         if (attackPoint == null)
         {
@@ -39,7 +44,7 @@ public class PatrollingEnemy : MonoBehaviour
         animator = GetComponent<Animator>();
 
         currentPoint = pointB.transform;
-        animator.SetBool("is Running" , true);
+        animator.SetBool("IsRunning" , true);
 
         players = new GameObject[2];
         players[0] = GameObject.FindGameObjectWithTag("Player1");
@@ -79,17 +84,23 @@ public class PatrollingEnemy : MonoBehaviour
             patrol();
         }
 
+        if(isAttacking)
+        {
+            Attack();
+            isAttacking = false;
+        }
+
     }
 
     public void patrol()
     {
         if (currentPoint == pointB.transform)
         {
-            rb.linearVelocity = new Vector2(speed, 0f);
+            rb.velocity = new Vector2(speed, 0f);
         }
         else
         {
-            rb.linearVelocity = new Vector2(-speed, 0f);
+            rb.velocity = new Vector2(-speed, 0f);
         }
 
         if (Mathf.Abs(transform.position.x - currentPoint.position.x) <= 0.5f && currentPoint == pointB.transform)
@@ -133,17 +144,23 @@ public class PatrollingEnemy : MonoBehaviour
         if(distance <= attackRange && attackTimer <= 0f)
         {
             enemyLogic.OnAttack();
+            isAttacking = true;
             attackTimer = attackCooldown;
         }
     }
 
     public void Attack()
     {
+
         Collider2D[] players = Physics2D.OverlapCircleAll(attackPoint.transform.position, radius, playerLayer);
-        foreach(Collider2D player in players)
+
+        Debug.Log("Detected " + players.Length + " players");
+
+        foreach (Collider2D player in players)
         {
-            Debug.Log("Hit player\n");
-            if(player.tag == "Player2")
+            Debug.Log("Patrol enemy hit player: " + player.name);
+
+            if (player.tag == "Player2")
             {
                 player.GetComponent<Player2Controler>().TakeDamage();
             }
