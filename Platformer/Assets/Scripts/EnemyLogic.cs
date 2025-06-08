@@ -29,8 +29,10 @@ public class EnemyLogic : MonoBehaviour
     public AudioClip attackClip;
 
     [Header("Player's Hit damage")]
-    public int meleeDamage = 1;
-    public int arrowDamage = 2;
+    //public int meleeDamage = 1;
+    //public int arrowDamage = 2;
+    public CollectibleItem damageDrop;
+
 
 
 
@@ -110,7 +112,9 @@ public class EnemyLogic : MonoBehaviour
 
         if (collision.gameObject.CompareTag("Player Arrow"))
         {
-            TakeDamage(arrowDamage);
+            int damage = damageDrop.getDamageCapacity();
+            TakeDamage(damage);
+            Debug.Log("Hit Enemy with " + damage + " damage ");
         }
     }
 

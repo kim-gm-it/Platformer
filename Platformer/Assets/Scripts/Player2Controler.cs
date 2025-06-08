@@ -44,6 +44,7 @@ public class Player2Controler : MonoBehaviour
     public GameObject attackPoint;
     public float radius = 0.9f;
     public LayerMask enemyLayer;
+    public CollectibleItem damageDrop;
 
     private bool isDead = false;
     private int hitCount = 0;
@@ -246,7 +247,8 @@ public class Player2Controler : MonoBehaviour
 
         foreach (Collider2D enemy in enemies)
         {
-            int damage = GameObject.Find("DamageDrop").GetComponent<CollectibleItem>().getDamageCapacity();
+
+            int damage = damageDrop.getDamageCapacity();
             
             enemy.GetComponent<EnemyLogic>().TakeDamage(damage);
 
