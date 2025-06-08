@@ -153008,7 +153008,7 @@ MonoBehaviour:
   enemyLayer:
     serializedVersion: 2
     m_Bits: 8
-  damageDrop: {fileID: 0}
+  damageDrop: {fileID: 2738063130446858241, guid: 240c1ea98834bc64ab17472538b474d7, type: 3}
 --- !u!114 &1556500992
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -158772,7 +158772,7 @@ PolygonCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1656541238}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Density: 1
   m_Material: {fileID: 0}
