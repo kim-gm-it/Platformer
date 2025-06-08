@@ -6,7 +6,7 @@ public class ChunkManager : MonoBehaviour
 {
     [Header("Chunk settings")]
     [SerializeField] private float generateAheadDistance = 30f;
-    [SerializeField] private int maxChunksVisible = 2;
+    // [SerializeField] private int maxChunksVisible = 2;
     [SerializeField] private int initialChunks = 1;
     [SerializeField] private float yoffset = 0;
 
@@ -14,6 +14,12 @@ public class ChunkManager : MonoBehaviour
     [SerializeField] private Transform player;
     [SerializeField] private GameObject[] chunkPrefabs;
     [SerializeField] private GameObject lastChunk;
+    [Header("Collectible Settings")]
+    [SerializeField] private GameObject[] collectiblePrefabs;
+    [SerializeField] private int minCollectiblesPerChunk = 1;
+    [SerializeField] private int maxCollectiblesPerChunk = 3;
+    [SerializeField] private float collectibleYOffset = 1f;
+
 
     private List<GameObject> activeChunks = new List<GameObject>();
     private List<int> randomizedChunkOrder = new List<int>();
@@ -55,12 +61,12 @@ public class ChunkManager : MonoBehaviour
 
             }
 
-            if (activeChunks.Count > maxChunksVisible)
-            {
-                GameObject oldestChunk = activeChunks[0];
-                activeChunks.RemoveAt(0);
-                Destroy(oldestChunk);
-            }
+            // if (activeChunks.Count > maxChunksVisible)
+            // {
+            //     GameObject oldestChunk = activeChunks[0];
+            //     activeChunks.RemoveAt(0);
+            //     Destroy(oldestChunk);
+            // }
         }
         else if (!isLastChunkSpawned)
         {
@@ -95,6 +101,8 @@ public class ChunkManager : MonoBehaviour
         lastChunkX += chunkWidth;
 
         numOfCreatedChunks++;
+        SpawnCollectiblesInChunk(newChunk, startMark.position.x, endMark.position.x);
+
         return newChunk;
     }
 
@@ -113,7 +121,7 @@ public class ChunkManager : MonoBehaviour
 
         float chunkWidth = endMark.position.x - startMark.position.x;
         float offset = startMark.position.x - chunk.transform.position.x;
-        chunk.transform.position = new Vector3(lastChunkX - offset, -8 , 0);
+        chunk.transform.position = new Vector3(lastChunkX - offset, -8, 0);
         lastChunkX += chunkWidth;
         isLastChunkSpawned = true;
     }
@@ -136,4 +144,26 @@ public class ChunkManager : MonoBehaviour
 
         return list;
     }
+    void SpawnCollectiblesInChunk(GameObject chunk, float startX, float endX)
+    {
+        if (collectiblePrefabs.Length == 0) return;
+
+        int collectibleCount = Random.Range(minCollectiblesPerChunk, maxCollectiblesPerChunk + 1);
+
+        for (int i = 0; i < collectibleCount; i++)
+        {
+            float randomX = Random.Range(startX + 1f, endX - 1f); 
+            float y = chunk.transform.position.y + collectibleYOffset;
+
+            Vector3 spawnPosition = new Vector3(randomX, y, 0);
+
+            GameObject collectible = Instantiate(
+                collectiblePrefabs[Random.Range(0, collectiblePrefabs.Length)],
+                spawnPosition,
+                Quaternion.identity,
+                chunk.transform 
+            );
+        }
+    }
+
 }
