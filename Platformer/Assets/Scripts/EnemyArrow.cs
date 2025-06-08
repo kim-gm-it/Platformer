@@ -38,7 +38,7 @@ public class EnemyArrow : MonoBehaviour
         else if (collision.CompareTag("Ground"))
         {
             GetComponent<Collider2D>().enabled = false;
-            Debug.Log("Hit player ground");
+            Debug.Log("Hit ground");
             Destroy(gameObject);
         }
 

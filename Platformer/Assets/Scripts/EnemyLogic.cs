@@ -85,13 +85,14 @@ public class EnemyLogic : MonoBehaviour
     {
         Die();
         healthBar.OnDestroy();
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(1.5f);
         Destroy(gameObject);
     }
     public void Die()
     {
         isDead = true;
         animator.SetBool("IsRunning", false);
+        rb.velocity = Vector2.zero;
         animator.SetTrigger("Die");
         PlayDeathSound();
     }

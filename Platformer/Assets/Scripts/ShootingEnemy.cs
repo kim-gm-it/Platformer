@@ -28,11 +28,10 @@ public class ShootingEnemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        updateTarget();
+
         if (targetPlayer == null)
-        {
-            findTarget();
             return;
-        }
 
        
         shootingTimer += Time.deltaTime;
@@ -45,6 +44,7 @@ public class ShootingEnemy : MonoBehaviour
             shootingTimer = 0;  
         }
 
+        //flip based on tartget position
         if (targetPlayer != null)
         {
             Vector3 scale = transform.localScale;
@@ -57,21 +57,52 @@ public class ShootingEnemy : MonoBehaviour
                 scale.x = -Mathf.Abs(scale.x);
             transform.localScale = scale;
         }
+
+
     }
 
-    public void findTarget()
+
+    public void updateTarget()
     {
-        players[0] = GameObject.FindGameObjectWithTag("Player1");
-        players[1] = GameObject.FindGameObjectWithTag("Player2");
-        for(int i=0; i<players.Length ; i++)
+        if(players[0] == null)
         {
-            if(Mathf.Abs(transform.position.x - players[i].transform.position.x) <= detectionRange)
+            players[0] = GameObject.FindGameObjectWithTag("Player1");
+        }
+        if (players[1] == null)
+        {
+            players[1] = GameObject.FindGameObjectWithTag("Player2");
+        }
+
+        float closestDistance = Mathf.Infinity;
+        Transform closestPlayer = null;
+
+        foreach(GameObject player in players)
+        {
+            if(player == null) continue;
+
+            float distance = Mathf.Abs(transform.position.x - player.transform.position.x);
+            if (distance <= detectionRange && distance < closestDistance) { }
             {
-                targetPlayer = players[i].transform;
-                break;
+                closestDistance = distance;
+                closestPlayer = player.transform;
             }
         }
+
+        targetPlayer = closestPlayer;
     }
+    //public void findTarget()
+    //{
+    //    players[0] = GameObject.FindGameObjectWithTag("Player1");
+    //    players[1] = GameObject.FindGameObjectWithTag("Player2");
+    //    for(int i=0; i<players.Length ; i++)
+    //    {
+    //        if(Mathf.Abs(transform.position.x - players[i].transform.position.x) <= detectionRange)
+    //        {
+    //            targetPlayer = players[i].transform;
+    //            break;
+    //        }
+    //    }
+    //}
 
     public void Shoot()
     {

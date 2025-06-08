@@ -7,6 +7,7 @@ public class ChunkManager : MonoBehaviour
     [Header("Chunk settings")]
     [SerializeField] private float generateAheadDistance = 30f;
     // [SerializeField] private int maxChunksVisible = 2;
+    //[SerializeField] private int maxChunksVisible = 2;
     [SerializeField] private int initialChunks = 1;
     [SerializeField] private float yoffset = 0;
 
