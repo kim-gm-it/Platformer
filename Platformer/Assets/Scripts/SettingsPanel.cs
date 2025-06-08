@@ -13,15 +13,20 @@ public class SettingsPanel : MonoBehaviour
     public Slider musicSlider;
     public Slider sfxSlider;
     public Toggle musicMuteToggle;
-    public Toggle sfxMuteToggle;   
+    public Toggle sfxMuteToggle;
+
+    private bool isMusicMuted = false;
+    private bool isSFXMuted = false;
 
     private void Start()
     {
-        musicSlider.value = 1f;
-        sfxSlider.value = 1f;
-
         SetMusicVolume(musicSlider.value);
         SetSFXVolume(sfxSlider.value);
+
+        musicSlider.onValueChanged.AddListener(SetMusicVolume);
+        sfxSlider.onValueChanged.AddListener(SetSFXVolume);
+        musicMuteToggle.onValueChanged.AddListener(ToggleMuteMusic);
+        sfxMuteToggle.onValueChanged.AddListener(ToggleMuteSFX);
     }
 
     public void OpenSettings(GameObject fromPanel)
@@ -42,47 +47,43 @@ public class SettingsPanel : MonoBehaviour
 
     public void SetMusicVolume(float volume)
     {
-        float volumeM = Mathf.Clamp(musicSlider.value, 0.0001f, 1f);
+        if (isMusicMuted) return;
+        float volumeM = Mathf.Clamp(volume, 0.0001f, 1f);
         audioMixer.SetFloat("MusicVolume", Mathf.Log10(volumeM) * 20);
     }
 
     public void SetSFXVolume(float volume)
     {
-        float volumeS = Mathf.Clamp(sfxSlider.value, 0.0001f, 1f);
+        if (isSFXMuted) return;
+        float volumeS = Mathf.Clamp(volume, 0.0001f, 1f);
         audioMixer.SetFloat("SFXVolume", Mathf.Log10(volumeS) * 20);
     }
 
     public void ToggleMuteMusic(bool isMuted)
     {
+        isMusicMuted = isMuted;
+
         if (isMuted)
         {
             audioMixer.SetFloat("MusicVolume", -80f);
-            Debug.Log("Music Muted");
         }
         else
         {
-            float volume = Mathf.Clamp(musicSlider.value, 0.0001f, 1f);
-            audioMixer.SetFloat("MusicVolume", Mathf.Log10(volume) * 20);
-            Debug.Log("Music Unmuted");
+            SetMusicVolume(musicSlider.value);
         }
-        audioMixer.GetFloat("MusicVolume", out float currentVolume);
-        Debug.Log($"Current Music Volume: {currentVolume}");
     }
 
     public void ToggleMuteSFX(bool isMuted)
     {
+        isSFXMuted = isMuted;
+
         if (isMuted)
         {
             audioMixer.SetFloat("SFXVolume", -80f);
-            Debug.Log("SFX Muted");
         }
         else
         {
-            float volume = Mathf.Clamp(sfxSlider.value, 0.0001f, 1f);
-            audioMixer.SetFloat("SFXVolume", Mathf.Log10(volume) * 20);
-            Debug.Log("SFX Unmuted");
+            SetSFXVolume(sfxSlider.value);
         }
-        audioMixer.GetFloat("SFXVolume", out float currentVolume); 
-        Debug.Log($"Current SFX Volume: {currentVolume}"); 
     }
 }
