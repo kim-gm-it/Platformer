@@ -39,6 +39,8 @@ public class Player1Controller : MonoBehaviour
     public GameObject losePanel;
     private bool isDead = false;
 
+   
+
     public void OnJump(InputAction.CallbackContext context)
     {
         if (context.performed)
@@ -210,6 +212,7 @@ public class Player1Controller : MonoBehaviour
             GetComponent<Player1Controller>().PlayAttackSound();
         }
     }
+
     public void ShootArrow()
     {
         float direction = transform.localScale.x > 0 ? 1f : -1f;

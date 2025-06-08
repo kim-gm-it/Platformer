@@ -44,6 +44,7 @@ public class Player2Controler : MonoBehaviour
     public GameObject attackPoint;
     public float radius = 0.9f;
     public LayerMask enemyLayer;
+    public GameObject damageDrop;
 
     private bool isDead = false;
     private int hitCount = 0;
@@ -246,11 +247,26 @@ public class Player2Controler : MonoBehaviour
 
         foreach (Collider2D enemy in enemies)
         {
-            Debug.Log("Hit Enemy");
-            enemy.GetComponent<EnemyLogic>().TakeDamage(enemy.GetComponent<EnemyLogic>().meleeDamage);
+
+            int damage = damageDrop.GetComponent<CollectibleItem>().getDamageCapacity();
+            
+            enemy.GetComponent<EnemyLogic>().TakeDamage(damage);
+
+            Debug.Log("Hit Enemy with " + damage + " damage ");
         }
 
     }
+    //public void Attack()
+    //{
+    //    Collider2D[] enemies = Physics2D.OverlapCircleAll(attackPoint.transform.position, radius, enemyLayer);
+
+    //    foreach (Collider2D enemy in enemies)
+    //    {
+    //        Debug.Log("Hit Enemy");
+    //        enemy.GetComponent<EnemyLogic>().TakeDamage(enemy.GetComponent<EnemyLogic>().meleeDamage);
+    //    }
+
+    //}
     public void OnAttack(InputAction.CallbackContext context)
     {
         if (context.performed)

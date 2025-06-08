@@ -86,10 +86,10 @@ public class ChunkManager : MonoBehaviour
         float chunkWidth = endMark.position.x - startMark.position.x;
         float offset = startMark.position.x - newChunk.transform.position.x;
 
-        //if(chunkPrefabIndex == 0 || chunkPrefabIndex == 4)
-        //{
-        //    yoffset = -8f;
-        //}
+        if (chunkPrefabIndex == 0 || chunkPrefabIndex == 4)
+        {
+            yoffset = -8f;
+        }
         newChunk.transform.position = new Vector3(lastChunkX - offset, yoffset, 0);
 
         lastChunkX += chunkWidth;
@@ -113,7 +113,7 @@ public class ChunkManager : MonoBehaviour
 
         float chunkWidth = endMark.position.x - startMark.position.x;
         float offset = startMark.position.x - chunk.transform.position.x;
-        chunk.transform.position = new Vector3(lastChunkX - offset, 0, 0);
+        chunk.transform.position = new Vector3(lastChunkX - offset, -8 , 0);
         lastChunkX += chunkWidth;
         isLastChunkSpawned = true;
     }
