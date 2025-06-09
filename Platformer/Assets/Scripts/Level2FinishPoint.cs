@@ -3,7 +3,7 @@ using UnityEngine;
 public class Level2FinishPoint : MonoBehaviour
 {
     public bool goNextLevel;
-    public string levelName;
+    public string levelName="level3";
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Player1"))

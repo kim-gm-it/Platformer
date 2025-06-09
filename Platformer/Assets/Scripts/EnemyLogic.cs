@@ -92,7 +92,7 @@ public class EnemyLogic : MonoBehaviour
     {
         isDead = true;
         animator.SetBool("IsRunning", false);
-        rb.velocity = Vector2.zero;
+        rb.linearVelocity = Vector2.zero;
         animator.SetTrigger("Die");
         PlayDeathSound();
     }
