@@ -31,7 +31,8 @@ public class GameStateManager : MonoBehaviour
     }
     public void MainMenu()
     {
-        Time.timeScale = 0;
+        GameSessionData.cameFromGameOver = true;
+        Time.timeScale = 1;
         gameOverPanel.SetActive(false);
         startPanel.SetActive(true);
     }

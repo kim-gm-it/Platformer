@@ -128,7 +128,7 @@ public class Player1Controller : MonoBehaviour
 {
     if (isDead) return;
 
-    if (collision.gameObject.tag == "Enemy Arrow")
+    if (collision.gameObject.tag == "Enemy Arrow" || collision.gameObject.tag=="Patrol Enemy" || collision.gameObject.tag == "Spike")
     {
         PlayHitSound();
 

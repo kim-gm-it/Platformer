@@ -1,5 +1,5 @@
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 public class StartPanel : MonoBehaviour
 {
     public GameObject startPanel1;
@@ -24,8 +24,17 @@ public class StartPanel : MonoBehaviour
     }
     public void StartTheGame()
     {
-        Time.timeScale = 1;
-        startPanel1.SetActive(false);
+        if (GameSessionData.cameFromGameOver)
+        {
+            GameSessionData.cameFromGameOver = false; 
+            Time.timeScale = 1;
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name); 
+        }
+        else
+        {
+            Time.timeScale = 1;
+            startPanel1.SetActive(false);
+        }
     }
 
     // Called when Quit button is clicked
