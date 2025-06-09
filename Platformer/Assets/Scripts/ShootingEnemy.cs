@@ -7,7 +7,7 @@ public class ShootingEnemy : MonoBehaviour
 
     public GameObject bulletPrefab;
     public float detectionRange = 10f;
-    public float shootingInterval = 1.5f;
+    public float shootingInterval = 2f;
     public float shootingSpeed  =15f;
     public float shootingTimer;
     public AudioClip shootingSound;

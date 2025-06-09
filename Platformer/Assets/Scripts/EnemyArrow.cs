@@ -48,5 +48,11 @@ public class EnemyArrow : MonoBehaviour
             Debug.Log("Hit player arrow");
             Destroy(gameObject);
         }
+        else if (collision.CompareTag("Door"))
+        {
+            GetComponent<Collider2D>().enabled = false;
+            Debug.Log("Hit Door");
+            Destroy(gameObject);
+        }
     }
 }
