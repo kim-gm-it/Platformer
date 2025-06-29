@@ -26,7 +26,6 @@ public class LevelOneFinishPoint : MonoBehaviour
         {
             hasTriggered = true;
 
-            // پخش صدا
             if (finishSound != null)
             {
                 audioSource.PlayOneShot(finishSound);
