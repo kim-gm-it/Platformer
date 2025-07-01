@@ -130,7 +130,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -144,7 +144,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 16
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -168,7 +168,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -909,7 +909,39 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Cobra Sprite Sheet_0: -7241491235832059615
+      Cobra Sprite Sheet_1: -3059449010540670991
+      Cobra Sprite Sheet_10: -1809472078534564732
+      Cobra Sprite Sheet_11: 1524397692789486013
+      Cobra Sprite Sheet_12: -1507090937565126870
+      Cobra Sprite Sheet_13: 629578302836883936
+      Cobra Sprite Sheet_14: 9055111673483966395
+      Cobra Sprite Sheet_15: 9015327294819165004
+      Cobra Sprite Sheet_16: -3419845654589780837
+      Cobra Sprite Sheet_17: -8106545723590401609
+      Cobra Sprite Sheet_18: -2937359382781451636
+      Cobra Sprite Sheet_19: 5169675648711968761
+      Cobra Sprite Sheet_2: 7360234862221236966
+      Cobra Sprite Sheet_20: -8483015094633388456
+      Cobra Sprite Sheet_21: 1997684269116402581
+      Cobra Sprite Sheet_22: -6985231361269325872
+      Cobra Sprite Sheet_23: -4221734642418573635
+      Cobra Sprite Sheet_24: -1638846476315402472
+      Cobra Sprite Sheet_25: 5157146637724788024
+      Cobra Sprite Sheet_26: -117874924085899122
+      Cobra Sprite Sheet_27: 745212730457791166
+      Cobra Sprite Sheet_28: 1961931978423783438
+      Cobra Sprite Sheet_29: -4236664973555088571
+      Cobra Sprite Sheet_3: 8875149056722201993
+      Cobra Sprite Sheet_30: 5340975923970819235
+      Cobra Sprite Sheet_31: 2388881986590544176
+      Cobra Sprite Sheet_4: 8280168119923062025
+      Cobra Sprite Sheet_5: -6605533314232079838
+      Cobra Sprite Sheet_6: -3574934693371966615
+      Cobra Sprite Sheet_7: 8114708351250229489
+      Cobra Sprite Sheet_8: -4428871798610602396
+      Cobra Sprite Sheet_9: 2888012950625433993
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
