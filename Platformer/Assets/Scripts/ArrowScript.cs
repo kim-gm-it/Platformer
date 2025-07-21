@@ -12,7 +12,7 @@ public class ArrowScript : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Patrol Enemy") ||collision.CompareTag("Shooting Enemy") )
+        if (collision.CompareTag("Patrol Enemy") ||collision.CompareTag("Shooting Enemy") || collision.CompareTag("Boss") )
         {
             if (hitSound != null)
             {
