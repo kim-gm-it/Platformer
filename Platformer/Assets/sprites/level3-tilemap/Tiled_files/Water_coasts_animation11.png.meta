@@ -309,7 +309,15 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Water_coasts_animation11_0: -8571228371520864111
+      Water_coasts_animation11_1: -6736471943992269393
+      Water_coasts_animation11_2: 5143687325119626855
+      Water_coasts_animation11_3: 4127153142540593830
+      Water_coasts_animation11_4: 6292659061671365163
+      Water_coasts_animation11_5: -3347629639763535188
+      Water_coasts_animation11_6: -3653300447221345215
+      Water_coasts_animation11_7: 6784262491546935642
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
