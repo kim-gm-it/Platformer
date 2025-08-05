@@ -573,6 +573,8 @@ MonoBehaviour:
   isFlipped: 0
   maxHealth: 100
   healthBar: {fileID: 111517065}
+  spawnInterval: 10
+  spawnManager: {fileID: 1389784936}
 --- !u!114 &111517065 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6796769470669019978, guid: 17c813f74ae123741868d75ec2eab560, type: 3}
@@ -584,6 +586,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59222c4cfa625e84a92c41f8a3f69a5e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!4 &111517066 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7190129400906788279, guid: 17c813f74ae123741868d75ec2eab560, type: 3}
+  m_PrefabInstance: {fileID: 111517062}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &111517070
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17217,7 +17224,7 @@ MonoBehaviour:
   maxEnemies: 6
   minEnemies: 2
   spawnRange: 5
-  bossTransform: {fileID: 0}
+  bossTransform: {fileID: 111517066}
 --- !u!4 &1389784937
 Transform:
   m_ObjectHideFlags: 0

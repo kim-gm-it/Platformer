@@ -15,9 +15,18 @@ public class Boss : MonoBehaviour
     private bool isDead = false;
     public EnemyHealthBar healthBar;
 
+    [Header("spawn variables")]
+    public float spawnInterval = 10f;
+    public SpawnManager spawnManager;
+    private float spawnTimer;
+    
 
     void Start()
     {
+        //initialize spawn timer
+        spawnTimer = spawnInterval;
+
+
         players = new Transform[]
         {
             GameObject.FindGameObjectWithTag("Player1")?.transform,
@@ -27,6 +36,19 @@ public class Boss : MonoBehaviour
         currentHealth = maxHealth;
         animator = GetComponent<Animator>();
         healthBar.UpdateHealthBar(currentHealth, maxHealth);
+    }
+
+    private void Update()
+    {
+        if(isDead) return;
+
+        spawnTimer -= Time.deltaTime;
+
+        if (spawnTimer <= 0)
+        {
+            spawnManager.SpawnEenmy();
+            spawnTimer = spawnInterval;
+        }
     }
     void Die()
     {
@@ -119,4 +141,5 @@ public class Boss : MonoBehaviour
     {
         return isDead;
     }
+
 }
