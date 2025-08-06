@@ -118,20 +118,5 @@ public class EnemyLogic : MonoBehaviour
             Debug.Log("Hit Enemy with " + damage + " damage ");
         }
     }
-
-
-    //CALLING TAKE DAMAGE METHOD HERE !!!!
-
-
-    //private void OnCollisionEnter2D(Collision2D collision)
-    //{
-    //    Debug.Log("Collided with: " + collision.gameObject.name);
-
-    //    if (collision.gameObject.CompareTag("Player2"))
-    //    {
-
-    //        TakeDamage(meleeDamage);
-    //    }
-    //}
     
 }
