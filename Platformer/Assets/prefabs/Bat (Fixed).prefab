@@ -13,9 +13,9 @@ GameObject:
   - component: {fileID: 3978995076329285773}
   - component: {fileID: 1675619754915111686}
   - component: {fileID: 8669138489143119554}
-  - component: {fileID: 5675108979393308183}
   - component: {fileID: 4010866412451392437}
   - component: {fileID: 7650988203152273529}
+  - component: {fileID: 5884879237892052670}
   m_Layer: 3
   m_Name: Bat (Fixed)
   m_TagString: Patrol Enemy
@@ -33,7 +33,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -3.2604, y: 0.57501, z: -0.082996696}
-  m_LocalScale: {x: 1.2, y: 1.2, z: 1.2}
+  m_LocalScale: {x: 9, y: 9, z: 9}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 2731673661714011457}
@@ -125,14 +125,14 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3270909665904352331}
-  m_BodyType: 1
+  m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 3
   m_LinearDamping: 0
   m_AngularDamping: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 5
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -143,7 +143,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!60 &8669138489143119554
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -198,23 +198,6 @@ PolygonCollider2D:
       - {x: 0.25, y: 0.375}
       - {x: 0.25, y: 0.9375}
   m_UseDelaunayMesh: 0
---- !u!114 &5675108979393308183
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3270909665904352331}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 48b1afa132e12114b9fee9e6b4e8b10f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxHealth: 4
-  currentHealth: 0
-  deathClip: {fileID: 0}
-  attackClip: {fileID: 0}
-  damageDrop: {fileID: 0}
 --- !u!82 &4010866412451392437
 AudioSource:
   m_ObjectHideFlags: 0
@@ -328,6 +311,23 @@ MonoBehaviour:
   attackRange: 2
   radius: 0.5
   speed: 3
+--- !u!114 &5884879237892052670
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3270909665904352331}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef6f09dcad333f74ca62296c5d8ec56b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 2
+  currentHealth: 0
+  deathClip: {fileID: 8300000, guid: 18adf746211ba204389a772f81e7ebc1, type: 3}
+  attackClip: {fileID: 8300000, guid: 52141ea9900ed8b45885ef62067d1dc7, type: 3}
+  damageDrop: {fileID: 0}
 --- !u!1 &6872930436480296593
 GameObject:
   m_ObjectHideFlags: 0
@@ -375,13 +375,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: EnemyHealthBar
       objectReference: {fileID: 0}
-    - target: {fileID: 2807019550993991856, guid: e381f4b41434eb44bb6a08970ba66ffa, type: 3}
-      propertyPath: m_AnchorMax.x
+    - target: {fileID: 2172827410896407841, guid: e381f4b41434eb44bb6a08970ba66ffa, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2807019550993991856, guid: e381f4b41434eb44bb6a08970ba66ffa, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2807019550993991856, guid: e381f4b41434eb44bb6a08970ba66ffa, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7620479078602170391, guid: e381f4b41434eb44bb6a08970ba66ffa, type: 3}
       propertyPath: m_Pivot.x
