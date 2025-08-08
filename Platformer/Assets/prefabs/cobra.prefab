@@ -45,8 +45,8 @@ GameObject:
   - component: {fileID: 561592513317789773}
   - component: {fileID: 2492152064115669147}
   - component: {fileID: 425774454551305862}
-  - component: {fileID: 8579082262345748972}
   - component: {fileID: 2225578690499704108}
+  - component: {fileID: 3991563424487653027}
   m_Layer: 3
   m_Name: cobra
   m_TagString: Patrol Enemy
@@ -64,7 +64,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 3.689, y: -4.397, z: 0}
-  m_LocalScale: {x: 0.8, y: 1, z: 1}
+  m_LocalScale: {x: 0.9, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 453273781167493798}
@@ -114,7 +114,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 10
   m_Sprite: {fileID: -7241491235832059615, guid: 401e2accd3ceea24db22c7c0d3c2e4e4, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -160,10 +160,10 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 3
   m_LinearDamping: 0
   m_AngularDamping: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 5
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -174,7 +174,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!82 &2492152064115669147
 AudioSource:
   m_ObjectHideFlags: 0
@@ -325,23 +325,6 @@ PolygonCollider2D:
       - {x: 0.5625, y: 0.375}
       - {x: 0.4375, y: 0.5}
   m_UseDelaunayMesh: 0
---- !u!114 &8579082262345748972
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6782348354911883027}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 48b1afa132e12114b9fee9e6b4e8b10f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxHealth: 4
-  currentHealth: 0
-  deathClip: {fileID: 0}
-  attackClip: {fileID: 0}
-  damageDrop: {fileID: 0}
 --- !u!114 &2225578690499704108
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -354,12 +337,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97216d31ca8b8aa4481f99a99d77b278, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  detectionRange: 7
   attackCooldown: 2
+  attackRange: 2
   radius: 0.5
-  playerLayer:
-    serializedVersion: 2
-    m_Bits: 64
+  speed: 3
+--- !u!114 &3991563424487653027
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6782348354911883027}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef6f09dcad333f74ca62296c5d8ec56b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 2
+  currentHealth: 0
+  deathClip: {fileID: 8300000, guid: 18adf746211ba204389a772f81e7ebc1, type: 3}
+  attackClip: {fileID: 8300000, guid: f4b9ae65b780c8b4eae38ea998020ce0, type: 3}
+  damageDrop: {fileID: 0}
 --- !u!1001 &8037583118554395313
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -376,13 +374,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: EnemyHealthBar
       objectReference: {fileID: 0}
-    - target: {fileID: 2807019550993991856, guid: e381f4b41434eb44bb6a08970ba66ffa, type: 3}
-      propertyPath: m_AnchorMax.x
+    - target: {fileID: 2172827410896407841, guid: e381f4b41434eb44bb6a08970ba66ffa, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2807019550993991856, guid: e381f4b41434eb44bb6a08970ba66ffa, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2807019550993991856, guid: e381f4b41434eb44bb6a08970ba66ffa, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7620479078602170391, guid: e381f4b41434eb44bb6a08970ba66ffa, type: 3}
       propertyPath: m_Pivot.x

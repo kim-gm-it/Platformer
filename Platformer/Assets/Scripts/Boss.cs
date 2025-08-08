@@ -40,6 +40,8 @@ public class Boss : MonoBehaviour
 
     private void Update()
     {
+        Debug.Log(currentHealth);
+
         if(isDead) return;
 
         spawnTimer -= Time.deltaTime;

@@ -4,7 +4,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class EnemyLogic : MonoBehaviour
+public class EnemyLogicLevel3 : MonoBehaviour
 {
     [Header("Enemy Refs")]
     private Renderer renderer;
@@ -17,10 +17,10 @@ public class EnemyLogic : MonoBehaviour
     Player1Controller player1;
 
     [Header("Health Setting")]
-    public int maxHealth = 4;
+    public int maxHealth = 2;
     public int currentHealth;
     EnemyHealthBar healthBar;
-    
+
     [Header("Death Effects")]
     public AudioClip deathClip;
 
@@ -28,9 +28,6 @@ public class EnemyLogic : MonoBehaviour
     [Header("Attack Effects")]
     public AudioClip attackClip;
 
-    [Header("Player's Hit damage")]
-    //public int meleeDamage = 1;
-    //public int arrowDamage = 2;
     public GameObject damageDrop = null;
 
 
@@ -39,14 +36,14 @@ public class EnemyLogic : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+
         healthBar = GetComponentInChildren<EnemyHealthBar>();
         currentHealth = maxHealth;
         if (healthBar != null)
         {
             healthBar.UpdateHealthBar(currentHealth, maxHealth);
         }
-        
+
         renderer = GetComponent<Renderer>();
         animator = GetComponent<Animator>();
         collider = GetComponent<Collider2D>();
@@ -59,7 +56,7 @@ public class EnemyLogic : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
-        if(isDead) return;
+        if (isDead) return;
         Debug.Log("Enemy is taking damage");
         animator.SetBool("IsRunning", false);
         animator.SetTrigger("IsTakingHit");
@@ -69,12 +66,12 @@ public class EnemyLogic : MonoBehaviour
         {
             StartCoroutine(DeathSequence());
         }
-         
+
     }
 
     public void OnAttack()
     {
-        if(isDead) return;
+        if (isDead) return;
         Debug.Log("Enemy is attacking");
         animator.SetBool("IsRunning", false);
         animator.SetTrigger("IsAttacking");
@@ -118,5 +115,5 @@ public class EnemyLogic : MonoBehaviour
             Debug.Log("Hit Enemy with " + damage + " damage ");
         }
     }
-    
+
 }

@@ -96,6 +96,8 @@ public class MinionsMovement : MonoBehaviour
 
     private void ChasePlayer()
     {
+        if (target == null) return;
+
         Vector2 direction = (target.position - transform.position).normalized;
 
         rb.linearVelocity = direction * speed;
@@ -153,7 +155,7 @@ public class MinionsMovement : MonoBehaviour
     private void flip()
     {
         Vector3 localScale = transform.localScale;
-        localScale *= -1;
+        localScale.x *= -1;
         transform.localScale = localScale;
     }
 
