@@ -16,7 +16,7 @@ public class MinionsMovement : MonoBehaviour
     private GameObject attackPoint;
     private float attackTimer;
     private GameObject[] players;
-    private EnemyLogic enemyLogic;
+    private EnemyLogicLevel3 enemyLogic;
     private Transform target;
     private bool isChasing = false;
     private bool isAttacking = false;
@@ -39,7 +39,7 @@ public class MinionsMovement : MonoBehaviour
             Debug.Log("Attack point not assigned");
         }
 
-        enemyLogic = GetComponent<EnemyLogic>();
+        enemyLogic = GetComponent<EnemyLogicLevel3>();
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         animator.SetBool("IsRunning", true);

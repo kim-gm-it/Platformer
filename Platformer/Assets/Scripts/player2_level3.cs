@@ -55,16 +55,17 @@ public class player2_level3 : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
         initialScale = transform.localScale;
     }
-
+    void FixedUpdate()
+    {
+        rb.linearVelocity = movementInput * moveSpeed;
+    }
     void Update()
     {
-        Vector2 movement = movementInput * (moveSpeed * Time.deltaTime);
-        transform.Translate(movement);
-
-        animator.SetBool("Run", movement.magnitude > 0f);
+    
+        animator.SetBool("Run", movementInput.magnitude > 0f);
 
         if (movementInput.x > 0.01f)
-            transform.localScale = new Vector3(Mathf.Abs(initialScale.x), initialScale.y, initialScale.z);
+        transform.localScale = new Vector3(Mathf.Abs(initialScale.x), initialScale.y, initialScale.z);
         else if (movementInput.x < -0.01f)
             transform.localScale = new Vector3(-Mathf.Abs(initialScale.x), initialScale.y, initialScale.z);
     }
@@ -73,7 +74,7 @@ public class player2_level3 : MonoBehaviour
     {
         if (isDead) return;
 
-        if (collision.CompareTag("Boss"))
+        if (collision.CompareTag("Boss") || collision.CompareTag("Patrol Enemy"))
         {
             TakeDamage();
             if (collision.CompareTag("Enemy Arrow"))
@@ -112,6 +113,7 @@ public class player2_level3 : MonoBehaviour
                 isDead = true;
                 PlayDeathSound();
                 StartCoroutine(ShowLosePanelAfterDelay(1.9f));
+                FindObjectOfType<GameStateManagerlevel3>().PlayerDied(1);
             }
         }
         else

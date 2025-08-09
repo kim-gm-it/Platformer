@@ -8,9 +8,14 @@ public class BossWeapon : MonoBehaviour
     
     public float attackRange = 1f;
     public LayerMask attackMask;
-
+    public Boss boss;
     public void Attack()
     {
+        if (boss != null)
+        {
+            boss.PlayAttackSound();
+        }
+        
         Vector3 currentAttackOffset = attackOffset;
         currentAttackOffset.x *= transform.localScale.x; 
 

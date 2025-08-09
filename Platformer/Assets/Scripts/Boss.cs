@@ -1,48 +1,67 @@
 using UnityEngine;
+using System.Collections;
 
 public class Boss : MonoBehaviour
 {
+    [Header("Boss Targets")]
     public Transform[] players;
     public int currentPlayerIndex = 0;
     public float switchTimer = 0f;
     public float switchTargetTime = 10f;
 
+    [Header("Boss Stats")]
     public bool isFlipped = false;
     public int maxHealth = 100;
     private int currentHealth;
-
-    private Animator animator;
     private bool isDead = false;
+
+    [Header("References")]
+    private Animator animator;
     public EnemyHealthBar healthBar;
 
-    [Header("spawn variables")]
+    [Header("Spawn Variables")]
     public float spawnInterval = 10f;
     public SpawnManager spawnManager;
     private float spawnTimer;
-    
+
+    [Header("Sound Effects")]
+    public AudioSource audioSource;
+    public AudioClip breathingSFX;
+    public AudioClip attackSFX;
+    public AudioClip hurtSFX;
+    public AudioClip deathSFX;
+    [Header("UI Panels")]
+    public GameObject winPanel;
+    private GameStateManagerlevel3 gameStateManager;
+
 
     void Start()
     {
-        //initialize spawn timer
         spawnTimer = spawnInterval;
-
+        gameStateManager = FindFirstObjectByType<GameStateManagerlevel3>();
 
         players = new Transform[]
         {
             GameObject.FindGameObjectWithTag("Player1")?.transform,
             GameObject.FindGameObjectWithTag("Player2")?.transform
         };
+
         switchTimer = switchTargetTime;
         currentHealth = maxHealth;
         animator = GetComponent<Animator>();
         healthBar.UpdateHealthBar(currentHealth, maxHealth);
+
+        if (breathingSFX != null)
+        {
+            audioSource.clip = breathingSFX;
+            audioSource.loop = true;
+            audioSource.Play();
+        }
     }
 
     private void Update()
     {
-        Debug.Log(currentHealth);
-
-        if(isDead) return;
+        if (isDead) return;
 
         spawnTimer -= Time.deltaTime;
 
@@ -52,49 +71,51 @@ public class Boss : MonoBehaviour
             spawnTimer = spawnInterval;
         }
     }
+
     void Die()
     {
+        if (isDead) return;
+
         isDead = true;
         animator.SetTrigger("Die");
+
+        if (deathSFX != null) audioSource.PlayOneShot(deathSFX);
 
         GetComponent<Collider2D>().enabled = false;
         GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
 
-        Destroy(gameObject, 3f);
+        StartCoroutine(HandleVictorySequence(1.5f));
     }
-
     void OnCollisionEnter2D(Collision2D collision)
     {
-        if (isDead)
-            return;
+        if (isDead) return;
 
         if (collision.gameObject.CompareTag("Player2") || collision.gameObject.CompareTag("Player Arrow"))
         {
-            int damage = 10; 
-            TakeDamage(damage);
+            TakeDamage(4);
         }
     }
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if (isDead)
-            return;
+        if (isDead) return;
 
         if (collision.CompareTag("Player2") || collision.CompareTag("Player Arrow"))
         {
-            int damage = 10; 
-            TakeDamage(damage);
+            TakeDamage(4);
         }
     }
 
     public void TakeDamage(int damage)
     {
-        if (isDead)
-            return;
+        if (isDead) return;
 
         currentHealth -= damage;
 
         animator.SetTrigger("Hurt");
+
+        if (hurtSFX != null) audioSource.PlayOneShot(hurtSFX);
+
         healthBar.UpdateHealthBar(currentHealth, maxHealth);
 
         if (currentHealth <= 0)
@@ -103,6 +124,10 @@ public class Boss : MonoBehaviour
         }
     }
 
+    public void PlayAttackSound()
+    {
+        if (attackSFX != null) audioSource.PlayOneShot(attackSFX);
+    }
 
     public Transform GetCurrentTarget()
     {
@@ -121,8 +146,7 @@ public class Boss : MonoBehaviour
 
     public void LookAtPlayer(Transform target)
     {
-        if (target == null)
-            return;
+        if (target == null) return;
 
         Vector3 scale = transform.localScale;
 
@@ -143,5 +167,17 @@ public class Boss : MonoBehaviour
     {
         return isDead;
     }
+    
+    IEnumerator HandleVictorySequence(float delay)
+    {
+        yield return new WaitForSeconds(delay);
 
+        if (gameStateManager != null)
+        {
+            gameStateManager.ShowYouWin();
+        }
+
+        yield return new WaitForSeconds(2f);
+        Destroy(gameObject);
+    }
 }
