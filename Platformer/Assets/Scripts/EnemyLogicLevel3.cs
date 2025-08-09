@@ -108,11 +108,11 @@ public class EnemyLogicLevel3 : MonoBehaviour
     {
         Debug.Log("Collided with: " + collision.gameObject.name);
 
-        if (collision.gameObject.CompareTag("Player Arrow"))
+        DamageDealer dealer = collision.GetComponent<DamageDealer>();
+        if (dealer != null)
         {
-            int damage = damageDrop.GetComponent<CollectibleItem>().getDamageCapacity();
-            TakeDamage(damage);
-            Debug.Log("Hit Enemy with " + damage + " damage ");
+            TakeDamage(dealer.GetDamage());
+            Debug.Log("Hit Enemy with " + dealer.GetDamage() + " damage ");
         }
     }
 

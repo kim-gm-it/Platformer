@@ -54,48 +54,35 @@ public class player1_level3 : MonoBehaviour
     
     void Update()
     {
-        Vector2 movement = movementInput * (moveSpeed * Time.deltaTime);
-        transform.Translate(movement);
+        animator.SetBool("Run", Mathf.Abs(movementInput.x) > 0f);
 
-        if (movement.magnitude > 0f)
-        {
-            animator.SetBool("Run", true);
-        }
-        else
-        {
-            animator.SetBool("Run", false);
-        }
-
-        // Flip for left/right
         if (movementInput.x > 0.01f)
-        {
             transform.localScale = new Vector3(Mathf.Abs(initialScale.x), initialScale.y, initialScale.z);
-        }
         else if (movementInput.x < -0.01f)
-        {
             transform.localScale = new Vector3(-Mathf.Abs(initialScale.x), initialScale.y, initialScale.z);
-        }
+    }
+    void FixedUpdate()
+    {
+        rb.linearVelocity = movementInput * moveSpeed;
     }
 
     public void ShootArrow()
     {
         float direction = transform.localScale.x > 0 ? 1f : -1f;
 
-        GameObject arrow = Instantiate(arrowPrefab, firePoint.position, Quaternion.identity);
+        Quaternion rotation = direction > 0 ? Quaternion.identity : Quaternion.Euler(0, 0, 180f);
+
+        GameObject arrow = Instantiate(arrowPrefab, firePoint.position, rotation);
         Rigidbody2D rb = arrow.GetComponent<Rigidbody2D>();
         rb.linearVelocity = new Vector2(direction * arrowSpeed, 0f);
-
-        if (direction < 0)
-        {
-            arrow.transform.localScale = new Vector3(-1, 1, 1);
-        }
     }
+
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (isDead) return;
 
-        if (collision.CompareTag("Boss"))
+        if (collision.CompareTag("Boss") ||collision.CompareTag("Patrol Enemy") )
         {
             TakeDamage();
 
@@ -137,6 +124,8 @@ public class player1_level3 : MonoBehaviour
             isDead = true;
             PlayDeathSound();
             StartCoroutine(ShowLosePanelAfterDelay(1.5f));
+            FindObjectOfType<GameStateManagerlevel3>().PlayerDied(1);
+
         }
     }
 
