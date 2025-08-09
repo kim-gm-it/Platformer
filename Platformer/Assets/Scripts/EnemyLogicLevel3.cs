@@ -28,7 +28,6 @@ public class EnemyLogicLevel3 : MonoBehaviour
     [Header("Attack Effects")]
     public AudioClip attackClip;
 
-    public GameObject damageDrop = null;
 
 
 
@@ -110,7 +109,7 @@ public class EnemyLogicLevel3 : MonoBehaviour
 
         if (collision.gameObject.CompareTag("Player Arrow"))
         {
-            int damage = damageDrop.GetComponent<CollectibleItem>().getDamageCapacity();
+            int damage = 1;
             TakeDamage(damage);
             Debug.Log("Hit Enemy with " + damage + " damage ");
         }
