@@ -28,7 +28,6 @@ public class EnemyLogicLevel3 : MonoBehaviour
     [Header("Attack Effects")]
     public AudioClip attackClip;
 
-    public GameObject damageDrop = null;
 
 
 
@@ -111,8 +110,10 @@ public class EnemyLogicLevel3 : MonoBehaviour
         DamageDealer dealer = collision.GetComponent<DamageDealer>();
         if (dealer != null)
         {
+
             TakeDamage(dealer.GetDamage());
             Debug.Log("Hit Enemy with " + dealer.GetDamage() + " damage ");
+          
         }
     }
 
