@@ -8,20 +8,25 @@ public class MinionsMovement : MonoBehaviour
 {
     [Header("Chase And Attack Variables")]
     public float attackCooldown = 2f;
-    public float attackRange = 2f;
-    public float radius = 0.5f;
+    public float attackRange = 1f;
+    public float radius = 0.3f;
     public float speed = 1.5f;
+    private float attackTimer;
+
+    public int damage = 1;
+    public Vector3 attackOffset;
 
     private LayerMask playerLayer;
-    private GameObject attackPoint;
-    private float attackTimer;
+    //private GameObject attackPoint;
+
     private GameObject[] players;
     private EnemyLogicLevel3 enemyLogic;
     private Transform target;
-    private bool isChasing = false;
-    private bool isAttacking = false;
     private Animator animator;
     private Rigidbody2D rb;
+
+    private bool isChasing = false;
+    private bool isAttacking = false;
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -30,14 +35,14 @@ public class MinionsMovement : MonoBehaviour
 
         playerLayer = LayerMask.GetMask("Player");
 
-        Debug.Log("LayerMask value: " + playerLayer.value);
+        Debug.Log("LayerMask set ? " + playerLayer!=null);
 
-        attackPoint = GameObject.Find("AttackPoint");
+        //attackPoint = GameObject.Find("AttackPoint");
 
-        if (attackPoint == null)
-        {
-            Debug.Log("Attack point not assigned");
-        }
+        //if (attackPoint == null)
+        //{
+        //    Debug.Log("Attack point not assigned!!!!!!!!!");
+        //}
 
         enemyLogic = GetComponent<EnemyLogicLevel3>();
         rb = GetComponent<Rigidbody2D>();
@@ -115,28 +120,54 @@ public class MinionsMovement : MonoBehaviour
         {
             attackTimer = attackCooldown;
             isAttacking = true;
-            enemyLogic.OnAttack();
+            //enemyLogic.OnAttack();
         }
     }
 
     private void Attack()
     {
-        Collider2D[] players = Physics2D.OverlapCircleAll(attackPoint.transform.position, radius, playerLayer);
-        
+        //Collider2D[] players = Physics2D.OverlapCircleAll(attackPoint.transform.position, radius, playerLayer);
+
+        //Debug.Log(players.Length + " players detected.");
+
+        //foreach(Collider2D player in players)
+        //{
+        //    Debug.Log("Enemy is hitting " + player.name);
+
+        //    if (player.CompareTag("Player1"))
+        //    {
+        //        player.GetComponent<player1_level3>().TakeDamage();
+
+        //    }else if (player.CompareTag("Player2"))
+        //    {
+        //        player.GetComponent<player2_level3>().TakeDamage();
+
+        //    }
+        //}
+
+        enemyLogic.OnAttack();
+        Vector3 currentOffset = attackOffset;
+        currentOffset.x *= transform.localScale.x;
+        Vector3 pos = transform.position + currentOffset;
+
+        Collider2D[] players = Physics2D.OverlapCircleAll(pos, attackRange, playerLayer);
+
         Debug.Log(players.Length + " players detected.");
 
-        foreach(Collider2D player in players)
+        foreach (Collider2D player in players)
         {
-            Debug.Log("Enemy is hitting " + player.name);
-
-            if (player.CompareTag("Player1"))
+            var p1 = player.GetComponent<player1_level3>();
+            if (p1 != null)
             {
-                player.GetComponent<player1_level3>().TakeDamage();
-                
-            }else if (player.CompareTag("Player2"))
-            {
-                player.GetComponent<player2_level3>().TakeDamage();
+                Debug.Log("enenmy is attacking player 1.");
+                p1.TakeDamage();
+            }
 
+            var p2 = player.GetComponent<player2_level3>();
+            if (p2 != null)
+            {
+                Debug.Log("enenmy is attacking player 2.");
+                p2.TakeDamage();
             }
         }
 
@@ -145,11 +176,19 @@ public class MinionsMovement : MonoBehaviour
 
     private void OnDrawGizmos()
     {
-        if(attackPoint != null)
-        {
-            Gizmos.color = Color.red;
-            Gizmos.DrawWireSphere(attackPoint.transform.position , radius);
-        }
+
+        //if(attackPoint != null)
+        //{
+        //    Gizmos.color = Color.red;
+        //    Gizmos.DrawWireSphere(attackPoint.transform.position , radius);
+        //}
+
+        Vector3 currentOffset = attackOffset;
+        currentOffset.x *= transform.localScale.x;
+        Vector3 pos = transform.position + currentOffset;
+
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireSphere(pos , radius);
     }
 
     private void flip()

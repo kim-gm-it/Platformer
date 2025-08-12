@@ -19,10 +19,11 @@ public class EnemyLogicLevel3 : MonoBehaviour
     [Header("Health Setting")]
     public int maxHealth = 2;
     public int currentHealth;
-    EnemyHealthBar healthBar;
+    //EnemyHealthBar healthBar;
 
     [Header("Death Effects")]
     public AudioClip deathClip;
+    public int arrowDamage = 2;
 
 
     [Header("Attack Effects")]
@@ -32,12 +33,12 @@ public class EnemyLogicLevel3 : MonoBehaviour
     void Start()
     {
 
-        healthBar = GetComponentInChildren<EnemyHealthBar>();
+        //healthBar = GetComponentInChildren<EnemyHealthBar>();
         currentHealth = maxHealth;
-        if (healthBar != null)
-        {
-            healthBar.UpdateHealthBar(currentHealth, maxHealth);
-        }
+        //if (healthBar != null)
+        //{
+        //    healthBar.UpdateHealthBar(currentHealth, maxHealth);
+        //}
 
         renderer = GetComponent<Renderer>();
         animator = GetComponent<Animator>();
@@ -56,7 +57,8 @@ public class EnemyLogicLevel3 : MonoBehaviour
         animator.SetBool("IsRunning", false);
         animator.SetTrigger("IsTakingHit");
         currentHealth -= damage;
-        healthBar.UpdateHealthBar(currentHealth, maxHealth);
+        //healthBar.UpdateHealthBar(currentHealth, maxHealth);
+        Debug.Log("Hit Enemy with " + damage + " damage ");
         if (currentHealth <= 0)
         {
             StartCoroutine(DeathSequence());
@@ -76,14 +78,13 @@ public class EnemyLogicLevel3 : MonoBehaviour
     private IEnumerator DeathSequence()
     {
         Die();
-        healthBar.OnDestroy();
-        yield return new WaitForSeconds(1.5f);
+        //healthBar.OnDestroy();
+        yield return new WaitForSeconds(0.1f);
         Destroy(gameObject);
     }
     public void Die()
     {
         isDead = true;
-        animator.SetBool("IsRunning", false);
         rb.linearVelocity = Vector2.zero;
         animator.SetTrigger("Die");
         PlayDeathSound();
@@ -103,13 +104,11 @@ public class EnemyLogicLevel3 : MonoBehaviour
     {
         Debug.Log("Collided with: " + collision.gameObject.name);
 
-        DamageDealer dealer = collision.GetComponent<DamageDealer>();
-        if (dealer != null)
+        if (collision.gameObject.CompareTag("Player Arrow"))
         {
-
-            TakeDamage(dealer.GetDamage());
-            Debug.Log("Hit Enemy with " + dealer.GetDamage() + " damage ");
-          
+            //int damage = damageDrop.GetComponent<CollectibleItem>().getDamageCapacity();
+            TakeDamage(arrowDamage);
+            
         }
     }
 
