@@ -118,6 +118,9 @@ public class Boss : MonoBehaviour
 
         healthBar.UpdateHealthBar(currentHealth, maxHealth);
 
+        ////////////////////////////////
+        Debug.Log("Current Health : " + currentHealth);
+
         if (currentHealth <= 0)
         {
             Die();

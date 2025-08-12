@@ -81,8 +81,8 @@ public class player1_level3 : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (isDead) return;
-
-        if (collision.CompareTag("Boss") ||collision.CompareTag("Patrol Enemy") )
+        
+        if (collision.CompareTag("Boss") || collision.CompareTag("Patrol Enemy") )
         {
             TakeDamage();
 

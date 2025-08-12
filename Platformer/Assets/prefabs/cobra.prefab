@@ -1,36 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &1380459737893480435
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 5000214443377471411}
-  m_Layer: 3
-  m_Name: AttackPoint
-  m_TagString: AttackPoint
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &5000214443377471411
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1380459737893480435}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 3534544605731918347}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6782348354911883027
 GameObject:
   m_ObjectHideFlags: 0
@@ -63,12 +32,11 @@ Transform:
   m_GameObject: {fileID: 6782348354911883027}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.689, y: -4.397, z: 0}
+  m_LocalPosition: {x: 3.785, y: -4.333, z: 0}
   m_LocalScale: {x: 0.9, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 453273781167493798}
-  - {fileID: 5000214443377471411}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &3476758155140677340
@@ -339,8 +307,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackCooldown: 2
   attackRange: 2
-  radius: 0.5
-  speed: 3
+  radius: 0.3
+  speed: 1.5
+  damage: 1
+  attackOffset: {x: 0.6, y: 0.25, z: 0}
 --- !u!114 &3991563424487653027
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -357,7 +327,6 @@ MonoBehaviour:
   currentHealth: 0
   deathClip: {fileID: 8300000, guid: 18adf746211ba204389a772f81e7ebc1, type: 3}
   attackClip: {fileID: 8300000, guid: f4b9ae65b780c8b4eae38ea998020ce0, type: 3}
-  damageDrop: {fileID: 1380459737893480435}
 --- !u!1001 &8037583118554395313
 PrefabInstance:
   m_ObjectHideFlags: 0

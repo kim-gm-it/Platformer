@@ -22,10 +22,12 @@ public class player2_level3 : MonoBehaviour
     private bool isDead = false;
 
     [Header("Combat")]
-    [SerializeField] GameObject attackPoint;
-    [SerializeField] float radius = 0.9f;
+    //[SerializeField] GameObject attackPoint;
+    [SerializeField] Vector3 attackOffset;
+    [SerializeField] float attackRange = 0.5f;
+    [SerializeField] float radius = 1.1f;
     [SerializeField] LayerMask enemyLayer;
-    [SerializeField] GameObject damageDrop;
+    //[SerializeField] GameObject damageDrop;
 
     [Header("Animation & Audio")]
     [SerializeField] Animator animator;
@@ -73,8 +75,8 @@ public class player2_level3 : MonoBehaviour
     void OnTriggerEnter2D(Collider2D collision)
     {
         if (isDead) return;
-
-        if (collision.CompareTag("Boss") || collision.CompareTag("Patrol Enemy"))
+        //|| collision.CompareTag("Patrol Enemy")
+        if (collision.CompareTag("Boss") )
         {
             TakeDamage();
             if (collision.CompareTag("Enemy Arrow"))
@@ -124,23 +126,43 @@ public class player2_level3 : MonoBehaviour
 
     public void Attack()
     {
-        Collider2D[] enemies = Physics2D.OverlapCircleAll(attackPoint.transform.position, radius, enemyLayer);
+        Vector3 currentOffset = attackOffset;
+        currentOffset.x *= transform.localScale.x;
+        Vector3 pos = currentOffset + transform.position;
+
+        Collider2D[] enemies = Physics2D.OverlapCircleAll(pos, attackRange , enemyLayer);
+
+        Debug.Log(enemies.Length + " enemies detected.");
 
         foreach (Collider2D enemy in enemies)
         {
             Boss boss = enemy.GetComponent<Boss>();
+
             if (boss != null && !boss.IsDead())
             {
-                int damage = damageDrop.GetComponent<CollectibleItem>().getDamageCapacity();
-                boss.TakeDamage(damage);
+                //int damage = damageDrop.GetComponent<CollectibleItem>().getDamageCapacity();
+                boss.TakeDamage(4);
+                continue;
+            }
+
+            EnemyLogicLevel3 enemyLogic = enemy.GetComponent<EnemyLogicLevel3>();
+
+            if(enemyLogic != null)
+            {
+                enemyLogic.TakeDamage(1);
+                continue;
             }
         }
 }
 
     private void OnDrawGizmos()
     {
-        if (attackPoint != null)
-            Gizmos.DrawWireSphere(attackPoint.transform.position, radius);
+        Vector3 currentOffset = attackOffset;
+        currentOffset.x *= transform.localScale.x;
+        Vector3 pos = currentOffset + transform.position;
+
+        Gizmos.color = Color.blue;
+        Gizmos.DrawWireSphere(pos, radius);
     }
 
     void UpdateHealthPointUI()
@@ -161,7 +183,7 @@ public class player2_level3 : MonoBehaviour
                 case 1: HealthBar[i].sprite = Bar1; break;
                 case 0: HealthBar[i].sprite = Bar0; break;
             }
-        }
+        } 
     }
 
     private IEnumerator ShowLosePanelAfterDelay(float delay)
