@@ -89,7 +89,7 @@ public class player2_level3 : MonoBehaviour
         PlayHitSound();
         hitCount++;
 
-        if (hitCount >= 2)
+        if (hitCount >= 1)
         {
             hitCount = 0;
             livesBar--;

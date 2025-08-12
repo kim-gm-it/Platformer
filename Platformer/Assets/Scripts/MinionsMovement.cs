@@ -10,7 +10,7 @@ public class MinionsMovement : MonoBehaviour
     public float attackCooldown = 2f;
     public float attackRange = 2f;
     public float radius = 0.5f;
-    public float speed = 3f;
+    public float speed = 1.5f;
 
     private LayerMask playerLayer;
     private GameObject attackPoint;
@@ -123,7 +123,7 @@ public class MinionsMovement : MonoBehaviour
     {
         Collider2D[] players = Physics2D.OverlapCircleAll(attackPoint.transform.position, radius, playerLayer);
         
-        Debug.Log(players.Length + "players detected.");
+        Debug.Log(players.Length + " players detected.");
 
         foreach(Collider2D player in players)
         {
