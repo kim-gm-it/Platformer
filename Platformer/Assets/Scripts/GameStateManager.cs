@@ -6,7 +6,7 @@ public class GameStateManager : MonoBehaviour
 {
     public GameObject gameOverPanel;
     public GameObject youWinPanel;
-    public GameObject startPanel;
+    // public GameObject startPanel;
     public AudioSource audioWin;
     public AudioSource audioLose;
     
@@ -34,7 +34,8 @@ public class GameStateManager : MonoBehaviour
         GameSessionData.cameFromGameOver = true;
         Time.timeScale = 1;
         gameOverPanel.SetActive(false);
-        startPanel.SetActive(true);
+        // startPanel.SetActive(true);
+        SceneManager.LoadScene("mainMenu");
     }
 
     // This function is called to display the You Win panel and play the win sound
