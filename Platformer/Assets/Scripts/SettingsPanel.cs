@@ -20,14 +20,28 @@ public class SettingsPanel : MonoBehaviour
 
     private void Start()
     {
-        SetMusicVolume(musicSlider.value);
-        SetSFXVolume(sfxSlider.value);
+        if (musicSlider != null)
+        {
+            SetMusicVolume(musicSlider.value);
+            musicSlider.onValueChanged.AddListener(SetMusicVolume);
+        }
 
-        musicSlider.onValueChanged.AddListener(SetMusicVolume);
-        sfxSlider.onValueChanged.AddListener(SetSFXVolume);
-        musicMuteToggle.onValueChanged.AddListener(ToggleMuteMusic);
-        sfxMuteToggle.onValueChanged.AddListener(ToggleMuteSFX);
-    }
+        if (sfxSlider != null)
+        {
+            SetSFXVolume(sfxSlider.value);
+            sfxSlider.onValueChanged.AddListener(SetSFXVolume);
+        }
+
+        if (musicMuteToggle != null)
+        {
+            musicMuteToggle.onValueChanged.AddListener(ToggleMuteMusic);
+        }
+
+        if (sfxMuteToggle != null)
+        {
+            sfxMuteToggle.onValueChanged.AddListener(ToggleMuteSFX);
+        }
+    }   
 
     public void OpenSettings(GameObject fromPanel)
     {

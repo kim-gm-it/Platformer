@@ -6,7 +6,7 @@ public class GameStateManagerlevel3 : MonoBehaviour
 {
     [SerializeField] private GameObject gameOverPanel;
     [SerializeField] private GameObject youWinPanel;
-    [SerializeField] private GameObject startPanel;
+    // [SerializeField] private GameObject startPanel;
 
     [SerializeField] private AudioSource audioWin;
     [SerializeField] private AudioSource audioLose;
@@ -20,7 +20,7 @@ public class GameStateManagerlevel3 : MonoBehaviour
         Time.timeScale = 1; 
         gameOverPanel.SetActive(false);
         youWinPanel.SetActive(false);
-        startPanel.SetActive(false);
+        // startPanel.SetActive(false);
     }
 
     public void PlayerDied(int playerNumber)
@@ -33,7 +33,7 @@ public class GameStateManagerlevel3 : MonoBehaviour
         if (player1Dead && player2Dead)
         {
             gameEnded = true;
-            StartCoroutine(ShowGameOverAfterDelay(1.5f));
+            StartCoroutine(ShowGameOverAfterDelay(0.6f));
         }
     }
 
@@ -65,6 +65,8 @@ public class GameStateManagerlevel3 : MonoBehaviour
     {
         Time.timeScale = 1;
         gameOverPanel.SetActive(false);
-        startPanel.SetActive(true);
+        youWinPanel.SetActive(false);
+        // startPanel.SetActive(true);
+        SceneManager.LoadScene("mainMenu");
     }
 }

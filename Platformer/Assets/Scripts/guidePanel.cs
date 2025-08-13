@@ -3,6 +3,7 @@ using UnityEngine;
 public class guidePanel : MonoBehaviour
 {
     public GameObject guide;
+    public GameObject guide2;
     private GameObject previousPanel;
     public void OpenGuide(GameObject fromPanel)
     {
@@ -18,5 +19,16 @@ public class guidePanel : MonoBehaviour
         {
             previousPanel.SetActive(true);
         }
+    }
+    public void level3_guide()
+    {
+        guide.SetActive(false);
+        guide2.SetActive(true);
+
+    }
+    public void level3_back()
+    {
+        guide2.SetActive(false);
+        guide.SetActive(true);
     }
 }
