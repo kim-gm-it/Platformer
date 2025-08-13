@@ -8,7 +8,7 @@ public class PausePanel : MonoBehaviour
 {
     private bool isPaused;
     public GameObject pausePanel;
-    public GameObject startPanel;
+    // public GameObject startPanel;
     public GameObject settingPanel;
     public SettingsPanel settingsPanelScript; 
     public void OpenSettings()
@@ -52,9 +52,10 @@ public class PausePanel : MonoBehaviour
     }
     public void MainMenu()
     {
-        Time.timeScale = 0;
+        Time.timeScale = 1;
         pausePanel.SetActive(false);
-        startPanel.SetActive(true);
+        // startPanel.SetActive(true);
+        SceneManager.LoadScene("mainMenu");
     }
     public void Setting()
     {

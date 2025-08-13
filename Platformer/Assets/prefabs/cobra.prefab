@@ -152,7 +152,7 @@ AudioSource:
   m_GameObject: {fileID: 6782348354911883027}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: -5736554200530938260, guid: 500678bd7ee55334eafc518165b06a7c, type: 2}
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
   m_PlayOnAwake: 1
@@ -326,6 +326,7 @@ MonoBehaviour:
   maxHealth: 2
   currentHealth: 0
   deathClip: {fileID: 8300000, guid: 18adf746211ba204389a772f81e7ebc1, type: 3}
+  arrowDamage: 2
   attackClip: {fileID: 8300000, guid: f4b9ae65b780c8b4eae38ea998020ce0, type: 3}
 --- !u!1001 &8037583118554395313
 PrefabInstance:
