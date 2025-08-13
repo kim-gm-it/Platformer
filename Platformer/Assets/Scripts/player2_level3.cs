@@ -114,8 +114,8 @@ public class player2_level3 : MonoBehaviour
             {
                 isDead = true;
                 PlayDeathSound();
-                StartCoroutine(ShowLosePanelAfterDelay(1.9f));
-                FindObjectOfType<GameStateManagerlevel3>().PlayerDied(1);
+                StartCoroutine(ShowLosePanelAfterDelay(1.5f));
+                FindFirstObjectByType<GameStateManagerlevel3>().PlayerDied(2);
             }
         }
         else
@@ -189,7 +189,8 @@ public class player2_level3 : MonoBehaviour
     private IEnumerator ShowLosePanelAfterDelay(float delay)
     {
         yield return new WaitForSeconds(delay);
-        FindFirstObjectByType<GameStateManager>().ShowGameOver();
+        Destroy(gameObject);
+        // FindFirstObjectByType<GameStateManager>().ShowGameOver();
     }
 
     void PlayAttackSound() => audioSource.PlayOneShot(attackClip);

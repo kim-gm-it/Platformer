@@ -24,18 +24,18 @@ public class StartPanel : MonoBehaviour
     }
     public void StartTheGame()
     {
-        if (GameSessionData.cameFromGameOver)
+        Time.timeScale = 1;
+
+        if (SceneManager.GetActiveScene().name != "level1")
         {
-            GameSessionData.cameFromGameOver = false; 
-            Time.timeScale = 1;
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name); 
+            SceneManager.LoadScene("level1");
         }
         else
         {
-            Time.timeScale = 1;
-            startPanel1.SetActive(false);
+            startPanel1.SetActive(false); 
         }
     }
+
 
     // Called when Quit button is clicked
     public void QuitTheGame()

@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Forest Login Interface Adventure_0: 4717778192039655177
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

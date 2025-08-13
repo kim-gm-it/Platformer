@@ -46,8 +46,16 @@ public class EnemyLogicLevel3 : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
         rb = GetComponent<Rigidbody2D>();
 
-        player2 = GameObject.Find("Player2").GetComponent<Player2Controler>();
-        player1 = GameObject.Find("Player1").GetComponent<Player1Controller>();
+        // player2 = GameObject.Find("Player2").GetComponent<Player2Controler>();
+        // player1 = GameObject.Find("Player1").GetComponent<Player1Controller>();
+        GameObject p1 = GameObject.Find("Player1");
+        if (p1 != null)
+            player1 = p1.GetComponent<Player1Controller>();
+
+        GameObject p2 = GameObject.Find("Player2");
+        if (p2 != null)
+            player2 = p2.GetComponent<Player2Controler>();
+
     }
 
     public void TakeDamage(int damage)

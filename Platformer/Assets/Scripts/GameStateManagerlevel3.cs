@@ -33,7 +33,7 @@ public class GameStateManagerlevel3 : MonoBehaviour
         if (player1Dead && player2Dead)
         {
             gameEnded = true;
-            StartCoroutine(ShowGameOverAfterDelay(1.5f));
+            StartCoroutine(ShowGameOverAfterDelay(0.6f));
         }
     }
 
@@ -63,8 +63,9 @@ public class GameStateManagerlevel3 : MonoBehaviour
 
     public void MainMenu()
     {
-        Time.timeScale = 1;
+        Time.timeScale = 0;
         gameOverPanel.SetActive(false);
+        youWinPanel.SetActive(false);
         startPanel.SetActive(true);
     }
 }
