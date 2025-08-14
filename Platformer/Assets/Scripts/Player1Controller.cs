@@ -4,7 +4,7 @@ using UnityEngine.InputSystem;
 using System.Collections;
 using UnityEngine.UI;
 
-public class Player1Controller : MonoBehaviour
+public class Player1Controller : BasePlayer
 {
     private Vector3 initialScale;
     private Rigidbody2D rb;
@@ -13,8 +13,8 @@ public class Player1Controller : MonoBehaviour
     private Vector2 movementInput;
     [SerializeField] Boolean isGrounded;
     [SerializeField] Boolean player2;
-    [SerializeField] int livesPoint = 3;
-    [SerializeField] int livesBar = 4;
+    // [SerializeField] int livesPoint = 3;
+    // [SerializeField] int livesBar = 4;
     [SerializeField] float doubleJampPower = 25f;
     private bool canDoubleJump;
     public bool hasKey = false;
