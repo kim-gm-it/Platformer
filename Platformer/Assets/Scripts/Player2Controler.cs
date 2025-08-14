@@ -5,14 +5,14 @@ using System.Collections;
 using UnityEngine.UI;
 using Cainos.PixelArtPlatformer_Dungeon;
 
-public class Player2Controler : MonoBehaviour
+public class Player2Controler : BasePlayer
 {
     private Vector3 initialScale;
     private Rigidbody2D rb;
     [SerializeField] float moveSpeed = 5f;
     [SerializeField] float jumpForse = 40f;
-    [SerializeField] int livesPoint = 3;
-    [SerializeField] int livesBar = 4;
+    // [SerializeField] int livesPoint = 3;
+    // [SerializeField] int livesBar = 4;
     private Vector2 movementInput;
     [SerializeField] Boolean isGrounded;
     [SerializeField] Boolean player1;

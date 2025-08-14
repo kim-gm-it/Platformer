@@ -3,7 +3,7 @@ using UnityEngine.InputSystem;
 using UnityEngine.UI;
 using System.Collections;
 
-public class player1_level3 : MonoBehaviour
+public class player1_level3 : BasePlayer
 {
     private Vector3 initialScale;
     private Rigidbody2D rb;
@@ -11,8 +11,8 @@ public class player1_level3 : MonoBehaviour
     private Vector2 movementInput;
 
     [Header("Health System")]
-    [SerializeField] int livesPoint = 3;
-    [SerializeField] int livesBar = 4;
+    // [SerializeField] int livesPoint = 3;
+    // [SerializeField] int livesBar = 4;
     [SerializeField] Image[] HealthPoint;
     [SerializeField] Image[] HealthBar;
     [SerializeField] Sprite fullHeart, emptyHeart;
