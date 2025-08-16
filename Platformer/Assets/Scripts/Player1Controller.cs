@@ -39,7 +39,7 @@ public class Player1Controller : BasePlayer
     public GameObject losePanel;
     private bool isDead = false;
 
-   
+
 
     public void OnJump(InputAction.CallbackContext context)
     {
@@ -125,46 +125,47 @@ public class Player1Controller : BasePlayer
         }
     }
     void OnTriggerEnter2D(Collider2D collision)
-{
-    if (isDead) return;
-
-    if (collision.gameObject.tag == "Enemy Arrow" || collision.gameObject.tag=="Patrol Enemy" || collision.gameObject.tag == "Spike")
     {
-        PlayHitSound();
+        if (isDead) return;
 
-        livesBar--;
-
-        if (livesBar <= 0)
+        if (collision.gameObject.tag == "Enemy Arrow" || collision.gameObject.tag == "Patrol Enemy" || collision.gameObject.tag == "Spike")
         {
-            livesPoint--;
+            PlayHitSound();
 
-            animator.SetTrigger("Death"); 
+            livesBar--;
 
-            if (livesPoint > 0)
+            if (livesBar <= 0)
             {
-                livesBar = 4;
+                livesPoint--;
+
+                animator.SetTrigger("Death");
+
+                if (livesPoint > 0)
+                {
+                    livesBar = 4;
+                }
+
+                UpdateHealthPointUI();
+            }
+            else
+            {
+                animator.SetTrigger("GetHit");
             }
 
-            UpdateHealthPointUI();
-        }
-        else
-        {
-            animator.SetTrigger("GetHit"); 
-        }
+            UpdateHealthBarUI();
 
-        UpdateHealthBarUI();
-
-        if (livesPoint <= 0)
-        {
-            isDead = true; 
-            PlayDeathSound();
-            StartCoroutine(ShowLosePanelAfterDelay(1.9f));
-        }
-        if(collision.gameObject.tag == "Enemy Arrow"){
-            Destroy(collision.gameObject);
+            if (livesPoint <= 0)
+            {
+                isDead = true;
+                PlayDeathSound();
+                StartCoroutine(ShowLosePanelAfterDelay(1.9f));
+            }
+            if (collision.gameObject.tag == "Enemy Arrow")
+            {
+                Destroy(collision.gameObject);
+            }
         }
     }
-}   
 
     public void TakeDamage()
     {
@@ -201,7 +202,7 @@ public class Player1Controller : BasePlayer
             PlayDeathSound();
             StartCoroutine(ShowLosePanelAfterDelay(1.9f));
         }
-       
+
     }
 
     public void OnAttack(InputAction.CallbackContext context)
@@ -311,4 +312,10 @@ public class Player1Controller : BasePlayer
         yield return new WaitForSeconds(delay);
         FindFirstObjectByType<GameStateManager>().ShowGameOver();
     }
+    public override void RefreshUI()
+    {
+        UpdateHealthPointUI();
+        UpdateHealthBarUI();
+    }
+
 }

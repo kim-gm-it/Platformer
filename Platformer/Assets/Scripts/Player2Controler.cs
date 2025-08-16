@@ -144,7 +144,7 @@ public class Player2Controler : BasePlayer
     {
         if (isDead) return;
 
-        if (collision.gameObject.tag == "Enemy Arrow" || collision.gameObject.tag=="Patrol Enemy" || collision.gameObject.tag == "Spike")
+        if (collision.gameObject.tag == "Enemy Arrow" || collision.gameObject.tag == "Patrol Enemy" || collision.gameObject.tag == "Spike")
         {
             PlayHitSound();
 
@@ -249,7 +249,7 @@ public class Player2Controler : BasePlayer
         {
 
             int damage = damageDrop.GetComponent<CollectibleItem>().getDamageCapacity();
-            
+
             enemy.GetComponent<EnemyLogic>().TakeDamage(damage);
 
             Debug.Log("Hit Enemy with " + damage + " damage ");
@@ -383,5 +383,12 @@ public class Player2Controler : BasePlayer
     {
         return isDashing;
     }
+    
+    public override void RefreshUI()
+    {
+        UpdateHealthPointUI();
+        UpdateHealthBarUI();
+    }
+
 
 }

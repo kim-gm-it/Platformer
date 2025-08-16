@@ -51,7 +51,7 @@ public class player1_level3 : BasePlayer
         audioSource = GetComponent<AudioSource>();
         initialScale = transform.localScale;
     }
-    
+
     void Update()
     {
         animator.SetBool("Run", Mathf.Abs(movementInput.x) > 0f);
@@ -81,8 +81,8 @@ public class player1_level3 : BasePlayer
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (isDead) return;
-        
-        if (collision.CompareTag("Boss") || collision.CompareTag("Patrol Enemy") )
+
+        if (collision.CompareTag("Boss") || collision.CompareTag("Patrol Enemy"))
         {
             TakeDamage();
 
@@ -161,4 +161,11 @@ public class player1_level3 : BasePlayer
     void PlayAttackSound() => audioSource.PlayOneShot(attackClip);
     void PlayHitSound() => audioSource.PlayOneShot(hitClip);
     void PlayDeathSound() => audioSource.PlayOneShot(deathClip);
+
+    public override void RefreshUI()
+    {
+        UpdateHealthPointUI();
+        UpdateHealthBarUI();
+    }
+
 }
