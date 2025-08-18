@@ -1,52 +1,93 @@
-using System.Xml.Serialization;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System.Collections;
 
 public class GameStateManager : MonoBehaviour
 {
-    public GameObject gameOverPanel;
-    public GameObject youWinPanel;
-    // public GameObject startPanel;
-    public AudioSource audioWin;
-    public AudioSource audioLose;
-    
+    [SerializeField] private GameObject gameOverPanel;
+    [SerializeField] private GameObject youWinPanel;
+
+    [SerializeField] private AudioSource audioWin;
+    [SerializeField] private AudioSource audioLose;
+
+    public bool requireBothPlayersDead = false;
+
+    private bool player1Dead = false;
+    private bool player2Dead = false;
+    private bool gameEnded = false;
+
     void Start()
     {
-        // Get the AudioSource components attached to this GameObject
-        audioWin=GetComponent<AudioSource>();
-        audioLose=GetComponent<AudioSource>();
+        Time.timeScale = 1;
+        gameOverPanel.SetActive(false);
+        youWinPanel.SetActive(false);
     }
 
-     // This function is called to display the Game Over panel and play the lose sound
-    public void ShowGameOver()
+    public void PlayerDied(int playerNumber)
     {
+        if (gameEnded) return;
+
+        if (playerNumber == 1) player1Dead = true;
+        else if (playerNumber == 2) player2Dead = true;
+
+        if (requireBothPlayersDead)
+        {
+            if (player1Dead && player2Dead)
+                TriggerGameOver();
+        }
+        else
+        {
+            if (player1Dead || player2Dead)
+                TriggerGameOver();
+        }
+    }
+
+    private void TriggerGameOver()
+    {
+        if (gameEnded) return;
+        gameEnded = true;
+        StartCoroutine(ShowGameOverAfterDelay(0.6f));
+    }
+
+    IEnumerator ShowGameOverAfterDelay(float delay)
+    {
+        yield return new WaitForSeconds(delay);
         Time.timeScale = 0;
         gameOverPanel.SetActive(true);
-
-        audioLose.Play(); 
+        if (audioLose != null) audioLose.Play();
     }
-    public void RestartGame(){
+
+    public void ShowYouWin()
+    {
+        if (gameEnded) return;
+        gameEnded = true;
+        Time.timeScale = 0;
+        youWinPanel.SetActive(true);
+        if (audioWin != null) audioWin.Play();
+    }
+
+    // ---------- BUTTONS ----------
+    public void RestartGame()
+    {
         Time.timeScale = 1;
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
+
     public void MainMenu()
     {
-        GameSessionData.cameFromGameOver = true;
         Time.timeScale = 1;
         gameOverPanel.SetActive(false);
-        // startPanel.SetActive(true);
+        youWinPanel.SetActive(false);
         SceneManager.LoadScene("mainMenu");
     }
 
-    // This function is called to display the You Win panel and play the win sound
-    public void ShowYouWin()
+    public void SaveSceneFromGameOver()
     {
-        // Stop time in the game to freeze the current state
-        Time.timeScale = 0;
-        // Activate the You Win panel in the UI
-        youWinPanel.SetActive(true);
-        // Play the win sound effect
-        audioWin.Play();
-
+        SaveLoadManager.Instance.SaveSceneOnly();
+    }
+    public void QuitTheGame()
+    {
+        Application.Quit();
+        Debug.Log("Quit called");
     }
 }

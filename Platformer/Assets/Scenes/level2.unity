@@ -7399,7 +7399,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1638063146}
         m_TargetAssemblyTypeName: LoadSavaButton, Assembly-CSharp
-        m_MethodName: OnSaveButton
+        m_MethodName: OnSaveSceneButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -21085,6 +21085,7 @@ MonoBehaviour:
   deathClip: {fileID: 8300000, guid: 0e0530b31c05bb94196c70bebcf23636, type: 3}
   firePoint: {fileID: 1294852285}
   arrowSpeed: 10
+  playerNumber: 1
   HealthPoint:
   - {fileID: 531371936}
   - {fileID: 1768911219}
@@ -147507,7 +147508,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1364317943
 RectTransform:
   m_ObjectHideFlags: 0
@@ -152865,6 +152866,7 @@ MonoBehaviour:
   player1: 0
   animator: {fileID: 1556500993}
   tr: {fileID: 1556500990}
+  playerNumber: 2
   hasKey: 0
   jumpClip: {fileID: 8300000, guid: 01192fcc9ff18224ebca39f3105da0a6, type: 3}
   attackClip: {fileID: 8300000, guid: 13b357c1adc362f4cb452cc0e7a6aa7c, type: 3}
@@ -155068,6 +155070,7 @@ MonoBehaviour:
   youWinPanel: {fileID: 1909971970}
   audioWin: {fileID: 1909971971}
   audioLose: {fileID: 1445580162}
+  requireBothPlayersDead: 0
 --- !u!114 &1638063137
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -155340,6 +155343,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c419596239a99946a804dba1b7cbcd1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  load: {fileID: 0}
+  StaarPanel: {fileID: 0}
 --- !u!1001 &1639167049
 PrefabInstance:
   m_ObjectHideFlags: 0

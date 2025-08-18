@@ -12,7 +12,7 @@ public class player2_level3 : BasePlayer
     private Vector2 movementInput;
 
     [Header("Health System")]
-    
+
     // [SerializeField] int livesPoint = 3;
     // [SerializeField] int livesBar = 4;
     [SerializeField] Image[] HealthPoint;
@@ -64,11 +64,11 @@ public class player2_level3 : BasePlayer
     }
     void Update()
     {
-    
+
         animator.SetBool("Run", movementInput.magnitude > 0f);
 
         if (movementInput.x > 0.01f)
-        transform.localScale = new Vector3(Mathf.Abs(initialScale.x), initialScale.y, initialScale.z);
+            transform.localScale = new Vector3(Mathf.Abs(initialScale.x), initialScale.y, initialScale.z);
         else if (movementInput.x < -0.01f)
             transform.localScale = new Vector3(-Mathf.Abs(initialScale.x), initialScale.y, initialScale.z);
     }
@@ -77,7 +77,7 @@ public class player2_level3 : BasePlayer
     {
         if (isDead) return;
         //|| collision.CompareTag("Patrol Enemy")
-        if (collision.CompareTag("Boss") )
+        if (collision.CompareTag("Boss"))
         {
             TakeDamage();
             if (collision.CompareTag("Enemy Arrow"))
@@ -116,7 +116,7 @@ public class player2_level3 : BasePlayer
                 isDead = true;
                 PlayDeathSound();
                 StartCoroutine(ShowLosePanelAfterDelay(1.5f));
-                FindFirstObjectByType<GameStateManagerlevel3>().PlayerDied(2);
+                FindFirstObjectByType<GameStateManager>().PlayerDied(2);
             }
         }
         else
@@ -131,7 +131,7 @@ public class player2_level3 : BasePlayer
         currentOffset.x *= transform.localScale.x;
         Vector3 pos = currentOffset + transform.position;
 
-        Collider2D[] enemies = Physics2D.OverlapCircleAll(pos, attackRange , enemyLayer);
+        Collider2D[] enemies = Physics2D.OverlapCircleAll(pos, attackRange, enemyLayer);
 
         Debug.Log(enemies.Length + " enemies detected.");
 
@@ -148,13 +148,13 @@ public class player2_level3 : BasePlayer
 
             EnemyLogicLevel3 enemyLogic = enemy.GetComponent<EnemyLogicLevel3>();
 
-            if(enemyLogic != null)
+            if (enemyLogic != null)
             {
                 enemyLogic.TakeDamage(1);
                 continue;
             }
         }
-}
+    }
 
     private void OnDrawGizmos()
     {
@@ -184,7 +184,7 @@ public class player2_level3 : BasePlayer
                 case 1: HealthBar[i].sprite = Bar1; break;
                 case 0: HealthBar[i].sprite = Bar0; break;
             }
-        } 
+        }
     }
 
     private IEnumerator ShowLosePanelAfterDelay(float delay)
@@ -197,4 +197,10 @@ public class player2_level3 : BasePlayer
     void PlayAttackSound() => audioSource.PlayOneShot(attackClip);
     void PlayHitSound() => audioSource.PlayOneShot(hitClip);
     void PlayDeathSound() => audioSource.PlayOneShot(deathClip);
+    public override void RefreshUI()
+    {
+        UpdateHealthPointUI();
+        UpdateHealthBarUI();
+    }
+
 }

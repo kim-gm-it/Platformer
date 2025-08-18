@@ -18,6 +18,8 @@ public class Player2Controler : BasePlayer
     [SerializeField] Boolean player1;
     [SerializeField] private Animator animator;
     [SerializeField] private TrailRenderer tr;
+    public int playerNumber = 2;
+
     private bool canDash = true;
     public bool hasKey = false;
     private bool isDashing;
@@ -144,7 +146,7 @@ public class Player2Controler : BasePlayer
     {
         if (isDead) return;
 
-        if (collision.gameObject.tag == "Enemy Arrow" || collision.gameObject.tag=="Patrol Enemy" || collision.gameObject.tag == "Spike")
+        if (collision.gameObject.tag == "Enemy Arrow" || collision.gameObject.tag == "Patrol Enemy" || collision.gameObject.tag == "Spike")
         {
             PlayHitSound();
 
@@ -249,7 +251,7 @@ public class Player2Controler : BasePlayer
         {
 
             int damage = damageDrop.GetComponent<CollectibleItem>().getDamageCapacity();
-            
+
             enemy.GetComponent<EnemyLogic>().TakeDamage(damage);
 
             Debug.Log("Hit Enemy with " + damage + " damage ");
@@ -377,11 +379,23 @@ public class Player2Controler : BasePlayer
     private IEnumerator ShowLosePanelAfterDelay(float delay)
     {
         yield return new WaitForSeconds(delay);
-        FindFirstObjectByType<GameStateManager>().ShowGameOver();
+
+        GameStateManager gsm = FindFirstObjectByType<GameStateManager>();
+        if (gsm != null)
+        {
+            gsm.PlayerDied(playerNumber); 
+        }
     }
     public bool IsDashing()
     {
         return isDashing;
     }
+    
+    public override void RefreshUI()
+    {
+        UpdateHealthPointUI();
+        UpdateHealthBarUI();
+    }
+
 
 }

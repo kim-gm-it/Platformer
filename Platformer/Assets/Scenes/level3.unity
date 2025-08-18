@@ -694,7 +694,7 @@ MonoBehaviour:
   switchTargetTime: 10
   isFlipped: 0
   maxHealth: 100
-  healthBar: {fileID: 1233070643}
+  currentHealth: 0
   spawnInterval: 10
   spawnManager: {fileID: 1389784936}
   audioSource: {fileID: 111517087}
@@ -703,6 +703,7 @@ MonoBehaviour:
   hurtSFX: {fileID: 8300000, guid: 059ae38d295576f4c8f72a60cceb6ddd, type: 3}
   deathSFX: {fileID: 8300000, guid: cacd6ed4b87fa4346b7ba2273dca8e12, type: 3}
   winPanel: {fileID: 365944202}
+  slider: {fileID: 1522790523}
 --- !u!4 &111517066 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7190129400906788279, guid: 17c813f74ae123741868d75ec2eab560, type: 3}
@@ -3874,8 +3875,8 @@ GameObject:
   - component: {fileID: 475684062}
   - component: {fileID: 475684061}
   - component: {fileID: 475684060}
-  - component: {fileID: 475684066}
   - component: {fileID: 475684067}
+  - component: {fileID: 475684068}
   m_Layer: 5
   m_Name: Canvas (1)
   m_TagString: Untagged
@@ -4149,22 +4150,6 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 11
   m_TargetDisplay: 0
---- !u!114 &475684066
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 475684053}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9a6db9d418547cc4fa370901077f56fd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gameOverPanel: {fileID: 215791367}
-  youWinPanel: {fileID: 365944202}
-  audioWin: {fileID: 365944204}
-  audioLose: {fileID: 215791368}
 --- !u!114 &475684067
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4177,6 +4162,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c419596239a99946a804dba1b7cbcd1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  load: {fileID: 0}
+  StaarPanel: {fileID: 0}
+--- !u!114 &475684068
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 475684053}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3be98cebeb4fa7643a5a59c6a95310c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameOverPanel: {fileID: 215791367}
+  youWinPanel: {fileID: 365944202}
+  audioWin: {fileID: 365944204}
+  audioLose: {fileID: 215791368}
+  requireBothPlayersDead: 1
 --- !u!1 &486031353
 GameObject:
   m_ObjectHideFlags: 0
@@ -6099,8 +6103,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 475684066}
-        m_TargetAssemblyTypeName: GameStateManagerlevel3, Assembly-CSharp
+      - m_Target: {fileID: 475684068}
+        m_TargetAssemblyTypeName: GameStateManager, Assembly-CSharp
         m_MethodName: MainMenu
         m_Mode: 1
         m_Arguments:
@@ -7026,8 +7030,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 475684066}
-        m_TargetAssemblyTypeName: GameStateManagerlevel3, Assembly-CSharp
+      - m_Target: {fileID: 475684068}
+        m_TargetAssemblyTypeName: GameStateManager, Assembly-CSharp
         m_MethodName: MainMenu
         m_Mode: 1
         m_Arguments:
@@ -7457,7 +7461,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Button
+  m_text: ' '
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -20514,8 +20518,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 475684066}
-        m_TargetAssemblyTypeName: GameStateManagerlevel3, Assembly-CSharp
+      - m_Target: {fileID: 475684068}
+        m_TargetAssemblyTypeName: GameStateManager, Assembly-CSharp
         m_MethodName: RestartGame
         m_Mode: 1
         m_Arguments:
@@ -21644,7 +21648,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 475684067}
         m_TargetAssemblyTypeName: LoadSavaButton, Assembly-CSharp
-        m_MethodName: OnSaveButton
+        m_MethodName: OnSaveSceneButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -22492,8 +22496,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: StartPanel, Assembly-CSharp
+      - m_Target: {fileID: 475684068}
+        m_TargetAssemblyTypeName: GameStateManager, Assembly-CSharp
         m_MethodName: QuitTheGame
         m_Mode: 1
         m_Arguments:

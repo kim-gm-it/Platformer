@@ -7,6 +7,7 @@ public class StartPanel_MainMenu : MonoBehaviour
     public GameObject startPanel1; 
     public GameObject settingPanel;
     public GameObject guidePanel;
+    public GameObject loadPanel;
 
     [Header("Scripts")]
     public SettingsPanel settingsPanelScript;
@@ -14,16 +15,19 @@ public class StartPanel_MainMenu : MonoBehaviour
 
     public void StartTheGame()
     {
-        Time.timeScale = 1; 
-        SceneManager.LoadScene("level1");
+        // Time.timeScale = 1; 
+        // SceneManager.LoadScene("level1");
+        startPanel1.SetActive(false);
+        loadPanel.SetActive(true);
+
     }
 
     // Settings
     public void OpenSettings()
     {
-        startPanel1.SetActive(false);
-        settingPanel.SetActive(true);
-        // settingsPanelScript.OpenSettings(startPanel1);
+        // startPanel1.SetActive(false);
+        // settingPanel.SetActive(true);
+        settingsPanelScript.OpenSettings(startPanel1);
     }
 
     // Guide
