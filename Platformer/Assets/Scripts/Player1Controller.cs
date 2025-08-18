@@ -27,6 +27,8 @@ public class Player1Controller : BasePlayer
     private AudioSource audioSource;
     [SerializeField] private Transform firePoint;
     [SerializeField] private float arrowSpeed = 10f;
+    public int playerNumber = 1; 
+
     public Image[] HealthPoint;
     public Image[] HealthBar;
     public Sprite fullHeart;
@@ -310,7 +312,12 @@ public class Player1Controller : BasePlayer
     private IEnumerator ShowLosePanelAfterDelay(float delay)
     {
         yield return new WaitForSeconds(delay);
-        FindFirstObjectByType<GameStateManager>().ShowGameOver();
+
+        GameStateManager gsm = FindFirstObjectByType<GameStateManager>();
+        if (gsm != null)
+        {
+            gsm.PlayerDied(playerNumber);
+        }
     }
     public override void RefreshUI()
     {

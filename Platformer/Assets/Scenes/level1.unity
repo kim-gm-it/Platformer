@@ -4542,7 +4542,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1904268733}
         m_TargetAssemblyTypeName: LoadSavaButton, Assembly-CSharp
-        m_MethodName: OnSaveButton
+        m_MethodName: OnSaveSceneButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5138,6 +5138,7 @@ MonoBehaviour:
   player1: 0
   animator: {fileID: 1383761108}
   tr: {fileID: 1383761115}
+  playerNumber: 2
   hasKey: 0
   jumpClip: {fileID: 8300000, guid: 01192fcc9ff18224ebca39f3105da0a6, type: 3}
   attackClip: {fileID: 8300000, guid: 13b357c1adc362f4cb452cc0e7a6aa7c, type: 3}
@@ -8037,6 +8038,7 @@ MonoBehaviour:
   youWinPanel: {fileID: 1052276552}
   audioWin: {fileID: 1052276553}
   audioLose: {fileID: 958892715}
+  requireBothPlayersDead: 0
 --- !u!114 &1904268729
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8194,6 +8196,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c419596239a99946a804dba1b7cbcd1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  load: {fileID: 0}
+  StaarPanel: {fileID: 0}
 --- !u!1 &1968470987
 GameObject:
   m_ObjectHideFlags: 0
@@ -8679,6 +8683,7 @@ MonoBehaviour:
   deathClip: {fileID: 8300000, guid: 0e0530b31c05bb94196c70bebcf23636, type: 3}
   firePoint: {fileID: 900016109}
   arrowSpeed: 10
+  playerNumber: 1
   HealthPoint:
   - {fileID: 1085135115}
   - {fileID: 1770229595}

@@ -124,7 +124,7 @@ public class player1_level3 : BasePlayer
             isDead = true;
             PlayDeathSound();
             StartCoroutine(ShowLosePanelAfterDelay(1.5f));
-            FindFirstObjectByType<GameStateManagerlevel3>().PlayerDied(1);
+            FindFirstObjectByType<GameStateManager>().PlayerDied(1);
         }
     }
 

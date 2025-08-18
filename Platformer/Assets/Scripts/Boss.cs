@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class Boss : MonoBehaviour
 {
@@ -12,12 +13,12 @@ public class Boss : MonoBehaviour
     [Header("Boss Stats")]
     public bool isFlipped = false;
     public int maxHealth = 100;
-    private int currentHealth;
+    public int currentHealth;
     private bool isDead = false;
 
     [Header("References")]
     private Animator animator;
-    public EnemyHealthBar healthBar;
+    // public EnemyHealthBar healthBar;
 
     [Header("Spawn Variables")]
     public float spawnInterval = 10f;
@@ -32,13 +33,14 @@ public class Boss : MonoBehaviour
     public AudioClip deathSFX;
     [Header("UI Panels")]
     public GameObject winPanel;
-    private GameStateManagerlevel3 gameStateManager;
+    private GameStateManager gameStateManagerB;
+    public Slider slider;
 
 
     void Start()
     {
         spawnTimer = spawnInterval;
-        gameStateManager = FindFirstObjectByType<GameStateManagerlevel3>();
+        gameStateManagerB = FindFirstObjectByType<GameStateManager>();
 
         players = new Transform[]
         {
@@ -47,9 +49,12 @@ public class Boss : MonoBehaviour
         };
 
         switchTimer = switchTargetTime;
-        currentHealth = maxHealth;
+
+        if (currentHealth <= 0)
+            currentHealth = maxHealth;
+
         animator = GetComponent<Animator>();
-        healthBar.UpdateHealthBar(currentHealth, maxHealth);
+        UpdateHealthBar(currentHealth, maxHealth);
 
         if (breathingSFX != null)
         {
@@ -58,6 +63,7 @@ public class Boss : MonoBehaviour
             audioSource.Play();
         }
     }
+
 
     private void Update()
     {
@@ -84,7 +90,7 @@ public class Boss : MonoBehaviour
         GetComponent<Collider2D>().enabled = false;
         GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
 
-        StartCoroutine(HandleVictorySequence(1.5f));
+        StartCoroutine(HandleVictorySequence(0.6f));
     }
     void OnCollisionEnter2D(Collision2D collision)
     {
@@ -116,7 +122,7 @@ public class Boss : MonoBehaviour
 
         if (hurtSFX != null) audioSource.PlayOneShot(hurtSFX);
 
-        healthBar.UpdateHealthBar(currentHealth, maxHealth);
+        UpdateHealthBar(currentHealth, maxHealth);
 
         ////////////////////////////////
         Debug.Log("Current Health : " + currentHealth);
@@ -134,18 +140,41 @@ public class Boss : MonoBehaviour
 
     public Transform GetCurrentTarget()
     {
-        if (players.Length == 0 || players[currentPlayerIndex] == null)
-            return null;
+        if (players.Length == 0) return null;
+
+        int startIndex = currentPlayerIndex;
+        do
+        {
+            if (players[currentPlayerIndex] != null)
+            {
+                break;
+            }
+
+            currentPlayerIndex = (currentPlayerIndex + 1) % players.Length;
+
+            if (currentPlayerIndex == startIndex)
+                return null;
+
+        } while (players[currentPlayerIndex] == null);
 
         switchTimer -= Time.deltaTime;
         if (switchTimer <= 0f)
         {
             currentPlayerIndex = (currentPlayerIndex + 1) % players.Length;
+
+            int attempts = 0;
+            while (players[currentPlayerIndex] == null && attempts < players.Length)
+            {
+                currentPlayerIndex = (currentPlayerIndex + 1) % players.Length;
+                attempts++;
+            }
+
             switchTimer = switchTargetTime;
         }
 
         return players[currentPlayerIndex];
     }
+
 
     public void LookAtPlayer(Transform target)
     {
@@ -170,17 +199,21 @@ public class Boss : MonoBehaviour
     {
         return isDead;
     }
-    
+
     IEnumerator HandleVictorySequence(float delay)
     {
         yield return new WaitForSeconds(delay);
 
-        if (gameStateManager != null)
+        if (gameStateManagerB != null)
         {
-            gameStateManager.ShowYouWin();
+            gameStateManagerB.ShowYouWin();
         }
 
         yield return new WaitForSeconds(2f);
         Destroy(gameObject);
+    }
+    public void UpdateHealthBar(float current, float max)
+    {
+        slider.value = current / max;
     }
 }

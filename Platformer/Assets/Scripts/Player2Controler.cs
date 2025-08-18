@@ -18,6 +18,8 @@ public class Player2Controler : BasePlayer
     [SerializeField] Boolean player1;
     [SerializeField] private Animator animator;
     [SerializeField] private TrailRenderer tr;
+    public int playerNumber = 2;
+
     private bool canDash = true;
     public bool hasKey = false;
     private bool isDashing;
@@ -377,7 +379,12 @@ public class Player2Controler : BasePlayer
     private IEnumerator ShowLosePanelAfterDelay(float delay)
     {
         yield return new WaitForSeconds(delay);
-        FindFirstObjectByType<GameStateManager>().ShowGameOver();
+
+        GameStateManager gsm = FindFirstObjectByType<GameStateManager>();
+        if (gsm != null)
+        {
+            gsm.PlayerDied(playerNumber); 
+        }
     }
     public bool IsDashing()
     {
