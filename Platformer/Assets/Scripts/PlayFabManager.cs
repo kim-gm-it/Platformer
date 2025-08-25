@@ -3,7 +3,6 @@ using TMPro;
 using PlayFab.ClientModels;
 using PlayFab;
 using UnityEngine.SceneManagement;
-using UnityEngine;
 
 public class PlayFabManager : MonoBehaviour
 {
@@ -35,12 +34,13 @@ public class PlayFabManager : MonoBehaviour
     void OnSignupSuccess(RegisterPlayFabUserResult result)
     {
         Debug.Log("Signup successful");
+        errorText.text = "Signup successful!";
         SceneManager.LoadScene("Lobby");
     }
 
     void OnError(PlayFabError error)
     {
-        errorText.text = "Error! " + error.GenerateErrorReport();
+        errorText.text = "Error!\n" + error.GenerateErrorReport();
     }
 
     public void Login()
@@ -58,6 +58,7 @@ public class PlayFabManager : MonoBehaviour
     void OnLoginSuccess(LoginResult result)
     {
         Debug.Log("Login successful");
+        errorText.text = "Login successful!";
         SceneManager.LoadScene("Lobby");
     }
 
@@ -74,6 +75,7 @@ public class PlayFabManager : MonoBehaviour
 
     void OnRecoverySuccess(SendAccountRecoveryEmailResult result)
     {
+        errorText.text = "Recovery email sent to " + email.text ;
         Debug.Log("Recovery email sent");
     }
 
