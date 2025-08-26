@@ -17,7 +17,7 @@ namespace Kart
     public class LobbyUI : MonoBehaviour
     {
         [Header("Panel Management")]
-        [SerializeField] private MenuUIManagement menuUIManagement;
+        private MenuUIManagement menuUIManagement;
         [SerializeField] private string gameScene;
 
         [Header("Lobby Panel Buttons")]
@@ -28,6 +28,8 @@ namespace Kart
         [Header("Lobby List")]
         [SerializeField] private Transform lobbyListContainer;
         [SerializeField] private GameObject lobbyItemPrefab;
+        [SerializeField] private Button refreshButton;
+        [SerializeField] private Button backButton;
 
         [Header("Heartbeat and Poll")]
         [SerializeField] private float lobbyHeartbeat = 15f;
@@ -42,6 +44,31 @@ namespace Kart
 
         private void Awake()
         {
+            if(backButton == null)
+            {
+                backButton = GameObject.FindGameObjectWithTag("BackButton").GetComponent<Button>();
+            }
+            if (refreshButton == null)
+            {
+                refreshButton = GameObject.FindGameObjectWithTag("RefreshButton").GetComponent<Button>();
+            }
+            if (joinLobbyButton == null)
+            {   
+                joinLobbyButton = GameObject.FindGameObjectWithTag("JoinButton").GetComponent<Button>();
+            }
+            if (createLobbyButton == null)
+            {   
+                createLobbyButton = GameObject.FindGameObjectWithTag("CreateButton").GetComponent<Button>();
+            }
+
+            //menuUIManagement = GameObject.Find("PanelManager").GetComponent<MenuUIManagement>();
+
+            Debug.Log($"Refresh button is {(refreshButton == null ? "NULL" : "SET")}");
+            Debug.Log($"Back button is {(backButton == null ? "NULL" : "SET")}");
+
+            Debug.Log("RefreshButton activeSelf: " + refreshButton.gameObject.activeSelf);
+            Debug.Log("BackButton activeSelf: " + backButton.gameObject.activeSelf);
+
 
             Debug.Log($"Create button is {(createLobbyButton == null ? "NULL" : "SET")}");
             Debug.Log($"Join button is {(joinLobbyButton == null ? "NULL" : "SET")}");
@@ -70,7 +97,8 @@ namespace Kart
         {
             Debug.Log("Create lobby button pressed");
             await Multiplayer.Instance.CreateLobby();
-            menuUIManagement.ShowCharacterSelection();
+            GameObject.Find("PanelsManager").GetComponent<MenuUIManagement>().ShowCharacterSelection();
+            //menuUIManagement.ShowCharacterSelection();
             //Loader.LoadNetwork(gameScene);
         }
 
@@ -80,9 +108,16 @@ namespace Kart
         {
             Debug.Log("Join lobby button pressed");
             GameObject.Find("PanelsManager").GetComponent<MenuUIManagement>().ShowLobbies();
-            menuUIManagement.ShowLobbies();
+            //menuUIManagement.ShowLobbies();
             LobbyUI.Instance.RefreshLobbyList();
 
+        }
+
+
+        public async void Back()
+        {
+            Debug.Log("Back button pressed");
+            GameObject.Find("PanelsManager").GetComponent<MenuUIManagement>().ShowMenu();
         }
 
         private void HandleLobbyHeartbeat()
@@ -136,6 +171,8 @@ namespace Kart
 
         public async void RefreshLobbyList()
         {
+
+            Debug.Log("Refresh button is pressed");
             var lobbies = await GetLobbiesAsync();
 
             //clear old list
@@ -164,8 +201,10 @@ namespace Kart
             {
                 var lobby = await LobbyService.Instance.JoinLobbyByIdAsync(lobbyId);
                 string relayJoinCode = lobby.Data["RelayJoinCode"].Value;
-
                 var joinAllocation = await RelayService.Instance.JoinAllocationAsync(relayJoinCode);
+
+                Debug.Log("Client trying to join with relay code: " + relayJoinCode);
+
                 NetworkManager.Singleton.GetComponent<Unity.Netcode.Transports.UTP.UnityTransport>()
                     .SetRelayServerData(joinAllocation.RelayServer.IpV4,
                     (ushort)joinAllocation.RelayServer.Port,
@@ -174,7 +213,8 @@ namespace Kart
                     joinAllocation.HostConnectionData);
 
                 NetworkManager.Singleton.StartClient();
-                menuUIManagement.ShowCharacterSelection();
+                GameObject.Find("PanelsManager").GetComponent<MenuUIManagement>().ShowCharacterSelection();
+                //menuUIManagement.ShowCharacterSelection();
             }
             catch (Exception e)
             {
