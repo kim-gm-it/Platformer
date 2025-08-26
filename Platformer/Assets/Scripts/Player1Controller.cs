@@ -284,9 +284,20 @@ public class Player1Controller : BasePlayer
             }
         }
     }
-    public void IncreaseHealth(int amount)
+   public void IncreaseHealth(int amount)
     {
         livesBar += amount;
+
+        while (livesBar > 4)
+        {
+            livesBar -= 4; 
+            livesPoint++;
+        }
+
+        if (livesPoint > HealthPoint.Length)
+        {
+            livesPoint = HealthPoint.Length;
+        }
 
         if (livesBar > 4)
         {
@@ -294,7 +305,9 @@ public class Player1Controller : BasePlayer
         }
 
         UpdateHealthBarUI();
+        UpdateHealthPointUI();
     }
+
 
     public void StartDamageBoost(float multiplier, float duration)
     {

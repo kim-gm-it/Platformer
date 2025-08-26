@@ -1,5 +1,23 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using PlayFab;
+using PlayFab.ClientModels;
+using System.Collections.Generic;
+
+[System.Serializable]
+public class SaveData
+{
+    public int p1HealthPoints;
+    public float p1HealthBar;
+    public float p1PosX, p1PosY, p1PosZ;
+
+    public int p2HealthPoints;
+    public float p2HealthBar;
+    public float p2PosX, p2PosY, p2PosZ;
+
+    public int bossHealth;
+    public float bossPosX, bossPosY, bossPosZ;
+}
 
 public class SaveLoadManager : MonoBehaviour
 {
@@ -31,6 +49,8 @@ public class SaveLoadManager : MonoBehaviour
         PlayerPrefs.SetString("SavedScene", SceneManager.GetActiveScene().name);
         PlayerPrefs.SetInt("SceneOnly", 1); 
         PlayerPrefs.Save();
+
+        SaveToCloud();
         Debug.Log("Scene-only saved!");
     }
 
@@ -79,10 +99,93 @@ public class SaveLoadManager : MonoBehaviour
         }
 
         PlayerPrefs.Save();
+
+        SaveToCloud(); 
         Debug.Log("Full game saved!");
     }
 
-    // ---------- LOAD ----------
+    // ---------- CLOUD SAVE ----------
+    public void SaveToCloud()
+    {
+        SaveData data = new SaveData
+        {
+            p1HealthPoints = PlayerPrefs.GetInt("P1_HealthPoints", 0),
+            p1HealthBar = PlayerPrefs.GetFloat("P1_HealthBar", 0),
+            p1PosX = PlayerPrefs.GetFloat("P1_PosX", 0),
+            p1PosY = PlayerPrefs.GetFloat("P1_PosY", 0),
+            p1PosZ = PlayerPrefs.GetFloat("P1_PosZ", 0),
+
+            p2HealthPoints = PlayerPrefs.GetInt("P2_HealthPoints", 0),
+            p2HealthBar = PlayerPrefs.GetFloat("P2_HealthBar", 0),
+            p2PosX = PlayerPrefs.GetFloat("P2_PosX", 0),
+            p2PosY = PlayerPrefs.GetFloat("P2_PosY", 0),
+            p2PosZ = PlayerPrefs.GetFloat("P2_PosZ", 0),
+
+            bossHealth = PlayerPrefs.GetInt("Boss_Health", 0),
+            bossPosX = PlayerPrefs.GetFloat("Boss_PosX", 0),
+            bossPosY = PlayerPrefs.GetFloat("Boss_PosY", 0),
+            bossPosZ = PlayerPrefs.GetFloat("Boss_PosZ", 0),
+        };
+
+        string json = JsonUtility.ToJson(data);
+
+        var request = new UpdateUserDataRequest
+        {
+            Data = new Dictionary<string, string>
+            {
+                { "SaveFile", json }
+            }
+        };
+
+        PlayFabClientAPI.UpdateUserData(request,
+            result => Debug.Log(" Cloud Save successful!"),
+            error => Debug.LogError(" Cloud Save failed: " + error.GenerateErrorReport()));
+    }
+
+    public void LoadFromCloud(System.Action callback = null)
+    {
+        PlayFabClientAPI.GetUserData(new GetUserDataRequest(),
+            result =>
+            {
+                if (result.Data != null && result.Data.ContainsKey("SaveFile"))
+                {
+                    string json = result.Data["SaveFile"].Value;
+                    SaveData data = JsonUtility.FromJson<SaveData>(json);
+
+                    PlayerPrefs.SetInt("P1_HealthPoints", data.p1HealthPoints);
+                    PlayerPrefs.SetFloat("P1_HealthBar", data.p1HealthBar);
+                    PlayerPrefs.SetFloat("P1_PosX", data.p1PosX);
+                    PlayerPrefs.SetFloat("P1_PosY", data.p1PosY);
+                    PlayerPrefs.SetFloat("P1_PosZ", data.p1PosZ);
+
+                    PlayerPrefs.SetInt("P2_HealthPoints", data.p2HealthPoints);
+                    PlayerPrefs.SetFloat("P2_HealthBar", data.p2HealthBar);
+                    PlayerPrefs.SetFloat("P2_PosX", data.p2PosX);
+                    PlayerPrefs.SetFloat("P2_PosY", data.p2PosY);
+                    PlayerPrefs.SetFloat("P2_PosZ", data.p2PosZ);
+
+                    PlayerPrefs.SetInt("Boss_Health", data.bossHealth);
+                    PlayerPrefs.SetFloat("Boss_PosX", data.bossPosX);
+                    PlayerPrefs.SetFloat("Boss_PosY", data.bossPosY);
+                    PlayerPrefs.SetFloat("Boss_PosZ", data.bossPosZ);
+
+                    PlayerPrefs.Save();
+                    Debug.Log(" Cloud Load successful!");
+                }
+                else
+                {
+                    Debug.Log(" No cloud save found.");
+                }
+
+                callback?.Invoke();
+            },
+            error =>
+            {
+                Debug.LogError(" Cloud Load failed: " + error.GenerateErrorReport());
+                callback?.Invoke();
+            });
+    }
+
     public void LoadGame()
     {
         if (!PlayerPrefs.HasKey("SavedScene"))
