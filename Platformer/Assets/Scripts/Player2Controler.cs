@@ -355,12 +355,24 @@ public class Player2Controler : BasePlayer
     {
         livesBar += amount;
 
+        while (livesBar > 4)
+        {
+            livesBar -= 4; 
+            livesPoint++;
+        }
+
+        if (livesPoint > HealthPoint.Length)
+        {
+            livesPoint = HealthPoint.Length;
+        }
+
         if (livesBar > 4)
         {
             livesBar = 4;
         }
 
         UpdateHealthBarUI();
+        UpdateHealthPointUI();
     }
 
     public void StartDamageBoost(float multiplier, float duration)

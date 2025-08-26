@@ -4,7 +4,7 @@ using UnityEngine.SceneManagement;
 public class StartPanel_MainMenu : MonoBehaviour
 {
     [Header("Panels")]
-    public GameObject startPanel1; 
+    public GameObject startPanel1;
     public GameObject settingPanel;
     public GameObject guidePanel;
     public GameObject loadPanel;
@@ -42,5 +42,9 @@ public class StartPanel_MainMenu : MonoBehaviour
     {
         Application.Quit();
         Debug.Log("Quit called");
+    }
+    public void back()
+    {
+        SceneManager.LoadScene("Lobby");
     }
 }

@@ -76,8 +76,11 @@ public class EnemyLogic : MonoBehaviour
     {
         if(isDead) return;
         Debug.Log("Enemy is attacking");
-        animator.SetBool("IsRunning", false);
-        animator.SetTrigger("IsAttacking");
+        if(animator != null)
+        {
+            animator.SetBool("IsRunning", false);
+            animator.SetTrigger("IsAttacking");
+        }
         PlayAttackSound();
     }
 
@@ -104,7 +107,10 @@ public class EnemyLogic : MonoBehaviour
 
     public void PlayAttackSound()
     {
-        audioSource.PlayOneShot(attackClip);
+        if(audioSource != null && attackClip != null)
+        {
+            audioSource.PlayOneShot(attackClip);
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
