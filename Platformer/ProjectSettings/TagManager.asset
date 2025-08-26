@@ -18,6 +18,8 @@ TagManager:
   - Teleporter
   - CollectibleSpawn
   - Boss
+  - PlayersCount
+  - LobbyName
   layers:
   - Default
   - TransparentFX
