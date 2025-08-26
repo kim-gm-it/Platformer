@@ -61,8 +61,7 @@ namespace Kart
                 createLobbyButton = GameObject.FindGameObjectWithTag("CreateButton").GetComponent<Button>();
             }
 
-            //menuUIManagement = GameObject.Find("PanelManager").GetComponent<MenuUIManagement>();
-
+            
             Debug.Log($"Refresh button is {(refreshButton == null ? "NULL" : "SET")}");
             Debug.Log($"Back button is {(backButton == null ? "NULL" : "SET")}");
 
@@ -84,8 +83,7 @@ namespace Kart
             }
             Instance = this;
 
-            //createLobbyButton.onClick.AddListener(CreateGame);
-            //joinLobbyButton.onClick.AddListener(JoinGame);
+            
         }
 
         public void SetCurrentLobby(Lobby lobby)
@@ -98,7 +96,7 @@ namespace Kart
             Debug.Log("Create lobby button pressed");
             await Multiplayer.Instance.CreateLobby();
             GameObject.Find("PanelsManager").GetComponent<MenuUIManagement>().ShowCharacterSelection();
-            //menuUIManagement.ShowCharacterSelection();
+            
             //Loader.LoadNetwork(gameScene);
         }
 
@@ -108,7 +106,7 @@ namespace Kart
         {
             Debug.Log("Join lobby button pressed");
             GameObject.Find("PanelsManager").GetComponent<MenuUIManagement>().ShowLobbies();
-            //menuUIManagement.ShowLobbies();
+            
             LobbyUI.Instance.RefreshLobbyList();
 
         }
@@ -120,46 +118,6 @@ namespace Kart
             GameObject.Find("PanelsManager").GetComponent<MenuUIManagement>().ShowMenu();
         }
 
-        private void HandleLobbyHeartbeat()
-        {
-            if (currentLobby != null && IsLobbyHost())
-            {
-                heartbeatTimer -= Time.deltaTime;
-                if (heartbeatTimer <= 0)
-                {
-                    heartbeatTimer = lobbyHeartbeat;
-                    LobbyService.Instance.SendHeartbeatPingAsync(currentLobby.Id);//send a ping to keep the lobby alive every second 
-                }
-
-            }
-
-        }
-
-        private void Update()
-        {
-            HandleLobbyHeartbeat();
-            HandleLobbyPoll();
-        }
-
-        public void HandleLobbyPoll()
-        {
-            if (currentLobby != null)
-            {
-                pollTimer -= Time.deltaTime;
-                if (pollTimer <= 0)
-                {
-                    pollTimer = lobbyPollInterval;
-                    LobbyService.Instance.GetLobbyAsync(currentLobby.Id);//refresh lobby data
-                }
-
-            }
-
-        }
-
-        private bool IsLobbyHost()
-        {
-            return currentLobby != null && currentLobby.HostId == AuthenticationService.Instance.PlayerId;
-        }
 
         public static class Loader
         {
@@ -200,7 +158,9 @@ namespace Kart
             try
             {
                 var lobby = await LobbyService.Instance.JoinLobbyByIdAsync(lobbyId);
+                Debug.Log("got the lobby by id");
                 string relayJoinCode = lobby.Data["RelayJoinCode"].Value;
+                Debug.Log("got the relay code for that specific lobby");
                 var joinAllocation = await RelayService.Instance.JoinAllocationAsync(relayJoinCode);
 
                 Debug.Log("Client trying to join with relay code: " + relayJoinCode);
@@ -208,13 +168,17 @@ namespace Kart
                 NetworkManager.Singleton.GetComponent<Unity.Netcode.Transports.UTP.UnityTransport>()
                     .SetRelayServerData(joinAllocation.RelayServer.IpV4,
                     (ushort)joinAllocation.RelayServer.Port,
+                    joinAllocation.AllocationIdBytes,
                     joinAllocation.Key,
                     joinAllocation.ConnectionData,
                     joinAllocation.HostConnectionData);
 
                 NetworkManager.Singleton.StartClient();
+
+                Debug.Log($"Successfully joined lobby with {relayJoinCode} relay code");
+                
                 GameObject.Find("PanelsManager").GetComponent<MenuUIManagement>().ShowCharacterSelection();
-                //menuUIManagement.ShowCharacterSelection();
+                
             }
             catch (Exception e)
             {
