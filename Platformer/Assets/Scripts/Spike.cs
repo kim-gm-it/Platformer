@@ -22,7 +22,7 @@ public class Spike : MonoBehaviour
 
         if (collision.CompareTag("Player2") && Time.time >= timeUntilNextHitP2)
         {
-            player1.TakeDamage();
+            player2.TakeDamage();
             Debug.Log("Player2 got hit by spike");
             timeUntilNextHitP2 = Time.time + damageCooldown;
 
