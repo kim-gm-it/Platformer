@@ -59,8 +59,7 @@ public class PlayFabManager : MonoBehaviour
     {
         Debug.Log("Login successful");
         errorText.text = "Login successful!";
-        // SceneManager.LoadScene("Lobby");
-        SceneManager.LoadScene("mainMenu");
+        SceneManager.LoadScene("Lobby");
 
     }
 

@@ -85,7 +85,14 @@ public class Multiplayer : MonoBehaviour
             Debug.Log("Lobby Created: " +  currentLobby.Id);
             
             //telling network transport to use unity relay 
-            NetworkManager.Singleton.GetComponent<Unity.Netcode.Transports.UTP.UnityTransport>().SetRelayServerData(allocation.RelayServer.IpV4, (ushort)allocation.RelayServer.Port , allocation.AllocationIdBytes , allocation.Key, allocation.ConnectionData , default , true);
+            NetworkManager.Singleton.GetComponent<Unity.Netcode.Transports.UTP.UnityTransport>()
+                .SetRelayServerData(allocation.RelayServer.IpV4,
+                (ushort)allocation.RelayServer.Port ,
+                allocation.AllocationIdBytes ,
+                allocation.Key,
+                allocation.ConnectionData 
+                
+                );
 
             NetworkManager.Singleton.StartHost();
 
