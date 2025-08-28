@@ -10,6 +10,7 @@ using Unity.Services.Lobbies.Models;
 using Unity.Services.Relay.Models;
 using UnityEngine;
 using Kart;
+using UnityEngine.SceneManagement;
 
 public class Multiplayer : MonoBehaviour
 {
@@ -159,17 +160,26 @@ public class Multiplayer : MonoBehaviour
         if (currentLobby != null)
         {
             pollTimer -= Time.deltaTime;
+
             if (pollTimer <= 0)
             {
                 pollTimer = lobbyPollInterval;
                 currentLobby = await LobbyService.Instance.GetLobbyAsync(currentLobby.Id);//refresh lobby data
+                
                 LobbyUI lobbyUi = FindAnyObjectByType<LobbyUI>();
+                
                 if(lobbyUi != null)
                 {
                     lobbyUi.SetCurrentLobby(currentLobby);
                 }
 
                 Debug.Log("Lobby refreshed");
+
+                //if lobby is full move to character selection
+                if(currentLobby.Players.Count >= currentLobby.MaxPlayers)
+                {
+                    SceneManager.LoadScene("mainMenu");
+                }
             }
 
         }
