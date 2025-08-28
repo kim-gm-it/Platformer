@@ -4952,7 +4952,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   backgroundPrefab: {fileID: 729393336188780447, guid: 58c9c723842e5a84ebea24c77ce7162c, type: 3}
-  player: {fileID: 0}
+  player: {fileID: 867998532556532935, guid: b67a5b0b2b8d03743a06c416de342502, type: 3}
   spawnAheadDis: 30
   offset: 20
 --- !u!1 &1598117017
