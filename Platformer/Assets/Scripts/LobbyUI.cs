@@ -95,7 +95,8 @@ namespace Kart
         {
             Debug.Log("Create lobby button pressed");
             await Multiplayer.Instance.CreateLobby();
-            GameObject.Find("PanelsManager").GetComponent<MenuUIManagement>().ShowCharacterSelection();
+            //GameObject.Find("PanelsManager").GetComponent<MenuUIManagement>().ShowCharacterSelection();
+            GameObject.Find("PanelsManager").GetComponent<MenuUIManagement>().ShowConnecting();
             
             //Loader.LoadNetwork(gameScene);
         }
@@ -183,7 +184,8 @@ namespace Kart
 
                 Debug.Log($"Successfully joined lobby with {relayJoinCode} relay code");
                 
-                GameObject.Find("PanelsManager").GetComponent<MenuUIManagement>().ShowCharacterSelection();
+                //GameObject.Find("PanelsManager").GetComponent<MenuUIManagement>().ShowCharacterSelection();
+                GameObject.Find("PanelsManager").GetComponent<MenuUIManagement>().ShowConnecting();
                 
             }
             catch (Exception e)
