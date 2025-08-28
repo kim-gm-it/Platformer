@@ -52,14 +52,16 @@ namespace Kart
             {
                 refreshButton = GameObject.FindGameObjectWithTag("RefreshButton").GetComponent<Button>();
             }
-            if (joinLobbyButton == null)
-            {   
-                joinLobbyButton = GameObject.FindGameObjectWithTag("JoinButton").GetComponent<Button>();
-            }
-            if (createLobbyButton == null)
-            {   
-                createLobbyButton = GameObject.FindGameObjectWithTag("CreateButton").GetComponent<Button>();
-            }
+
+            //if (joinLobbyButton == null)
+            //{   
+            //    joinLobbyButton = GameObject.FindGameObjectWithTag("JoinButton").GetComponent<Button>();
+            //}
+            //if (createLobbyButton == null)
+            //{   
+            //    createLobbyButton = GameObject.FindGameObjectWithTag("CreateButton").GetComponent<Button>();
+            //}
+
 
             
             Debug.Log($"Refresh button is {(refreshButton == null ? "NULL" : "SET")}");
@@ -141,11 +143,17 @@ namespace Kart
             foreach (var lobby in lobbies)
             {
                 var item = Instantiate(lobbyItemPrefab, lobbyListContainer);
+
+                //reset position and scale
+                item.transform.localScale = Vector3.one;
+                item.transform.localPosition = Vector3.zero;
+                item.transform.localRotation = Quaternion.identity;
+
                 var ui = item.GetComponent<LobbyItemUI>();
 
                 ui.lobbyName.text = lobby.Name;
 
-                ui.playerCounter.text = $"{lobby.Name}({lobby.Players.Count}/{lobby.MaxPlayers})";
+                ui.playerCounter.text = $"{lobby.Players.Count}/{lobby.MaxPlayers}";
 
                 ui.joinButton.onClick.AddListener(() => JoinLobbyById(lobby.Id));
             }

@@ -134,7 +134,10 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+
+    nameFileIdTable:
+      Siguiente_en_el_bosque-removebg-preview_0: 7682786991699949651
+
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
