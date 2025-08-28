@@ -6,14 +6,14 @@ public class MenuUIManagement : MonoBehaviour
     [SerializeField] private GameObject connectingPanel;
     [SerializeField] private GameObject menuPanel;
     [SerializeField] private GameObject lobbiesPanel;
-    [SerializeField] private GameObject characterSelectionPanel;
+    //[SerializeField] private GameObject characterSelectionPanel;
 
     public void ShowConnecting()
     {
         connectingPanel.SetActive(true);
         menuPanel.SetActive(false);
         lobbiesPanel.SetActive(false);
-        characterSelectionPanel.SetActive(false);
+        //characterSelectionPanel.SetActive(false);
     }
 
     public void ShowMenu()
@@ -21,7 +21,7 @@ public class MenuUIManagement : MonoBehaviour
         connectingPanel.SetActive(false);
         menuPanel.SetActive(true);
         lobbiesPanel.SetActive(false); 
-        characterSelectionPanel.SetActive(false);
+        //characterSelectionPanel.SetActive(false);
     }
 
     public void ShowLobbies()
@@ -29,7 +29,7 @@ public class MenuUIManagement : MonoBehaviour
         connectingPanel.SetActive(false);
         menuPanel.SetActive(false);
         lobbiesPanel.SetActive(true);
-        characterSelectionPanel.SetActive(false);
+        //characterSelectionPanel.SetActive(false);
     }
     
     public void ShowCharacterSelection()
@@ -37,6 +37,6 @@ public class MenuUIManagement : MonoBehaviour
         connectingPanel.SetActive(false);
         menuPanel.SetActive(false);
         lobbiesPanel.SetActive(false);
-        characterSelectionPanel.SetActive(true);
+        //characterSelectionPanel.SetActive(true);
     }
 }
