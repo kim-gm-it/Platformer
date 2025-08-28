@@ -151,7 +151,7 @@ namespace Kart
 
                 var ui = item.GetComponent<LobbyItemUI>();
 
-                ui.lobbyName.text = lobby.Name;
+                ui.lobbyName.text = lobby.Id;
 
                 ui.playerCounter.text = $"{lobby.Players.Count}/{lobby.MaxPlayers}";
 
