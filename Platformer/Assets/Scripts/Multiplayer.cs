@@ -15,8 +15,8 @@ public class Multiplayer : MonoBehaviour
 {
     [SerializeField] private string lobbyName = "Default Lobby";
     [SerializeField] private int maxPlayers = 2;
-    //[SerializeField] private float lobbyHeartbeat = 15f;
-    //[SerializeField] private float lobbyPollInterval = 2f;
+    [SerializeField] private float lobbyHeartbeat = 15f;
+    [SerializeField] private float lobbyPollInterval = 2f;
 
     private Lobby currentLobby;
     private float heartbeatTimer;//keep track of when to send heartbeat
@@ -47,11 +47,11 @@ public class Multiplayer : MonoBehaviour
         Debug.Log("Signed in as Player " + AuthenticationService.Instance.PlayerId);
     }
 
-    //private void Update()
-    //{
-    //    HandleLobbyHeartbeat();
-    //    HandleLobbyPoll();
-    //}
+    private void Update()
+    {
+        HandleLobbyHeartbeat();
+        HandleLobbyPoll();
+    }
 
     public async Task CreateLobby()
     {
@@ -85,7 +85,14 @@ public class Multiplayer : MonoBehaviour
             Debug.Log("Lobby Created: " +  currentLobby.Id);
             
             //telling network transport to use unity relay 
-            NetworkManager.Singleton.GetComponent<Unity.Netcode.Transports.UTP.UnityTransport>().SetRelayServerData(allocation.RelayServer.IpV4, (ushort)allocation.RelayServer.Port , allocation.AllocationIdBytes , allocation.Key, allocation.ConnectionData , default , true);
+            NetworkManager.Singleton.GetComponent<Unity.Netcode.Transports.UTP.UnityTransport>()
+                .SetRelayServerData(allocation.RelayServer.IpV4,
+                (ushort)allocation.RelayServer.Port ,
+                allocation.AllocationIdBytes ,
+                allocation.Key,
+                allocation.ConnectionData 
+                
+                );
 
             NetworkManager.Singleton.StartHost();
 
@@ -97,73 +104,82 @@ public class Multiplayer : MonoBehaviour
         }
     }
 
-    public async Task QuickJoinLobby()
-    {
-        try
-        {
-            //try to join any available lobby
-            Lobby lobby = await LobbyService.Instance.QuickJoinLobbyAsync();
+    //public async Task QuickJoinLobby()
+    //{
+    //    try
+    //    {
+    //        //try to join any available lobby
+    //        Lobby lobby = await LobbyService.Instance.QuickJoinLobbyAsync();
 
-            LobbyUI ui = FindObjectOfType<LobbyUI>();
-            if (ui != null)
+    //        LobbyUI ui = FindObjectOfType<LobbyUI>();
+    //        if (ui != null)
+    //        {
+    //            ui.SetCurrentLobby(lobby);
+    //            currentLobby = lobby;
+    //        }
+
+    //        //get relay join code from that lobby data
+    //        string relayJoinCode = lobby.Data["RelayJoinCode"].Value;
+
+    //        //join relay using that code
+    //        JoinAllocation joinAllocation = await RelayService.Instance.JoinAllocationAsync(relayJoinCode);
+
+    //        // start a client (joining a relay-hosted game)
+    //        NetworkManager.Singleton.GetComponent<Unity.Netcode.Transports.UTP.UnityTransport>().SetRelayServerData(joinAllocation.RelayServer.IpV4 ,(ushort)joinAllocation.RelayServer.Port , joinAllocation.Key , joinAllocation.ConnectionData , joinAllocation.HostConnectionData);
+            
+    //        NetworkManager.Singleton.StartClient();
+    //    }
+    //    catch (Exception e) 
+    //    {
+    //        Debug.Log("Failed to join lobby: " + e);
+    //    }
+    //}
+
+
+
+    private async Task HandleLobbyHeartbeat()
+    {
+        if (currentLobby != null && IsLobbyHost())
+        {
+            heartbeatTimer -= Time.deltaTime;
+            if (heartbeatTimer <= 0)
             {
-                ui.SetCurrentLobby(lobby);
-                currentLobby = lobby;
+                heartbeatTimer = lobbyHeartbeat;
+                await LobbyService.Instance.SendHeartbeatPingAsync(currentLobby.Id);//send a ping to keep the lobby alive every second 
+
+                Debug.Log("Sent heartbeat to keep the lobby alive");
             }
 
-            //get relay join code from that lobby data
-            string relayJoinCode = lobby.Data["RelayJoinCode"].Value;
-
-            //join relay using that code
-            JoinAllocation joinAllocation = await RelayService.Instance.JoinAllocationAsync(relayJoinCode);
-
-            // start a client (joining a relay-hosted game)
-            NetworkManager.Singleton.GetComponent<Unity.Netcode.Transports.UTP.UnityTransport>().SetRelayServerData(joinAllocation.RelayServer.IpV4 ,(ushort)joinAllocation.RelayServer.Port , joinAllocation.Key , joinAllocation.ConnectionData , joinAllocation.HostConnectionData);
-            
-            NetworkManager.Singleton.StartClient();
         }
-        catch (Exception e) 
+
+    }
+
+    public async Task HandleLobbyPoll()
+    {
+        if (currentLobby != null)
         {
-            Debug.Log("Failed to join lobby: " + e);
+            pollTimer -= Time.deltaTime;
+            if (pollTimer <= 0)
+            {
+                pollTimer = lobbyPollInterval;
+                currentLobby = await LobbyService.Instance.GetLobbyAsync(currentLobby.Id);//refresh lobby data
+                LobbyUI lobbyUi = FindAnyObjectByType<LobbyUI>();
+                if(lobbyUi != null)
+                {
+                    lobbyUi.SetCurrentLobby(currentLobby);
+                }
+
+                Debug.Log("Lobby refreshed");
+            }
+
         }
+
     }
 
 
-
-    //private void HandleLobbyHeartbeat()
-    //{
-    //    if(currentLobby != null && IsLobbyHost())
-    //    {
-    //        heartbeatTimer -= Time.deltaTime;
-    //        if(heartbeatTimer <= 0)
-    //        {
-    //            heartbeatTimer = lobbyHeartbeat;
-    //            LobbyService.Instance.SendHeartbeatPingAsync(currentLobby.Id);//send a ping to keep the lobby alive every second 
-    //        }
-
-    //    } 
-
-    //}
-
-    //public void HandleLobbyPoll()
-    //{
-    //    if(currentLobby != null)
-    //    {
-    //        pollTimer -= Time.deltaTime;
-    //        if(pollTimer <= 0)
-    //        {
-    //            pollTimer = lobbyPollInterval;
-    //            LobbyService.Instance.GetLobbyAsync(currentLobby.Id);//refresh lobby data
-    //        }
-
-    //    }
-
-    //}
-
-
-    //private bool IsLobbyHost()
-    //{
-    //    return currentLobby != null && currentLobby.HostId == AuthenticationService.Instance.PlayerId;
-    //}
+    private bool IsLobbyHost()
+    {
+        return currentLobby != null && currentLobby.HostId == AuthenticationService.Instance.PlayerId;
+    }
 
 }

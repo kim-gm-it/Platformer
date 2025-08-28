@@ -20,6 +20,10 @@ TagManager:
   - Boss
   - PlayersCount
   - LobbyName
+  - BackButton
+  - JoinButton
+  - CreateButton
+  - RefreshButton
   layers:
   - Default
   - TransparentFX
