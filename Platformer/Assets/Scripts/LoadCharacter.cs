@@ -1,3 +1,4 @@
+
 using UnityEditor.Search;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -30,5 +31,6 @@ public class LoadCharacter : MonoBehaviour
         GameObject clone = Instantiate(prefab, spawnPoint.position, Quaternion.identity);
 
     }
+
 
 }

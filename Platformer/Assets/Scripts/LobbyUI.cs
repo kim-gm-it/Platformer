@@ -52,6 +52,7 @@ namespace Kart
             {
                 refreshButton = GameObject.FindGameObjectWithTag("RefreshButton").GetComponent<Button>();
             }
+
             //if (joinLobbyButton == null)
             //{   
             //    joinLobbyButton = GameObject.FindGameObjectWithTag("JoinButton").GetComponent<Button>();
@@ -60,6 +61,7 @@ namespace Kart
             //{   
             //    createLobbyButton = GameObject.FindGameObjectWithTag("CreateButton").GetComponent<Button>();
             //}
+
 
             
             Debug.Log($"Refresh button is {(refreshButton == null ? "NULL" : "SET")}");

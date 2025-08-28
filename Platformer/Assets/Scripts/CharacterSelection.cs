@@ -1,4 +1,5 @@
 using UnityEngine;
+
 using UnityEngine.SceneManagement;
 
 
@@ -51,6 +52,7 @@ public class CharacterSelection : MonoBehaviour
             Debug.Log("both players ready");
             SceneManager.LoadScene("mainMenu");
         }
+
         
     }
 }
