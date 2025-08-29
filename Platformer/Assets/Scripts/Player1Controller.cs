@@ -45,6 +45,8 @@ public class Player1Controller : BasePlayer
 
     public void OnJump(InputAction.CallbackContext context)
     {
+        if (!IsOwner) return;//only owner can run this 
+
         if (context.performed)
         {
             bool isOnPlatform = isGrounded || player2;
@@ -71,6 +73,8 @@ public class Player1Controller : BasePlayer
 
     public void OnMove(InputAction.CallbackContext context)
     {
+        if (!IsOwner) return;//only owner can run this 
+
         Debug.Log("Move Input: " + context.ReadValue<Vector2>());
         movementInput = context.ReadValue<Vector2>();
     }
@@ -83,6 +87,8 @@ public class Player1Controller : BasePlayer
 
     void Update()
     {
+        if (!IsOwner) return;//only owner can run this 
+
         Vector2 movement = new Vector2(movementInput.x, movementInput.y) * (moveSpeed * Time.deltaTime);
         if (movement.magnitude > 0f)
         {
@@ -209,6 +215,8 @@ public class Player1Controller : BasePlayer
 
     public void OnAttack(InputAction.CallbackContext context)
     {
+        if (!IsOwner) return;//only owner can run this 
+
         if (context.performed)
         {
             animator.SetTrigger("Attack");
