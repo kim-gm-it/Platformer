@@ -321,6 +321,38 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7196948609164697903, guid: 3e662ebb86a5669489dc9e46a109cd0d, type: 3}
+      propertyPath: losePanel
+      value: 
+      objectReference: {fileID: 215791367}
+    - target: {fileID: 7196948609164697903, guid: 3e662ebb86a5669489dc9e46a109cd0d, type: 3}
+      propertyPath: 'HealthBar.Array.data[0]'
+      value: 
+      objectReference: {fileID: 156469586}
+    - target: {fileID: 7196948609164697903, guid: 3e662ebb86a5669489dc9e46a109cd0d, type: 3}
+      propertyPath: 'HealthBar.Array.data[1]'
+      value: 
+      objectReference: {fileID: 1466446895}
+    - target: {fileID: 7196948609164697903, guid: 3e662ebb86a5669489dc9e46a109cd0d, type: 3}
+      propertyPath: 'HealthBar.Array.data[2]'
+      value: 
+      objectReference: {fileID: 786294948}
+    - target: {fileID: 7196948609164697903, guid: 3e662ebb86a5669489dc9e46a109cd0d, type: 3}
+      propertyPath: 'HealthBar.Array.data[3]'
+      value: 
+      objectReference: {fileID: 1819829539}
+    - target: {fileID: 7196948609164697903, guid: 3e662ebb86a5669489dc9e46a109cd0d, type: 3}
+      propertyPath: 'HealthPoint.Array.data[0]'
+      value: 
+      objectReference: {fileID: 1907052853}
+    - target: {fileID: 7196948609164697903, guid: 3e662ebb86a5669489dc9e46a109cd0d, type: 3}
+      propertyPath: 'HealthPoint.Array.data[1]'
+      value: 
+      objectReference: {fileID: 1744097463}
+    - target: {fileID: 7196948609164697903, guid: 3e662ebb86a5669489dc9e46a109cd0d, type: 3}
+      propertyPath: 'HealthPoint.Array.data[2]'
+      value: 
+      objectReference: {fileID: 648916003}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -329,6 +361,11 @@ PrefabInstance:
 --- !u!1 &75310714 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1054626077317761154, guid: 3e662ebb86a5669489dc9e46a109cd0d, type: 3}
+  m_PrefabInstance: {fileID: 75310713}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &75310715 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1770846405438619732, guid: 3e662ebb86a5669489dc9e46a109cd0d, type: 3}
   m_PrefabInstance: {fileID: 75310713}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &89396707
@@ -749,8 +786,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   players:
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 2087047746}
+  - {fileID: 75310715}
   currentPlayerIndex: 0
   switchTimer: 0
   switchTargetTime: 10
@@ -1069,7 +1106,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GlobalObjectIdHash: 1847162521
+  GlobalObjectIdHash: 3540630581
   InScenePlacedSourceGlobalObjectIdHash: 0
   DeferredDespawnTick: 0
   Ownership: 1
@@ -101617,6 +101654,38 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9203609648045169753, guid: 8efd6e50d52d47544bc3ea0378929b89, type: 3}
+      propertyPath: losePanel
+      value: 
+      objectReference: {fileID: 215791367}
+    - target: {fileID: 9203609648045169753, guid: 8efd6e50d52d47544bc3ea0378929b89, type: 3}
+      propertyPath: 'HealthBar.Array.data[0]'
+      value: 
+      objectReference: {fileID: 1528468315}
+    - target: {fileID: 9203609648045169753, guid: 8efd6e50d52d47544bc3ea0378929b89, type: 3}
+      propertyPath: 'HealthBar.Array.data[1]'
+      value: 
+      objectReference: {fileID: 93419844}
+    - target: {fileID: 9203609648045169753, guid: 8efd6e50d52d47544bc3ea0378929b89, type: 3}
+      propertyPath: 'HealthBar.Array.data[2]'
+      value: 
+      objectReference: {fileID: 1795473057}
+    - target: {fileID: 9203609648045169753, guid: 8efd6e50d52d47544bc3ea0378929b89, type: 3}
+      propertyPath: 'HealthBar.Array.data[3]'
+      value: 
+      objectReference: {fileID: 1756502428}
+    - target: {fileID: 9203609648045169753, guid: 8efd6e50d52d47544bc3ea0378929b89, type: 3}
+      propertyPath: 'HealthPoint.Array.data[0]'
+      value: 
+      objectReference: {fileID: 1668784718}
+    - target: {fileID: 9203609648045169753, guid: 8efd6e50d52d47544bc3ea0378929b89, type: 3}
+      propertyPath: 'HealthPoint.Array.data[1]'
+      value: 
+      objectReference: {fileID: 1830981061}
+    - target: {fileID: 9203609648045169753, guid: 8efd6e50d52d47544bc3ea0378929b89, type: 3}
+      propertyPath: 'HealthPoint.Array.data[2]'
+      value: 
+      objectReference: {fileID: 597438315}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -101625,6 +101694,11 @@ PrefabInstance:
 --- !u!1 &2087047745 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 97849552298157384, guid: 8efd6e50d52d47544bc3ea0378929b89, type: 3}
+  m_PrefabInstance: {fileID: 2087047744}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &2087047746 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3978628244863722608, guid: 8efd6e50d52d47544bc3ea0378929b89, type: 3}
   m_PrefabInstance: {fileID: 2087047744}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &2087414657

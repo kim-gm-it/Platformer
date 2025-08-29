@@ -180,7 +180,7 @@ public class Player2Controler : BasePlayer
                 {
                     isDead = true;
                     PlayDeathSound();
-                    StartCoroutine(ShowLosePanelAfterDelay(1.9f));
+                    StartCoroutine(ShowLosePanelAfterDelay(1.5f));
                 }
             }
             else
@@ -233,7 +233,7 @@ public class Player2Controler : BasePlayer
             {
                 isDead = true;
                 PlayDeathSound();
-                StartCoroutine(ShowLosePanelAfterDelay(1.9f));
+                StartCoroutine(ShowLosePanelAfterDelay(1.5f));
             }
         }
         else

@@ -48,11 +48,11 @@ public class EnemyLogicLevel3 : MonoBehaviour
 
         // player2 = GameObject.Find("Player2").GetComponent<Player2Controler>();
         // player1 = GameObject.Find("Player1").GetComponent<Player1Controller>();
-        GameObject p1 = GameObject.Find("Player1");
+        GameObject p1 = GameObject.FindGameObjectWithTag("Player1");
         if (p1 != null)
             player1 = p1.GetComponent<Player1Controller>();
 
-        GameObject p2 = GameObject.Find("Player2");
+        GameObject p2 = GameObject.FindGameObjectWithTag("Player2");
         if (p2 != null)
             player2 = p2.GetComponent<Player2Controler>();
 

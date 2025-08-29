@@ -3515,7 +3515,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GlobalObjectIdHash: 4240127883
+  GlobalObjectIdHash: 1549667762
   InScenePlacedSourceGlobalObjectIdHash: 0
   DeferredDespawnTick: 0
   Ownership: 1
@@ -139660,6 +139660,38 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 718998950485419738, guid: b67a5b0b2b8d03743a06c416de342502, type: 3}
+      propertyPath: losePanel
+      value: 
+      objectReference: {fileID: 1364317942}
+    - target: {fileID: 718998950485419738, guid: b67a5b0b2b8d03743a06c416de342502, type: 3}
+      propertyPath: 'HealthBar.Array.data[0]'
+      value: 
+      objectReference: {fileID: 620241270}
+    - target: {fileID: 718998950485419738, guid: b67a5b0b2b8d03743a06c416de342502, type: 3}
+      propertyPath: 'HealthBar.Array.data[1]'
+      value: 
+      objectReference: {fileID: 2076294814}
+    - target: {fileID: 718998950485419738, guid: b67a5b0b2b8d03743a06c416de342502, type: 3}
+      propertyPath: 'HealthBar.Array.data[2]'
+      value: 
+      objectReference: {fileID: 996470062}
+    - target: {fileID: 718998950485419738, guid: b67a5b0b2b8d03743a06c416de342502, type: 3}
+      propertyPath: 'HealthBar.Array.data[3]'
+      value: 
+      objectReference: {fileID: 268158363}
+    - target: {fileID: 718998950485419738, guid: b67a5b0b2b8d03743a06c416de342502, type: 3}
+      propertyPath: 'HealthPoint.Array.data[0]'
+      value: 
+      objectReference: {fileID: 531371936}
+    - target: {fileID: 718998950485419738, guid: b67a5b0b2b8d03743a06c416de342502, type: 3}
+      propertyPath: 'HealthPoint.Array.data[1]'
+      value: 
+      objectReference: {fileID: 1768911219}
+    - target: {fileID: 718998950485419738, guid: b67a5b0b2b8d03743a06c416de342502, type: 3}
+      propertyPath: 'HealthPoint.Array.data[2]'
+      value: 
+      objectReference: {fileID: 1971257217}
     - target: {fileID: 867998532556532935, guid: b67a5b0b2b8d03743a06c416de342502, type: 3}
       propertyPath: m_LocalPosition.x
       value: 7.97
@@ -142603,6 +142635,38 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3373221750746750970, guid: 4dd64eafec4a26c409b5b198a6f4ff86, type: 3}
+      propertyPath: losePanel
+      value: 
+      objectReference: {fileID: 1364317942}
+    - target: {fileID: 3373221750746750970, guid: 4dd64eafec4a26c409b5b198a6f4ff86, type: 3}
+      propertyPath: 'HealthBar.Array.data[0]'
+      value: 
+      objectReference: {fileID: 363074336}
+    - target: {fileID: 3373221750746750970, guid: 4dd64eafec4a26c409b5b198a6f4ff86, type: 3}
+      propertyPath: 'HealthBar.Array.data[1]'
+      value: 
+      objectReference: {fileID: 1783363888}
+    - target: {fileID: 3373221750746750970, guid: 4dd64eafec4a26c409b5b198a6f4ff86, type: 3}
+      propertyPath: 'HealthBar.Array.data[2]'
+      value: 
+      objectReference: {fileID: 2025716659}
+    - target: {fileID: 3373221750746750970, guid: 4dd64eafec4a26c409b5b198a6f4ff86, type: 3}
+      propertyPath: 'HealthBar.Array.data[3]'
+      value: 
+      objectReference: {fileID: 2059040416}
+    - target: {fileID: 3373221750746750970, guid: 4dd64eafec4a26c409b5b198a6f4ff86, type: 3}
+      propertyPath: 'HealthPoint.Array.data[0]'
+      value: 
+      objectReference: {fileID: 507740987}
+    - target: {fileID: 3373221750746750970, guid: 4dd64eafec4a26c409b5b198a6f4ff86, type: 3}
+      propertyPath: 'HealthPoint.Array.data[1]'
+      value: 
+      objectReference: {fileID: 729062898}
+    - target: {fileID: 3373221750746750970, guid: 4dd64eafec4a26c409b5b198a6f4ff86, type: 3}
+      propertyPath: 'HealthPoint.Array.data[2]'
+      value: 
+      objectReference: {fileID: 1006868916}
     - target: {fileID: 8030622714933312602, guid: 4dd64eafec4a26c409b5b198a6f4ff86, type: 3}
       propertyPath: m_Name
       value: Player2(Level2)
@@ -149390,6 +149454,10 @@ PrefabInstance:
       propertyPath: player2
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 1307721944719466476, guid: e6259a9333476c94cac9540c23b8fdcc, type: 3}
+      propertyPath: audioSource
+      value: 
+      objectReference: {fileID: 1457197685}
     - target: {fileID: 1431263959741621706, guid: e6259a9333476c94cac9540c23b8fdcc, type: 3}
       propertyPath: player1
       value: 
@@ -149669,6 +149737,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7661594686588238734, guid: e6259a9333476c94cac9540c23b8fdcc, type: 3}
   m_PrefabInstance: {fileID: 1457197682}
   m_PrefabAsset: {fileID: 0}
+--- !u!82 &1457197685 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 5443156713240005487, guid: e6259a9333476c94cac9540c23b8fdcc, type: 3}
+  m_PrefabInstance: {fileID: 1457197682}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1459777004
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -149747,6 +149820,10 @@ PrefabInstance:
       propertyPath: player2
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 1307721944719466476, guid: e6259a9333476c94cac9540c23b8fdcc, type: 3}
+      propertyPath: audioSource
+      value: 
+      objectReference: {fileID: 1460576421}
     - target: {fileID: 1431263959741621706, guid: e6259a9333476c94cac9540c23b8fdcc, type: 3}
       propertyPath: player1
       value: 
@@ -150020,6 +150097,11 @@ GameObject:
 --- !u!4 &1460576420 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7661594686588238734, guid: e6259a9333476c94cac9540c23b8fdcc, type: 3}
+  m_PrefabInstance: {fileID: 1460576418}
+  m_PrefabAsset: {fileID: 0}
+--- !u!82 &1460576421 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 5443156713240005487, guid: e6259a9333476c94cac9540c23b8fdcc, type: 3}
   m_PrefabInstance: {fileID: 1460576418}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1461514453 stripped

@@ -53,8 +53,8 @@ public class EnemyLogic : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
         rb = GetComponent<Rigidbody2D>();
 
-        player2 = GameObject.Find("Player2").GetComponent<Player2Controler>();
-        player1 = GameObject.Find("Player1").GetComponent<Player1Controller>();
+        player2 = GameObject.FindGameObjectWithTag("Player2").GetComponent<Player2Controler>();
+        player1 = GameObject.FindGameObjectWithTag("Player1").GetComponent<Player1Controller>();
     }
 
     public void TakeDamage(int damage)
