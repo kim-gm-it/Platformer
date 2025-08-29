@@ -10,7 +10,7 @@ public class PlayerAssignment : NetworkBehaviour
     {
         if(IsServer)// host runs this 
         {
-            //give the host ownership of hte host player
+            //give the host ownership of the host player
             NetworkObject hostNetObj = hostPlayer.GetComponent<NetworkObject>();
             hostNetObj.ChangeOwnership(NetworkManager.Singleton.LocalClientId);
 

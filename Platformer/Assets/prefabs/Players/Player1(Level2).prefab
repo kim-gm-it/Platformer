@@ -97,10 +97,12 @@ GameObject:
   - component: {fileID: 1525013914014943205}
   - component: {fileID: 8675175853267342170}
   - component: {fileID: 6951311936098597413}
+  - component: {fileID: 964012769663798202}
   - component: {fileID: 718998950485419738}
   - component: {fileID: 5583545506537058646}
   - component: {fileID: 8274210259199354834}
   - component: {fileID: 5243370973109808721}
+  - component: {fileID: -8380328518582451021}
   m_Layer: 0
   m_Name: Player1(Level2)
   m_TagString: Player1
@@ -312,6 +314,31 @@ PolygonCollider2D:
       - {x: 0.4375, y: -0.1875}
       - {x: 0.4375, y: -0.125}
   m_UseDelaunayMesh: 0
+--- !u!114 &964012769663798202
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2924361657909678676}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GlobalObjectIdHash: 1573152875
+  InScenePlacedSourceGlobalObjectIdHash: 0
+  DeferredDespawnTick: 0
+  Ownership: 1
+  AlwaysReplicateAsRoot: 0
+  SynchronizeTransform: 1
+  ActiveSceneSynchronization: 0
+  SceneMigrationSynchronization: 1
+  SpawnWithObservers: 1
+  DontDestroyWithOwner: 0
+  AutoObjectParentSync: 1
+  SyncOwnerTransformWhenParented: 1
+  AllowOwnerToParent: 0
 --- !u!114 &718998950485419738
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -324,6 +351,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 942725e6087045d47be86f33c04be248, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ShowTopMostFoldoutHeaderGroup: 1
   livesBar: 4
   livesPoint: 3
   moveSpeed: 8
@@ -569,6 +597,52 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 619a5ef4206beb34485b0e648720b45b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &-8380328518582451021
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2924361657909678676}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e96cb6065543e43c4a752faaa1468eb1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ShowTopMostFoldoutHeaderGroup: 1
+  NetworkTransformExpanded: 0
+  AutoOwnerAuthorityTickOffset: 1
+  PositionInterpolationType: 0
+  RotationInterpolationType: 0
+  ScaleInterpolationType: 0
+  PositionLerpSmoothing: 1
+  PositionMaxInterpolationTime: 0.1
+  RotationLerpSmoothing: 1
+  RotationMaxInterpolationTime: 0.1
+  ScaleLerpSmoothing: 1
+  ScaleMaxInterpolationTime: 0.1
+  AuthorityMode: 0
+  TickSyncChildren: 0
+  UseUnreliableDeltas: 0
+  SyncPositionX: 1
+  SyncPositionY: 1
+  SyncPositionZ: 1
+  SyncRotAngleX: 1
+  SyncRotAngleY: 1
+  SyncRotAngleZ: 1
+  SyncScaleX: 1
+  SyncScaleY: 1
+  SyncScaleZ: 1
+  PositionThreshold: 0.001
+  RotAngleThreshold: 0.01
+  ScaleThreshold: 0.01
+  UseQuaternionSynchronization: 0
+  UseQuaternionCompression: 0
+  UseHalfFloatPrecision: 0
+  InLocalSpace: 0
+  SwitchTransformSpaceWhenParented: 0
+  Interpolate: 1
+  SlerpPosition: 0
 --- !u!1 &3905104046906108701
 GameObject:
   m_ObjectHideFlags: 0

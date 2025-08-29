@@ -53,7 +53,7 @@ public class Player2Controler : BasePlayer
 
     public void OnJump(InputAction.CallbackContext context)
     {
-        if (!IsOwner) return;//only owner can run this 
+        //if (!IsOwner) return;//only owner can run this 
 
         if ((context.performed && isGrounded) || (context.performed && player1))
         {
@@ -74,13 +74,14 @@ public class Player2Controler : BasePlayer
 
     public void OnMove(InputAction.CallbackContext context)
     {
-        if (!IsOwner) return;//only owner can run this 
+        //if (!IsOwner) return;//only owner can run this 
 
         Debug.Log("Move Input: " + context.ReadValue<Vector2>());
         movementInput = context.ReadValue<Vector2>();
     }
     void Start()
     {
+        //Debug.Log($"{name} | isOwner = {IsOwner} | isLocalPlayer = {IsLocalPlayer}");
         rb = GetComponent<Rigidbody2D>();
         audioSource = GetComponent<AudioSource>();
         initialScale = transform.localScale;
@@ -88,7 +89,8 @@ public class Player2Controler : BasePlayer
 
     void Update()
     {
-        if (!IsOwner) return;//only owner can run this 
+        
+        //if (!IsOwner) return;//only owner can run this 
 
         if (isDashing)
         {
@@ -279,7 +281,7 @@ public class Player2Controler : BasePlayer
     //}
     public void OnAttack(InputAction.CallbackContext context)
     {
-        if (!IsOwner) return;//only owner can run this 
+        //if (!IsOwner) return;//only owner can run this 
 
         if (context.performed)
         {
