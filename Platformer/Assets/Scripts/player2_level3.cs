@@ -5,8 +5,10 @@ using System.Collections;
 using UnityEngine.UI;
 using Unity.Netcode;
 
-public class player2_level3 : BasePlayer 
+public class player2_level3 : BasePlayer
 {
+    private int lastDirection = 0; 
+    public ParticleSystem dust;
     private Vector3 initialScale;
     private Rigidbody2D rb;
     [SerializeField] float moveSpeed = 5f;
@@ -71,14 +73,26 @@ public class player2_level3 : BasePlayer
     }
     void Update()
     {
-        //if (!IsOwner) return;//only owner can run this 
-
         animator.SetBool("Run", movementInput.magnitude > 0f);
 
         if (movementInput.x > 0.01f)
+        {
+            if (lastDirection != 1) 
+            {
+                createDust();
+                lastDirection = 1;
+            }
             transform.localScale = new Vector3(Mathf.Abs(initialScale.x), initialScale.y, initialScale.z);
+        }
         else if (movementInput.x < -0.01f)
+        {
+            if (lastDirection != -1) 
+            {
+                createDust();
+                lastDirection = -1;
+            }
             transform.localScale = new Vector3(-Mathf.Abs(initialScale.x), initialScale.y, initialScale.z);
+        }
     }
 
     void OnTriggerEnter2D(Collider2D collision)
@@ -209,6 +223,10 @@ public class player2_level3 : BasePlayer
     {
         UpdateHealthPointUI();
         UpdateHealthBarUI();
+    }
+     void createDust()
+    {
+        dust.Play();
     }
 
 }
