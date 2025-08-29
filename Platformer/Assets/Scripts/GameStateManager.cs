@@ -60,11 +60,20 @@ public class GameStateManager : MonoBehaviour
     public void ShowYouWin()
     {
         if (gameEnded) return;
+
         gameEnded = true;
+        StartCoroutine(ShowYouWinDelay());
+    }
+
+    private IEnumerator ShowYouWinDelay()
+    {
+        yield return new WaitForSeconds(1f);
+
         Time.timeScale = 0;
         youWinPanel.SetActive(true);
         if (audioWin != null) audioWin.Play();
     }
+
 
     // ---------- BUTTONS ----------
     public void RestartGame()

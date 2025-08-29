@@ -44,6 +44,9 @@ public class ChunkManager : MonoBehaviour
             GameObject newChunk = GenerateChunk();
             activeChunks.Add(newChunk);
         }
+        if (player == null) {
+            player = GameObject.FindGameObjectWithTag("Player1").transform;
+        }
     }
 
     void Update()

@@ -1646,6 +1646,38 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player1(Level1)
       objectReference: {fileID: 0}
+    - target: {fileID: 6697062998250025098, guid: fb318bd5925f82248811027cd6c89a6b, type: 3}
+      propertyPath: losePanel
+      value: 
+      objectReference: {fileID: 958892711}
+    - target: {fileID: 6697062998250025098, guid: fb318bd5925f82248811027cd6c89a6b, type: 3}
+      propertyPath: 'HealthBar.Array.data[0]'
+      value: 
+      objectReference: {fileID: 762687263}
+    - target: {fileID: 6697062998250025098, guid: fb318bd5925f82248811027cd6c89a6b, type: 3}
+      propertyPath: 'HealthBar.Array.data[1]'
+      value: 
+      objectReference: {fileID: 409349166}
+    - target: {fileID: 6697062998250025098, guid: fb318bd5925f82248811027cd6c89a6b, type: 3}
+      propertyPath: 'HealthBar.Array.data[2]'
+      value: 
+      objectReference: {fileID: 1851772758}
+    - target: {fileID: 6697062998250025098, guid: fb318bd5925f82248811027cd6c89a6b, type: 3}
+      propertyPath: 'HealthBar.Array.data[3]'
+      value: 
+      objectReference: {fileID: 800024338}
+    - target: {fileID: 6697062998250025098, guid: fb318bd5925f82248811027cd6c89a6b, type: 3}
+      propertyPath: 'HealthPoint.Array.data[0]'
+      value: 
+      objectReference: {fileID: 1085135115}
+    - target: {fileID: 6697062998250025098, guid: fb318bd5925f82248811027cd6c89a6b, type: 3}
+      propertyPath: 'HealthPoint.Array.data[1]'
+      value: 
+      objectReference: {fileID: 1770229595}
+    - target: {fileID: 6697062998250025098, guid: fb318bd5925f82248811027cd6c89a6b, type: 3}
+      propertyPath: 'HealthPoint.Array.data[2]'
+      value: 
+      objectReference: {fileID: 2033633862}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1684,6 +1716,11 @@ MonoBehaviour:
   AutoObjectParentSync: 1
   SyncOwnerTransformWhenParented: 1
   AllowOwnerToParent: 0
+--- !u!4 &496371619 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5510597218929872540, guid: fb318bd5925f82248811027cd6c89a6b, type: 3}
+  m_PrefabInstance: {fileID: 496371616}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &527991185
 GameObject:
   m_ObjectHideFlags: 0
@@ -2733,6 +2770,38 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 869435680048455197, guid: 51005a9b6614064478bff07879f886bf, type: 3}
+      propertyPath: losePanel
+      value: 
+      objectReference: {fileID: 958892711}
+    - target: {fileID: 869435680048455197, guid: 51005a9b6614064478bff07879f886bf, type: 3}
+      propertyPath: 'HealthBar.Array.data[0]'
+      value: 
+      objectReference: {fileID: 1073106072}
+    - target: {fileID: 869435680048455197, guid: 51005a9b6614064478bff07879f886bf, type: 3}
+      propertyPath: 'HealthBar.Array.data[1]'
+      value: 
+      objectReference: {fileID: 1728342450}
+    - target: {fileID: 869435680048455197, guid: 51005a9b6614064478bff07879f886bf, type: 3}
+      propertyPath: 'HealthBar.Array.data[2]'
+      value: 
+      objectReference: {fileID: 366826111}
+    - target: {fileID: 869435680048455197, guid: 51005a9b6614064478bff07879f886bf, type: 3}
+      propertyPath: 'HealthBar.Array.data[3]'
+      value: 
+      objectReference: {fileID: 1606316657}
+    - target: {fileID: 869435680048455197, guid: 51005a9b6614064478bff07879f886bf, type: 3}
+      propertyPath: 'HealthPoint.Array.data[0]'
+      value: 
+      objectReference: {fileID: 684402551}
+    - target: {fileID: 869435680048455197, guid: 51005a9b6614064478bff07879f886bf, type: 3}
+      propertyPath: 'HealthPoint.Array.data[1]'
+      value: 
+      objectReference: {fileID: 1824955062}
+    - target: {fileID: 869435680048455197, guid: 51005a9b6614064478bff07879f886bf, type: 3}
+      propertyPath: 'HealthPoint.Array.data[2]'
+      value: 
+      objectReference: {fileID: 334986255}
     - target: {fileID: 5739906712608559062, guid: 51005a9b6614064478bff07879f886bf, type: 3}
       propertyPath: m_LocalPosition.x
       value: 6.18
@@ -5132,7 +5201,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   backgroundPrefab: {fileID: 729393336188780447, guid: 58c9c723842e5a84ebea24c77ce7162c, type: 3}
-  player: {fileID: 867998532556532935, guid: b67a5b0b2b8d03743a06c416de342502, type: 3}
+  player: {fileID: 496371619}
   spawnAheadDis: 30
   offset: 20
 --- !u!1 &1598117017
