@@ -97,7 +97,7 @@ GameObject:
   - component: {fileID: 1525013914014943205}
   - component: {fileID: 8675175853267342170}
   - component: {fileID: 6951311936098597413}
-  - component: {fileID: 964012769663798202}
+  - component: {fileID: -2784655663938626455}
   - component: {fileID: 718998950485419738}
   - component: {fileID: 5583545506537058646}
   - component: {fileID: 8274210259199354834}
@@ -314,7 +314,7 @@ PolygonCollider2D:
       - {x: 0.4375, y: -0.1875}
       - {x: 0.4375, y: -0.125}
   m_UseDelaunayMesh: 0
---- !u!114 &964012769663798202
+--- !u!114 &-2784655663938626455
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -326,7 +326,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GlobalObjectIdHash: 1573152875
+  GlobalObjectIdHash: 3303690778
   InScenePlacedSourceGlobalObjectIdHash: 0
   DeferredDespawnTick: 0
   Ownership: 1
