@@ -175,10 +175,13 @@ public class Multiplayer : MonoBehaviour
 
                 Debug.Log("Lobby refreshed");
 
-                //if lobby is full move to character selection
-                if(currentLobby.Players.Count >= currentLobby.MaxPlayers)
+                if (SceneManager.GetActiveScene().name == "Lobby")
                 {
-                    SceneManager.LoadScene("mainMenu");
+                    //if lobby is full move to character selection
+                    if (currentLobby.Players.Count >= currentLobby.MaxPlayers)
+                    {
+                        SceneManager.LoadScene("mainMenu");
+                    }
                 }
             }
 
