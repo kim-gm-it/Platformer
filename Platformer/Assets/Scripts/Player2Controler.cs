@@ -7,6 +7,8 @@ using Cainos.PixelArtPlatformer_Dungeon;
 
 public class Player2Controler : BasePlayer
 {
+    private int lastDirection = 0; 
+    public ParticleSystem dust;
     private Vector3 initialScale;
     private Rigidbody2D rb;
     [SerializeField] float moveSpeed = 5f;
@@ -57,6 +59,7 @@ public class Player2Controler : BasePlayer
 
         if ((context.performed && isGrounded) || (context.performed && player1))
         {
+            createDust();
             rb.AddForce(Vector2.up * jumpForse, ForceMode2D.Impulse);
             animator.SetTrigger("Jump");
             GetComponent<Player2Controler>().PlayJumpSound();
@@ -89,7 +92,7 @@ public class Player2Controler : BasePlayer
 
     void Update()
     {
-        
+
         //if (!IsOwner) return;//only owner can run this 
 
         if (isDashing)
@@ -112,10 +115,20 @@ public class Player2Controler : BasePlayer
         }
         if (movementInput.x > 0.01f)
         {
+            if (lastDirection != 1) 
+            {
+                createDust();
+                lastDirection = 1;
+            }
             transform.localScale = new Vector3(Mathf.Abs(initialScale.x), initialScale.y, initialScale.z);
         }
         else if (movementInput.x < -0.01f)
         {
+            if (lastDirection != -1) 
+            {
+                createDust();
+                lastDirection = -1;
+            }
             transform.localScale = new Vector3(-Mathf.Abs(initialScale.x), initialScale.y, initialScale.z);
         }
     }
@@ -369,7 +382,7 @@ public class Player2Controler : BasePlayer
 
         while (livesBar > 4)
         {
-            livesBar -= 4; 
+            livesBar -= 4;
             livesPoint++;
         }
 
@@ -407,18 +420,22 @@ public class Player2Controler : BasePlayer
         GameStateManager gsm = FindFirstObjectByType<GameStateManager>();
         if (gsm != null)
         {
-            gsm.PlayerDied(playerNumber); 
+            gsm.PlayerDied(playerNumber);
         }
     }
     public bool IsDashing()
     {
         return isDashing;
     }
-    
+
     public override void RefreshUI()
     {
         UpdateHealthPointUI();
         UpdateHealthBarUI();
+    }
+     void createDust()
+    {
+        dust.Play();
     }
 
 

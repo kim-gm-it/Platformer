@@ -6,6 +6,8 @@ using UnityEngine.UI;
 
 public class Player1Controller : BasePlayer
 {
+    private int lastDirection = 0; 
+    public ParticleSystem dust;
     private Vector3 initialScale;
     private Rigidbody2D rb;
     [SerializeField] float moveSpeed = 5f;
@@ -27,7 +29,7 @@ public class Player1Controller : BasePlayer
     private AudioSource audioSource;
     [SerializeField] private Transform firePoint;
     [SerializeField] private float arrowSpeed = 10f;
-    public int playerNumber = 1; 
+    public int playerNumber = 1;
 
     public Image[] HealthPoint;
     public Image[] HealthBar;
@@ -53,6 +55,7 @@ public class Player1Controller : BasePlayer
 
             if (isOnPlatform)
             {
+                createDust();
                 rb.AddForce(Vector2.up * jumpForse, ForceMode2D.Impulse);
                 animator.SetTrigger("Jump");
                 PlayJumpSound();
@@ -88,7 +91,7 @@ public class Player1Controller : BasePlayer
 
     void Update()
     {
-        
+
         //if (!IsOwner) return;//only owner can run this 
 
         Vector2 movement = new Vector2(movementInput.x, movementInput.y) * (moveSpeed * Time.deltaTime);
@@ -103,10 +106,20 @@ public class Player1Controller : BasePlayer
         transform.Translate(movement);
         if (movementInput.x > 0.01f)
         {
+            if (lastDirection != 1) 
+            {
+                createDust();
+                lastDirection = 1;
+            }
             transform.localScale = new Vector3(Mathf.Abs(initialScale.x), initialScale.y, initialScale.z);
         }
         else if (movementInput.x < -0.01f)
         {
+            if (lastDirection != -1) 
+            {
+                createDust();
+                lastDirection = -1;
+            }
             transform.localScale = new Vector3(-Mathf.Abs(initialScale.x), initialScale.y, initialScale.z);
         }
     }
@@ -301,13 +314,13 @@ public class Player1Controller : BasePlayer
             }
         }
     }
-   public void IncreaseHealth(int amount)
+    public void IncreaseHealth(int amount)
     {
         livesBar += amount;
 
         while (livesBar > 4)
         {
-            livesBar -= 4; 
+            livesBar -= 4;
             livesPoint++;
         }
 
@@ -353,6 +366,10 @@ public class Player1Controller : BasePlayer
     {
         UpdateHealthPointUI();
         UpdateHealthBarUI();
+    }
+     void createDust()
+    {
+        dust.Play();
     }
 
 }

@@ -5,6 +5,8 @@ using System.Collections;
 
 public class player1_level3 : BasePlayer
 {
+    private int lastDirection = 0; 
+    public ParticleSystem dust;
     private Vector3 initialScale;
     private Rigidbody2D rb;
     [SerializeField] float moveSpeed = 5f;
@@ -63,9 +65,23 @@ public class player1_level3 : BasePlayer
         animator.SetBool("Run", Mathf.Abs(movementInput.x) > 0f);
 
         if (movementInput.x > 0.01f)
+        {
+            if (lastDirection != 1)
+            {
+                createDust();
+                lastDirection = 1;
+            }
             transform.localScale = new Vector3(Mathf.Abs(initialScale.x), initialScale.y, initialScale.z);
+        }
         else if (movementInput.x < -0.01f)
+        {
+            if (lastDirection != -1) 
+            {
+                createDust();
+                lastDirection = -1;
+            }
             transform.localScale = new Vector3(-Mathf.Abs(initialScale.x), initialScale.y, initialScale.z);
+        }
     }
     void FixedUpdate()
     {
@@ -174,6 +190,10 @@ public class player1_level3 : BasePlayer
     {
         UpdateHealthPointUI();
         UpdateHealthBarUI();
+    }
+    void createDust()
+    {
+        dust.Play();
     }
 
 }
