@@ -160,7 +160,7 @@ public class Player1Controller : BasePlayer
             {
                 isDead = true;
                 PlayDeathSound();
-                StartCoroutine(ShowLosePanelAfterDelay(1.9f));
+                StartCoroutine(ShowLosePanelAfterDelay(1.5f));
             }
             if (collision.gameObject.tag == "Enemy Arrow")
             {
@@ -202,7 +202,7 @@ public class Player1Controller : BasePlayer
         {
             isDead = true;
             PlayDeathSound();
-            StartCoroutine(ShowLosePanelAfterDelay(1.9f));
+            StartCoroutine(ShowLosePanelAfterDelay(1.5f));
         }
 
     }
@@ -218,17 +218,24 @@ public class Player1Controller : BasePlayer
 
     public void ShootArrow()
     {
+        // float direction = transform.localScale.x > 0 ? 1f : -1f;
+
+        // GameObject arrow = Instantiate(arrowPrefab, firePoint.position, Quaternion.identity);
+        // Rigidbody2D rb = arrow.GetComponent<Rigidbody2D>();
+
+        // rb.linearVelocity = new Vector2(direction * arrowSpeed, 0f);
+
+        // if (direction < 0)
+        // {
+        //     arrow.transform.localScale = new Vector3(-1, 1, 1);
+        // }
         float direction = transform.localScale.x > 0 ? 1f : -1f;
 
-        GameObject arrow = Instantiate(arrowPrefab, firePoint.position, Quaternion.identity);
+        Quaternion rotation = direction > 0 ? Quaternion.identity : Quaternion.Euler(0, 0, 180f);
+
+        GameObject arrow = Instantiate(arrowPrefab, firePoint.position, rotation);
         Rigidbody2D rb = arrow.GetComponent<Rigidbody2D>();
-
         rb.linearVelocity = new Vector2(direction * arrowSpeed, 0f);
-
-        if (direction < 0)
-        {
-            arrow.transform.localScale = new Vector3(-1, 1, 1);
-        }
     }
     public void PlayJumpSound()
     {

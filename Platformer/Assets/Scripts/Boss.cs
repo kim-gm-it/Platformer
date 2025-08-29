@@ -8,7 +8,7 @@ public class Boss : MonoBehaviour
     public Transform[] players;
     public int currentPlayerIndex = 0;
     public float switchTimer = 0f;
-    public float switchTargetTime = 10f;
+    public float switchTargetTime = 5f;
 
     [Header("Boss Stats")]
     public bool isFlipped = false;

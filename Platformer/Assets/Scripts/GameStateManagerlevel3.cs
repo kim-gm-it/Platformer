@@ -50,10 +50,18 @@ public class GameStateManagerlevel3 : MonoBehaviour
         if (gameEnded) return;
 
         gameEnded = true;
+        StartCoroutine(ShowYouWinDelay());
+    }
+
+    private IEnumerator ShowYouWinDelay()
+    {
+        yield return new WaitForSeconds(1f);
+
         Time.timeScale = 0;
         youWinPanel.SetActive(true);
         if (audioWin != null) audioWin.Play();
     }
+
 
     public void RestartGame()
     {
