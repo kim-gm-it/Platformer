@@ -53,6 +53,8 @@ public class Player2Controler : BasePlayer
 
     public void OnJump(InputAction.CallbackContext context)
     {
+        if (!IsOwner) return;//only owner can run this 
+
         if ((context.performed && isGrounded) || (context.performed && player1))
         {
             rb.AddForce(Vector2.up * jumpForse, ForceMode2D.Impulse);
@@ -72,6 +74,8 @@ public class Player2Controler : BasePlayer
 
     public void OnMove(InputAction.CallbackContext context)
     {
+        if (!IsOwner) return;//only owner can run this 
+
         Debug.Log("Move Input: " + context.ReadValue<Vector2>());
         movementInput = context.ReadValue<Vector2>();
     }
@@ -84,6 +88,8 @@ public class Player2Controler : BasePlayer
 
     void Update()
     {
+        if (!IsOwner) return;//only owner can run this 
+
         if (isDashing)
         {
             return;
@@ -113,6 +119,8 @@ public class Player2Controler : BasePlayer
     }
     private void FixedUpdate()
     {
+        if (!IsOwner) return;//only owner can run this 
+
         if (isDashing)
         {
             return;
@@ -271,6 +279,8 @@ public class Player2Controler : BasePlayer
     //}
     public void OnAttack(InputAction.CallbackContext context)
     {
+        if (!IsOwner) return;//only owner can run this 
+
         if (context.performed)
         {
             animator.SetTrigger("Attack");

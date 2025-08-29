@@ -33,11 +33,15 @@ public class player1_level3 : BasePlayer
     // INPUTS
     public void OnMove(InputAction.CallbackContext context)
     {
+        if (!IsOwner) return;//only owner can run this 
+
         movementInput = context.ReadValue<Vector2>();
     }
 
     public void OnAttack(InputAction.CallbackContext context)
     {
+        if (!IsOwner) return;//only owner can run this 
+
         if (context.performed)
         {
             animator.SetTrigger("Attack");
@@ -54,6 +58,8 @@ public class player1_level3 : BasePlayer
 
     void Update()
     {
+        if (!IsOwner) return;//only owner can run this 
+
         animator.SetBool("Run", Mathf.Abs(movementInput.x) > 0f);
 
         if (movementInput.x > 0.01f)
@@ -63,6 +69,8 @@ public class player1_level3 : BasePlayer
     }
     void FixedUpdate()
     {
+        if (!IsOwner) return;//only owner can run this 
+
         rb.linearVelocity = movementInput * moveSpeed;
     }
 

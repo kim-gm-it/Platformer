@@ -1,6 +1,7 @@
+using Unity.Netcode;
 using UnityEngine;
 
-public class BasePlayer : MonoBehaviour
+public class BasePlayer : NetworkBehaviour
 {
     public float livesBar;
     public int livesPoint;
